@@ -1,0 +1,20 @@
+.home {
+    text-align: center;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 100vh;
+    flex-grow: 1;
+  }
+  
+  h1 {
+    color: var(--primary-text-color);
+  }
+  
+  p {
+    color: black;
+  }
+  
