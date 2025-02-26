@@ -1,0 +1,73 @@
+.main-register-container {
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+ }
+
+ /* register Container */
+  .register-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .main-register-container > h2 {
+    margin-bottom: 15px;
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: var(--bar-color);
+    color: var(--secondary-text-color);
+  }
+  
+  label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 1rem;
+  }
+  
+  select, input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  input {
+    border: 1px solid #ccc;
+  }
+  
+  /* register Button */
+  .register-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: var(--bar-color);
+    color: var(--secondary-text-color);
+  }
+  
+  .register-button:hover {
+    scale: 0.9;
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 400px) {
+    .register-container {
+      width: 90%;
+      padding: 15px;
+    }
+  }
+  

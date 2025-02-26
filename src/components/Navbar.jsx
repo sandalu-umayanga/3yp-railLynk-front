@@ -23,6 +23,7 @@ const Navbar = () => {
         <li><Link to="/" onClick={() => setIsOpen(false)}>Home</Link></li>
         <li><Link to="/about" onClick={() => setIsOpen(false)}>About</Link></li>
         <li><Link to="/login" onClick={() => setIsOpen(false)}>Login</Link></li>
+        <li><Link to="/adminLogin" onClick={() => setIsOpen(false)}>Admin</Link></li>
       </ul>
     </nav>
   );
