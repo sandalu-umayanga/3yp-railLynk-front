@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="logo">Railway Ticketing</div>
+      <div className="logo">RailLynk</div>
 
       {/* Hamburger Icon */}
       <div className="hamburger" onClick={toggleMenu}>

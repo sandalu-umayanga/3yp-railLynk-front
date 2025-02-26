@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import AdminLogin from "./pages/AdminLogin";
 import ProtectedRoute from "./components/ProtectedRoute"; // Import the protected route
+import AdminDashboard from "./components/AdminDashboard";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/adminregister" element={<Register />} />
           </Route>
           <Route path="/adminLogin" element={<AdminLogin />} />
+          <Route path="/adminDashboard" element={<AdminDashboard />} />
         </Routes>
       </div>
       <Footer />

@@ -1,0 +1,130 @@
+/* General styles */
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 250px;
+    background: var(--bar-color);
+    color: white;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    z-index: 100;
+  }
+  
+  .sidebar.closed {
+    width: 70px;
+  }
+  
+  .menu-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  .menu-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+  }
+
+  .menu-list > li {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    gap: 10px;
+    transition: background 0.3s ease;
+  }
+  
+  .menu-item:hover {
+    background: #34495e;
+  }
+  
+  /* Main Content */
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 70px;
+    text-align: center;
+}
+  
+  .dashboard-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  /* Stats Cards */
+  .stats-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .stats-card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 200px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 70px;
+    }
+  
+    .sidebar.open {
+      width: 200px;
+    }
+  
+    .menu-item span {
+      display: none;
+    }
+  
+    .sidebar.open .menu-item span {
+      display: inline;
+    }
+  
+    .stats-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+
+  @media (max-width: 345px) {
+    .stats-card {
+      width: 100px;
+    }
+  }
