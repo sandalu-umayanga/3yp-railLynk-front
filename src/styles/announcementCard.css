@@ -1,0 +1,39 @@
+.announcement-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #c1f5fe;
+    border-radius: 0.5rem;
+    box-shadow: #c1f5fe 0px 0px 10px;
+    width: 250px;
+}
+
+.announcement-card > h2 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.announcement-card > p {
+    margin-bottom: 15px;
+}
+
+.announcement-card > span {
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #434343;
+}
+
+.announcement-card > button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: var(--bar-color);
+    color: white;
+}
+
+.announcement-card > button:hover {
+    background-color: #007bff;
+}
