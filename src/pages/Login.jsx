@@ -16,13 +16,12 @@ const Login = () => {
   const handleLogin = async () => {
     setLoading(true);
     const loginData = {
-      userType,
-      email,
-      password,
-      ...(userType === "station" && { stationName }),
+      "username":email,
+      "password":password,
     };
 
     try {
+      console.log(loginData);
       const response = await API.post("login/", loginData);
       const { access_token, refresh_token } = response.data;
 
