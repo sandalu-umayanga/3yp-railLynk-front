@@ -3,7 +3,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
-import Register from "./pages/Register";
+import PassengerRegister from "./pages/PassengerRegister";
+import StationRegister from "./pages/StationRegister";
 import AdminLogin from "./pages/AdminLogin";
 import ProtectedRoute from "./components/ProtectedRoute"; // Import the protected route
 
@@ -17,8 +18,11 @@ function App() {
           <Route path="/login" element={<Login />} />
 
           {/* Admin-only routes */}
+          <Route element={<ProtectedRoute allowedRoles={["admin", "station"]} redirectPath="/" />}>
+            <Route path="/passengerRegister" element={<PassengerRegister />} />
+          </Route>
           <Route element={<ProtectedRoute allowedRoles={["admin"]} redirectPath="/" />}>
-            <Route path="/adminregister" element={<Register />} />
+            <Route path="/stationRegister" element={<StationRegister />} />
           </Route>
           <Route path="/adminLogin" element={<AdminLogin />} />
         </Routes>

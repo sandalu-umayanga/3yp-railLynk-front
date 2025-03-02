@@ -23,23 +23,32 @@ const AdminLogin = () => {
     console.log("Logging in with:", loginData); // Debugging Step 1
 
     try {
-        const response = await API.post("admin/login/", loginData);
+        alert("hello checker");
+        console.log(loginData)
+        const response = await API.post("login/", loginData);
 
+        alert("hello checker2");
+
+        console.log(response)
         // Check if tokens exist
-        const { access_token, refresh_token } = response.data;
+        const access_token = response.data.access;
+        const refresh_token = response.data.refresh;
+
         if (!access_token || !refresh_token) {
+            alert("hello checker3");
             throw new Error("Invalid credentials or missing tokens");
         }
 
         // Store tokens and user type
         localStorage.setItem(ACCESS_TOKEN, access_token);
         localStorage.setItem(REFRESH_TOKEN, refresh_token);
-        localStorage.setItem(USER_TYPE, "admin");
+        localStorage.setItem(USER_TYPE, response.data.user_type);
+
+        console.log("user type:", response.data.user_type);
 
         setMessage("Login successful!");
         alert("Login successful!");
 
-        // Redirect to admin dashboard
         navigate("/adminregister");
     } catch (error) {
         setMessage(error.response?.data?.error || "Invalid username or password");
