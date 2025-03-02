@@ -4,10 +4,8 @@ import "../styles/adminLogin.css";
 import API from "../api";
 import { ACCESS_TOKEN, REFRESH_TOKEN, USER_TYPE } from "../constants";
 
-
-
 const AdminLogin = () => {
-  const [username, setUsername] = useState("");
+  const [username, setusername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -17,19 +15,12 @@ const AdminLogin = () => {
     setLoading(true);
     setMessage(""); // Clear previous messages
 
-    // Validate form
-    if (!username || !password) {
-      setMessage("Both fields are required.");
-      setLoading(false);
-      return;
-    }
+    const loginData = {
+        username,
+        password,
+    };
 
-    const loginData = { username, password };
-
-    try {
-      console.log(localStorage.getItem(ACCESS_TOKEN));
-      console.log("hello");
-      console.log("Login data:", loginData); // Check the credentials
+    console.log("Logging in with:", loginData); // Debugging Step 1
 
     try {
         alert("hello checker");
@@ -55,67 +46,68 @@ const AdminLogin = () => {
 
         console.log("user type:", response.data.user_type);
 
-      setMessage("Login successful!");
-      alert("Login successful!");
+        setMessage("Login successful!");
+        alert("Login successful!");
 
         navigate("/adminregister");
     } catch (error) {
-        console.log(error);
-      setMessage(
-        error.response?.data?.error ||
-          error.message ||
-          "Invalid username or password"
-      );
-      } finally {
-        setLoading(false);
-      }
-    } catch (error) {
-      console.log(error);
-      setMessage(
-        error.response?.data?.error ||
-        error.message ||
-        "Invalid username or password"
-      );
+        setMessage(error.response?.data?.error || "Invalid username or password");
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
+ };
+
+
+  const validateForm = () => {
+    if (!username || !password) {
+      setMessage("Please fill in all fields.");
+      return false;
+    }
+
+    return true;
   };
 
-  return (
+
+return (
     <div className="main-login-container">
-      <div className="login-container">
-        <h2>Admin Login</h2>
+        <div className="login-container">
+            <h2>Admin Login</h2>
 
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Enter username"
-        />
+            <label htmlFor="username">UserName:</label>
+            <input
+                type="text"
+                id="username"
+                value={username}
+                onChange={(e) => setusername(e.target.value)}
+                placeholder="Enter username"
+            />
 
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Enter password"
-        />
+            <label htmlFor="password">Password:</label>
+            <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter password"
+            />
 
-        <button
-          className="login-button"
-          onClick={handleLogin}
-          disabled={loading}
-        >
-          {loading ? "Logging in..." : "Login"}
-        </button>
+            <button
+                className="login-button"
+                onClick={async () => {
+                    if (validateForm()) {
+                        await handleLogin();
+                    }
+                }}
+                disabled={loading}
 
-        {message && <p className="login-message">{message}</p>}
-      </div>
+            >
+                {loading ? "Logging in..." : "Login"} 
+            </button>
+
+            {message && <p className="login-message">{message}</p>}
+        </div>
     </div>
-  );
+);
 };
 
 export default AdminLogin;
