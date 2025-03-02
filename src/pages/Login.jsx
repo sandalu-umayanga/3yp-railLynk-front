@@ -34,9 +34,9 @@ const Login = () => {
 
       // Redirect user based on type
       if (userType === "passenger") {
-        navigate("/passenger-profile");
+        navigate("/passengerProfile");
       } else {
-        navigate("/station-dashboard");
+        navigate("/stationDashboard");
       }
     } catch (error) {
       setMessage(error.response?.data?.error || "Login failed");

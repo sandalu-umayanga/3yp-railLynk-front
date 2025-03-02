@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FiUsers, FiSettings, FiMenu } from "react-icons/fi";
+import { FiUsers, FiSettings, FiMenu, FiUserPlus, FiMapPin, FiList } from "react-icons/fi";
 import "../styles/adminDashboard.css";
 
 const AdminDashboard = () => {
@@ -25,6 +25,26 @@ const AdminDashboard = () => {
               <FiSettings size={20} /> {isSidebarOpen && "Settings"}
             </Link>
           </li>
+          <li>
+            <Link to="/passengerRegister" className="menu-item">
+              <FiUserPlus size={20} /> {isSidebarOpen && "Register Passenger"}
+            </Link>
+          </li>
+          <li>
+            <Link to="/stationRegister" className="menu-item">
+              <FiMapPin size={20} /> {isSidebarOpen && "Register Station"}
+            </Link>
+          </li>
+          <li>
+            <Link to="/admin/view-stations" className="menu-item">
+              <FiList size={20} /> {isSidebarOpen && "View Stations"}
+            </Link>
+          </li>
+          <li>
+            <Link to="/admin/view-passengers" className="menu-item">
+              <FiUsers size={20} /> {isSidebarOpen && "View Passengers"}
+            </Link>
+          </li>
         </ul>
       </div>
 
@@ -33,7 +53,6 @@ const AdminDashboard = () => {
         <h1 className="dashboard-title">Admin Dashboard</h1>
 
         <div className="stats-container">
-          {/* Example Stats Cards */}
           <div className="stats-card">
             <h3>Total Users</h3>
             <p>1,234</p>

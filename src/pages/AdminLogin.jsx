@@ -49,7 +49,7 @@ const AdminLogin = () => {
         setMessage("Login successful!");
         alert("Login successful!");
 
-        navigate("/adminregister");
+        navigate("/adminDashboard");
     } catch (error) {
         setMessage(error.response?.data?.error || "Invalid username or password");
     } finally {

@@ -8,6 +8,8 @@ import StationRegister from "./pages/StationRegister";
 import AdminLogin from "./pages/AdminLogin";
 import ProtectedRoute from "./components/ProtectedRoute"; // Import the protected route
 import AdminDashboard from "./components/AdminDashboard";
+import StationDashboard from "./components/StationDashboard";
+import PassengerProfile from "./pages/PassengerProfile";
 
 function App() {
   return (
@@ -22,11 +24,25 @@ function App() {
           <Route element={<ProtectedRoute allowedRoles={["admin", "station"]} redirectPath="/" />}>
             <Route path="/passengerRegister" element={<PassengerRegister />} />
           </Route>
+
           <Route element={<ProtectedRoute allowedRoles={["admin"]} redirectPath="/" />}>
             <Route path="/stationRegister" element={<StationRegister />} />
           </Route>
+
           <Route path="/adminLogin" element={<AdminLogin />} />
-          <Route path="/adminDashboard" element={<AdminDashboard />} />
+
+          <Route element={<ProtectedRoute allowedRoles={["admin"]} redirectPath="/" />}>
+            <Route path="/adminDashboard" element={<AdminDashboard />} />
+          </Route>
+
+          <Route element={<ProtectedRoute allowedRoles={["station"]} redirectPath="/" />}>
+            <Route path="/stationDashboard" element={<StationDashboard />} />
+          </Route>
+
+          <Route element={<ProtectedRoute allowedRoles={["passenger"]} redirectPath="/" />}>
+            <Route path="/passengerProfile" element={<PassengerProfile />} />
+          </Route>
+          
         </Routes>
       </div>
       <Footer />

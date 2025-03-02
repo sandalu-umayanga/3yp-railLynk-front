@@ -60,7 +60,7 @@ const StationRegister = () => {
         headers: { "Content-Type": "application/json" },
       });
       setMessage("Registration successful! Redirecting to login...");
-      setTimeout(() => navigate("/login"), 2000);
+      setTimeout(() => navigate("/adminDashboard"), 2000);
     } catch (error) {
       setErrors(error.response?.data || {});
       setMessage(error.response?.data?.error || "Registration failed. Please try again.");
