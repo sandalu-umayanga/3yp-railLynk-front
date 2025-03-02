@@ -25,23 +25,24 @@ const Login = () => {
       const response = await API.post("login/", loginData);
       const { access_token, refresh_token } = response.data;
 
-      // Store tokens and user type
-      localStorage.setItem(ACCESS_TOKEN, access_token);
-      localStorage.setItem(REFRESH_TOKEN, refresh_token);
-      localStorage.setItem(USER_TYPE, userType);
+        localStorage.setItem(ACCESS_TOKEN, access_token);
+        localStorage.setItem(REFRESH_TOKEN, refresh_token);
+        localStorage.setItem(USER_TYPE, user.user_type); // ✅ Store user type from backend
 
-      setMessage("Login successful!");
+        setMessage("Login successful!");
 
-      // Redirect user based on type
-      if (userType === "passenger") {
-        navigate("/passenger-profile");
-      } else {
-        navigate("/station-dashboard");
-      }
+        // ✅ Redirect based on user type
+        if (user.user_type === "admin") {
+            navigate("/admin-dashboard");
+        } else if (user.user_type === "station") {
+            navigate("/station-dashboard");
+        } else {
+            navigate("/passenger-profile");
+        }
     } catch (error) {
-      setMessage(error.response?.data?.error || "Login failed");
+        setMessage(error.response?.data?.error || error.message || "Login failed");
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
   };
 
