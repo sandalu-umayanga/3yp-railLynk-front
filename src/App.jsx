@@ -10,6 +10,7 @@ import ProtectedRoute from "./components/ProtectedRoute"; // Import the protecte
 import AdminDashboard from "./components/AdminDashboard";
 import StationDashboard from "./components/StationDashboard";
 import PassengerProfile from "./pages/PassengerProfile";
+import PassengerDashboard from "./components/PassengerDashboard";
 
 function App() {
   return (
@@ -41,6 +42,10 @@ function App() {
 
           <Route element={<ProtectedRoute allowedRoles={["passenger"]} redirectPath="/" />}>
             <Route path="/passengerProfile" element={<PassengerProfile />} />
+          </Route>
+
+          <Route element={<ProtectedRoute allowedRoles={["passenger"]} redirectPath="/" />}>
+            <Route path="/passengerDashboard" element={<PassengerDashboard />} />
           </Route>
           
         </Routes>

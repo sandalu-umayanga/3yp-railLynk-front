@@ -1,30 +1,72 @@
-import { useState } from "react";
-import { FiUser, FiMail, FiPhone, FiMapPin, FiCalendar, FiEdit2, FiSave, FiCreditCard } from "react-icons/fi";
+import { useState, useEffect } from "react";
+import API from "../api"; // Import the API module
+import {
+  FiUser,
+  FiMail,
+  FiPhone,
+  FiMapPin,
+  FiCalendar,
+  FiEdit2,
+  FiSave,
+  FiCreditCard,
+} from "react-icons/fi";
 import "../styles/passengerProfile.css";
+import { USER_DATA } from "../constants";
 
 const PassengerProfile = () => {
-  const [isEditing, setIsEditing] = useState(false);
-  const [passenger, setPassenger] = useState({
-    email: "passenger@example.com",
-    password: "******",
-    confirmPassword: "******",
-    nic_number: "123456789V",
-    first_name: "John",
-    last_name: "Doe",
-    dob: "1995-06-15",
-    address: "123 Main Street, Colombo",
-    phone: "+94 77 123 4567",
-  });
+  const storedUserData = JSON.parse(localStorage.getItem(USER_DATA) || "{}");
 
+  const [isEditing, setIsEditing] = useState(false);
+  const [passenger, setPassenger] = useState(storedUserData.profile || {});
   const [editedPassenger, setEditedPassenger] = useState({ ...passenger });
+
+  useEffect(() => {
+    const updatedUserData = JSON.parse(localStorage.getItem(USER_DATA) || "{}");
+    if (updatedUserData.profile) {
+      setPassenger(updatedUserData.profile);
+      setEditedPassenger(updatedUserData.profile);
+    }
+  }, [isEditing]);
 
   const handleEditClick = () => {
     setIsEditing(true);
   };
 
-  const handleSaveClick = () => {
-    setPassenger(editedPassenger);
-    setIsEditing(false);
+  const handleSaveClick = async () => {
+    try {
+      const token = storedUserData.access; // Get JWT token
+
+      // Make API request to update the backend
+
+      console.log("Edited passenger:", editedPassenger);
+      const response = await API.put(
+        "passenger/update", editedPassenger,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Attach token for authentication
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      console.log("Update profile response:", response);
+
+      if (response.status === 200) {
+        setPassenger(editedPassenger);
+
+        // Update localStorage with new profile data
+        const updatedUserData = { ...storedUserData, profile: editedPassenger };
+        localStorage.setItem(USER_DATA, JSON.stringify(updatedUserData));
+
+        setIsEditing(false);
+        alert("Profile updated successfully!");
+      } else {
+        alert("Failed to update profile. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      alert("An error occurred while updating your profile.");
+    }
   };
 
   const handleChange = (e) => {

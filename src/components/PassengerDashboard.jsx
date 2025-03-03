@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FiSettings, FiMenu, FiMapPin, FiUsers, FiList, FiClipboard } from "react-icons/fi";
-import "../styles/stationDashboard.css";
+import { FiSettings, FiMenu, FiUser, FiList, FiClipboard } from "react-icons/fi";
+import { FaTicketAlt } from "react-icons/fa"; // Alternative icon from FontAwesome
+import "../styles/passengerDashboard.css";
 
-const StationDashboard = () => {
+const PassengerDashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
@@ -16,22 +17,22 @@ const StationDashboard = () => {
 
         <ul className="menu-list">
           <li>
-            <Link to="/station/manage-trains" className="menu-item">
-              <FiClipboard size={20} /> {isSidebarOpen && "Manage Trains"}
+            <Link to="/passengerProfile" className="menu-item">
+              <FiUser size={20} /> {isSidebarOpen && "Profile"}
             </Link>
           </li>
           <li>
-            <Link to="/station/manage-passengers" className="menu-item">
-              <FiUsers size={20} /> {isSidebarOpen && "Manage Passengers"}
+            <Link to="/passenger/tickets" className="menu-item">
+              <FaTicketAlt size={20} /> {isSidebarOpen && "My Tickets"}
             </Link>
           </li>
           <li>
             <Link to="https://eservices.railway.gov.lk/schedule/searchTrain.action?lang=en" className="menu-item">
-              <FiList size={20} /> {isSidebarOpen && "View Schedule"}
+              <FiList size={20} /> {isSidebarOpen && "Train Schedule"}
             </Link>
           </li>
           <li>
-            <Link to="/station/settings" className="menu-item">
+            <Link to="/passenger/settings" className="menu-item">
               <FiSettings size={20} /> {isSidebarOpen && "Settings"}
             </Link>
           </li>
@@ -40,17 +41,17 @@ const StationDashboard = () => {
 
       {/* Main Content */}
       <div className="main-content">
-        <h1 className="dashboard-title">Station Dashboard</h1>
+        <h1 className="dashboard-title">Passenger Dashboard</h1>
 
         <div className="stats-container">
           <div className="stats-card">
-            <h3>Total Trains</h3>
-            <p>85</p>
+            <h3>Upcoming Trips</h3>
+            <p>2</p>
           </div>
 
           <div className="stats-card">
-            <h3>Passengers Today</h3>
-            <p>4,320</p>
+            <h3>Tickets Purchased</h3>
+            <p>15</p>
           </div>
         </div>
       </div>
@@ -58,4 +59,4 @@ const StationDashboard = () => {
   );
 };
 
-export default StationDashboard;
+export default PassengerDashboard;

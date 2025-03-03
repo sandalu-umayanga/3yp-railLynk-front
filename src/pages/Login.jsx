@@ -21,20 +21,23 @@ const Login = () => {
     };
 
     try {
+      localStorage.clear();
       console.log(loginData);
       const response = await API.post("login/", loginData);
       const { access_token, refresh_token } = response.data;
+      console.log(response.data);
 
       // Store tokens and user type
       localStorage.setItem(ACCESS_TOKEN, access_token);
       localStorage.setItem(REFRESH_TOKEN, refresh_token);
       localStorage.setItem(USER_TYPE, userType);
+      localStorage.setItem("user_data", JSON.stringify(response.data));
 
       setMessage("Login successful!");
 
       // Redirect user based on type
       if (userType === "passenger") {
-        navigate("/passengerProfile");
+        navigate("/passengerDashboard");
       } else {
         navigate("/stationDashboard");
       }

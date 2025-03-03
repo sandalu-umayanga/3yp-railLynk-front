@@ -23,6 +23,7 @@ const AdminLogin = () => {
     console.log("Logging in with:", loginData); // Debugging Step 1
 
     try {
+        localStorage.clear();
         alert("hello checker");
         console.log(loginData)
         const response = await API.post("login/", loginData);
