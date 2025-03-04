@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FiSettings, FiMenu, FiUsers, FiList, FiClipboard, FiUserPlus, FiCreditCard, FiLogOut } from "react-icons/fi";
+import { FiSettings, FiMenu, FiUsers, FiList, FiClipboard, FiUserPlus, FiCreditCard, FiLogOut, FiDatabase } from "react-icons/fi";
 import "../styles/stationDashboard.css";
 import { useNavigate } from "react-router-dom";
 
@@ -49,6 +49,11 @@ const StationDashboard = () => {
           <li>
             <Link to="/recharging" className="menu-item">
               <FiCreditCard size={20} /> {isSidebarOpen && "Recharge"}
+            </Link>
+          </li>
+          <li>
+            <Link to="/stationTransaction" className="menu-item">
+              <FiDatabase size={20} /> {isSidebarOpen && "Transactions"}
             </Link>
           </li>
           <li>

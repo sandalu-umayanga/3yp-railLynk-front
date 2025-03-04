@@ -1,10 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FiUsers, FiSettings, FiMenu, FiUserPlus, FiMapPin, FiList, FiMonitor } from "react-icons/fi";
+import { FiUsers, FiSettings, FiMenu, FiUserPlus, FiMapPin, FiList, FiMonitor, FiLogOut } from "react-icons/fi";
 import "../styles/adminDashboard.css";
+import { useNavigate } from "react-router-dom";
 
 const AdminDashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/");
+  };
 
   return (
     <div className="dashboard-container">
@@ -49,6 +56,11 @@ const AdminDashboard = () => {
             <Link to="http://192.168.8.119:8000/admin" className="menu-item">
               <FiMonitor size={20} /> {isSidebarOpen && "Base Admin"}
             </Link>
+          </li>
+          <li>
+            <button onClick={handleLogout} className="menu-item logout-button">
+              <FiLogOut size={20} /> {isSidebarOpen && "Logout"}
+            </button>
           </li>
         </ul>
       </div>

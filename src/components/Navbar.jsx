@@ -37,6 +37,9 @@ const Navbar = () => {
         {userType === "station" && (
           <li><Link to="/stationDashboard" onClick={() => setIsOpen(false)}>Station Dashboard</Link></li>
         )}
+        {userType === "passenger" && (
+          <li><Link to="/passengerDashboard" onClick={() => setIsOpen(false)}>Passenger Dashboard</Link></li>
+        )}
       </ul>
     </nav>
   );
