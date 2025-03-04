@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/register.css";
 import API from "../api";
+import { ACCESS_TOKEN } from "../constants";
+import axios from "axios";
 
 const PassengerRegister = () => {
   const [formData, setFormData] = useState({
@@ -66,13 +68,16 @@ const PassengerRegister = () => {
 
     try {
       console.log(registerData);
-      
+
+      console.log("token", localStorage.getItem(ACCESS_TOKEN));
+      console.log("Headers being sent:", axios.defaults.headers.common);
+
       await API.post("signup/passenger/", registerData, {
         headers: { "Content-Type": "application/json" },
       });
       alert("hello checker");
-      setMessage("Registration successful! Redirecting to login...");
-      setTimeout(() => navigate("/admindashboard"), 2000);
+      setMessage("Registration successful! Redirecting to Ticketing...");
+      setTimeout(() => navigate("/createTicket"), 2000);
     } catch (error) {
       console.log(error);
       setErrors(error.response?.data || {});

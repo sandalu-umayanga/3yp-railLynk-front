@@ -11,6 +11,9 @@ import AdminDashboard from "./components/AdminDashboard";
 import StationDashboard from "./components/StationDashboard";
 import PassengerProfile from "./pages/PassengerProfile";
 import PassengerDashboard from "./components/PassengerDashboard";
+import PassengersPage from "./pages/PassengersPage";
+import CreateSmartTicket from "./pages/CreateSmartTicket";
+import RechargePage from "./pages/RechargePage";
 
 function App() {
   return (
@@ -36,6 +39,14 @@ function App() {
             <Route path="/adminDashboard" element={<AdminDashboard />} />
           </Route>
 
+          <Route element={<ProtectedRoute allowedRoles={["admin", "station"]} redirectPath="/" />}>
+            <Route path="/passengersPage" element={<PassengersPage />} />
+          </Route>
+
+          <Route element={<ProtectedRoute allowedRoles={["admin", "station"]} redirectPath="/" />}>
+            <Route path="/createTicket" element={<CreateSmartTicket />} />
+          </Route>
+
           <Route element={<ProtectedRoute allowedRoles={["station"]} redirectPath="/" />}>
             <Route path="/stationDashboard" element={<StationDashboard />} />
           </Route>
@@ -46,6 +57,10 @@ function App() {
 
           <Route element={<ProtectedRoute allowedRoles={["passenger"]} redirectPath="/" />}>
             <Route path="/passengerDashboard" element={<PassengerDashboard />} />
+          </Route>
+
+          <Route element={<ProtectedRoute allowedRoles={["admin", "station"]} redirectPath="/" />}>
+            <Route path="/recharging" element={<RechargePage />} />
           </Route>
           
         </Routes>

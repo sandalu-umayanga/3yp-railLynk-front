@@ -1,0 +1,30 @@
+.main-content {
+    padding: 20px;
+  }
+  
+  .dashboard-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .stats-container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .stats-card {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+  }
+  
+  .stats-card h3 {
+    margin: 0 0 10px;
+  }
+  
+  .stats-card p {
+    font-size: 1.5em;
+    margin: 0;
+  }

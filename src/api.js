@@ -1,13 +1,13 @@
 import axios from "axios";
-
+import { ACCESS_TOKEN } from "./constants";
 
 const API = axios.create({
-  baseURL: "http://34.238.51.251/api/", // Adjust to your API's base URL
+  baseURL: "http://192.168.8.119:8000/api/", // Adjust to your API's base URL
 });
 
 // Attach Authorization header to every request
 API.interceptors.request.use((config) => {
-  const accessToken = localStorage.getItem("access_token");
+  const accessToken = localStorage.getItem(ACCESS_TOKEN);
   if (accessToken) {
     config.headers["Authorization"] = `Bearer ${accessToken}`;
   }

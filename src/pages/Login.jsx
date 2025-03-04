@@ -24,13 +24,15 @@ const Login = () => {
       localStorage.clear();
       console.log(loginData);
       const response = await API.post("login/", loginData);
-      const { access_token, refresh_token } = response.data;
       console.log(response.data);
+
+      const access_token = response.data.access;
+      const refresh_token = response.data.refresh;
 
       // Store tokens and user type
       localStorage.setItem(ACCESS_TOKEN, access_token);
       localStorage.setItem(REFRESH_TOKEN, refresh_token);
-      localStorage.setItem(USER_TYPE, userType);
+      localStorage.setItem(USER_TYPE, response.data.user_type);
       localStorage.setItem("user_data", JSON.stringify(response.data));
 
       setMessage("Login successful!");

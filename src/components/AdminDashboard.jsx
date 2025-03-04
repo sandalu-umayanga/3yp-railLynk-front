@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FiUsers, FiSettings, FiMenu, FiUserPlus, FiMapPin, FiList } from "react-icons/fi";
+import { FiUsers, FiSettings, FiMenu, FiUserPlus, FiMapPin, FiList, FiMonitor } from "react-icons/fi";
 import "../styles/adminDashboard.css";
 
 const AdminDashboard = () => {
@@ -16,7 +16,7 @@ const AdminDashboard = () => {
 
         <ul className="menu-list">
           <li>
-            <Link to="/admin/users" className="menu-item">
+            <Link to="/passengersPage" className="menu-item">
               <FiUsers size={20} /> {isSidebarOpen && "Users"}
             </Link>
           </li>
@@ -43,6 +43,11 @@ const AdminDashboard = () => {
           <li>
             <Link to="/admin/view-passengers" className="menu-item">
               <FiUsers size={20} /> {isSidebarOpen && "View Passengers"}
+            </Link>
+          </li>
+          <li>
+            <Link to="http://192.168.8.119:8000/admin" className="menu-item">
+              <FiMonitor size={20} /> {isSidebarOpen && "Base Admin"}
             </Link>
           </li>
         </ul>
