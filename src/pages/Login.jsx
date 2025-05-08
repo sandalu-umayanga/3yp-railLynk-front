@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/login.css";
 import API from "../api";
-import { ACCESS_TOKEN, REFRESH_TOKEN, USER_TYPE } from "../constants";
+import { ACCESS_TOKEN, REFRESH_TOKEN, USER_TYPE, STATION_ID } from "../constants";
 
 const Login = () => {
   const [userType, setUserType] = useState("passenger");
@@ -34,6 +34,15 @@ const Login = () => {
       localStorage.setItem(REFRESH_TOKEN, refresh_token);
       localStorage.setItem(USER_TYPE, response.data.user_type);
       localStorage.setItem("user_data", JSON.stringify(response.data));
+
+
+      if (response.data.user_type === "station") {
+        localStorage.setItem(STATION_ID, response.data.profile.station_ID);
+      }
+
+      if (response.data.user_type === "passenger") {
+        localStorage.setItem("passenger_ID", response.data.profile.nic_number);
+      }
 
       setMessage("Login successful!");
 

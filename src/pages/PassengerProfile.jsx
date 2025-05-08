@@ -19,12 +19,14 @@ const PassengerProfile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [passenger, setPassenger] = useState(storedUserData.profile || {});
   const [editedPassenger, setEditedPassenger] = useState({ ...passenger });
+  const [balance, setBalance] = useState(0);
 
   useEffect(() => {
     const updatedUserData = JSON.parse(localStorage.getItem(USER_DATA) || "{}");
     if (updatedUserData.profile) {
       setPassenger(updatedUserData.profile);
       setEditedPassenger(updatedUserData.profile);
+      setBalance(updatedUserData.profile.balance || 0);
     }
   }, [isEditing]);
 
@@ -72,6 +74,37 @@ const PassengerProfile = () => {
   const handleChange = (e) => {
     setEditedPassenger({ ...editedPassenger, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+    const fetchPassengerData = async () => {
+      try {
+        const token = storedUserData.access; // Get JWT token
+        const response = await API.get(`passengers/${storedUserData.profile.nic_number}/`, {
+          headers: {
+            Authorization: `Bearer ${token}`, // Attach token for authentication
+            "Content-Type": "application/json",
+          },
+        });
+        console.log("Fetch passenger response:", response);
+
+        console.log("Fetch passenger response:", response);
+
+        if (response.status === 200) {
+          const passengerData = response.data.passenger;
+          const cardData = response.data.cards[0]; // Assuming there's only one card
+          setPassenger(passengerData);
+          setEditedPassenger(passengerData);
+          setBalance(cardData.balance); // Set balance state
+        } else {
+          console.error("Failed to fetch passenger data");
+        }
+      } catch (error) {
+        console.error("Error fetching passenger data:", error);
+      }
+    };
+
+    fetchPassengerData();
+  }, []);
 
   return (
     <div className="profile-container">
@@ -121,6 +154,9 @@ const PassengerProfile = () => {
           ) : (
             <p><FiPhone /> {passenger.phone}</p>
           )}
+
+          <label>Balance:</label>
+          <p>{balance}</p>
         </div>
 
         <div className="profile-actions">

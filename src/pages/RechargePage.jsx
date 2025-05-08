@@ -1,20 +1,24 @@
 import { useState } from "react";
 import "../styles/rechargePage.css";
 import API from "../api";
+import { STATION_ID } from "../constants";
 
 const RechargePage = () => {
     const [nicNumber, setNicNumber] = useState("");
     const [balance, setBalance] = useState("");
     const [message, setMessage] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const handleRecharge = async (e) => {
         e.preventDefault();
         setMessage("");
+        setLoading(true);
 
         try {
             const response = await API.patch("card/recharge/", {
                 nic_number: nicNumber,
                 balance: parseInt(balance, 10),
+                station_ID: localStorage.getItem(STATION_ID),
             });
 
             if (response.status === 200) {
@@ -24,6 +28,8 @@ const RechargePage = () => {
             }
         } catch (error) {
             setMessage("Error: " + (error.response?.data?.message || "Server not responding."));
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -47,7 +53,9 @@ const RechargePage = () => {
                     required
                 />
 
-                <button type="submit">Recharge</button>
+                <button type="submit" disabled={loading}>
+                    {loading ? "Recharging..." : "Recharge"}
+                </button>
             </form>
 
             {message && <p className="message">{message}</p>}

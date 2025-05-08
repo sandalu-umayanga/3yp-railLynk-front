@@ -14,6 +14,9 @@ import PassengerDashboard from "./components/PassengerDashboard";
 import PassengersPage from "./pages/PassengersPage";
 import CreateSmartTicket from "./pages/CreateSmartTicket";
 import RechargePage from "./pages/RechargePage";
+import TransactionPageHolderForStation from "./pages/TransactionPageHolderForStation";
+import PassengerTransactionPage from "./pages/PassengerTransactionPage";
+import RechargeHistory from "./pages/RechargeHistory";
 
 function App() {
   return (
@@ -62,6 +65,22 @@ function App() {
           <Route element={<ProtectedRoute allowedRoles={["admin", "station"]} redirectPath="/" />}>
             <Route path="/recharging" element={<RechargePage />} />
           </Route>
+
+          
+
+          <Route element={<ProtectedRoute allowedRoles={["station"]} redirectPath="/" />}>
+            <Route path="/stationTransaction" element={<TransactionPageHolderForStation />} />
+          </Route>
+
+          <Route element={<ProtectedRoute allowedRoles={["passenger"]} redirectPath="/" />}>
+            <Route path="/passengerTransaction" element={<PassengerTransactionPage />} />
+          </Route>
+
+          <Route element={<ProtectedRoute allowedRoles={["passenger"]} redirectPath="/" />}>
+            <Route path="/passengerRecharge" element={<RechargeHistory />} />
+          </Route>
+
+          <Route path="*" element={<h1>Not Found</h1>} />
           
         </Routes>
       </div>
