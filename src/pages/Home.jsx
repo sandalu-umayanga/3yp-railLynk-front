@@ -42,8 +42,16 @@ const Home = () => {
   return (
     <div className="home">
       <div className="home-theme">
+      <div className="overlay">
         <h1>Welcome to the Railway Ticketing System</h1>
         <p>Book tickets, track trains, and reserve seats with ease.</p>
+        </div>
+        <div className="custom-wave">
+          <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path d="M0,192 C480,320 960,64 1440,192 L1440,320 L0,320 Z" fill="white"></path>
+          </svg>
+        </div>
+
       </div>
       
       <div className="home-anouncements">

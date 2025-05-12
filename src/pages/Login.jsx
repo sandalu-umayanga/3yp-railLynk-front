@@ -61,40 +61,45 @@ const Login = () => {
 
   return (
     <div className="main-login-container">
-      <div className="login-container">
-        <h2>Login</h2>
+  <div className="login-box">
+    <div className="login-image" />
+    
+    <div className="login-container">
+      <h2>Login</h2>
 
-        <label htmlFor="userType">Login as:</label>
-        <select id="userType" value={userType} onChange={(e) => setUserType(e.target.value)}>
-          <option value="passenger">Passenger</option>
-          <option value="station">Station</option>
-        </select>
+      <label htmlFor="userType">Login as:</label>
+      <select id="userType" value={userType} onChange={(e) => setUserType(e.target.value)}>
+        <option value="passenger">Passenger</option>
+        <option value="station">Station</option>
+      </select>
 
-        {userType === "station" && (
-          <>
-            <label htmlFor="stationName">Station Name:</label>
-            <select id="stationName" value={stationName} onChange={(e) => setStationName(e.target.value)}>
-              <option value="">Select Station</option>
-              <option value="Colombo">Colombo</option>
-              <option value="Kandy">Kandy</option>
-              <option value="Galle">Galle</option>
-            </select>
-          </>
-        )}
+      {userType === "station" && (
+        <>
+          <label htmlFor="stationName">Station Name:</label>
+          <select id="stationName" value={stationName} onChange={(e) => setStationName(e.target.value)}>
+            <option value="">Select Station</option>
+            <option value="Colombo">Colombo</option>
+            <option value="Kandy">Kandy</option>
+            <option value="Galle">Galle</option>
+          </select>
+        </>
+      )}
 
-        <label htmlFor="email">Email:</label>
-        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter email" />
+      <label htmlFor="email">Email:</label>
+      <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter email" />
 
-        <label htmlFor="password">Password:</label>
-        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter password" />
+      <label htmlFor="password">Password:</label>
+      <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter password" />
 
-        <button className="login-button" onClick={handleLogin} disabled={loading}>
-          {loading ? "Logging in..." : "Login"}
-        </button>
+      <button className="login-button" onClick={handleLogin} disabled={loading}>
+        {loading ? "Logging in..." : "Login"}
+      </button>
 
-        {message && <p className="login-message">{message}</p>}
-      </div>
+      {message && <p className="login-message">{message}</p>}
     </div>
+  </div>
+</div>
+
   );
 };
 

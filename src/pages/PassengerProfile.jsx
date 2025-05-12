@@ -108,9 +108,11 @@ const PassengerProfile = () => {
 
   return (
     <div className="profile-container">
+
       <h1 className="profile-title">Passenger Profile</h1>
 
       <div className="profile-card">
+        
         <FiUser size={80} className="profile-icon" />
 
         <div className="profile-info">

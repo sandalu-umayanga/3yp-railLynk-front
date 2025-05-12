@@ -5,6 +5,7 @@
   justify-content: center;
   padding: 20px;
   min-height: 100vh;
+  background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
 }
 
 .profile-title {
@@ -24,11 +25,12 @@
   text-align: center;
   width: 420px;
   transition: transform 0.3s ease-in-out;
+  background: rgba(255, 255, 255, 0.403);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.405);
 }
 
-.profile-card:hover {
-  transform: scale(1.02);
-}
 
 .profile-icon {
   color: #007bff;
@@ -106,4 +108,13 @@
   padding: 10px;
   background: #eaf9ed;
   border-radius: 8px;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: url('/path/to/avatar.jpg') center/cover no-repeat;
+  margin-bottom: 15px;
+  border: 3px solid #007bff;
 }
