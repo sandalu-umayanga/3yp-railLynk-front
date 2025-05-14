@@ -70,4 +70,80 @@
       padding: 15px;
     }
   }
+  .main-login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+  }
   
+  /* Login Box with background image */
+  .login-box {
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    height: 500px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-image: url('https://t3.ftcdn.net/jpg/05/95/31/22/360_F_595312222_LPSFQA0sWtsFmpfrzYE8flEfL7geFqls.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 30px;
+  }
+  
+  /* Left image portion (just a placeholder for spacing) */
+  .login-image {
+    flex: 1;
+  }
+  
+  /* Right form with blur */
+  .login-container {
+    flex: 1;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.766);
+    padding: 40px 30px;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .login-box {
+      flex-direction: column;
+      height: auto;
+    }
+  
+    .login-image {
+      height: 200px;
+    }
+  
+    .login-container {
+      border-left: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+    }
+  }
+  
+
+  .login-image img {
+    width: 250px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  /* Stack vertically on small screens */
+  @media (max-width: 600px) {
+    .login-box {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .login-image img {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
