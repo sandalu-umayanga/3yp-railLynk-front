@@ -1,0 +1,76 @@
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.info-panel {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  padding: 15px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 250px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.info-panel:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.info-panel h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #2c3e50;
+  font-size: 1.3rem;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 8px;
+}
+
+.info-panel p {
+  margin: 8px 0;
+  color: #34495e;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.info-panel button {
+  margin-top: 10px;
+  background: #2980b9;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.info-panel button:hover {
+  background: #1f6392;
+}
+
+@media (max-width: 768px) {
+  .info-panel {
+    top: auto;
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    min-width: unset;
+    max-width: none;
+  }
+
+  .info-panel h3 {
+    font-size: 1.1rem;
+  }
+
+  .info-panel p {
+    font-size: 0.9rem;
+  }
+}
+
+
+.station-icon {
+  opacity: 0.4 !important; /* Make it semi-transparent */
+}

@@ -1,0 +1,3385 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0474841,
+          6.8761593
+        ]
+      },
+      "properties": {
+        "name": "Ella Railway Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.1904552,
+          8.556397
+        ]
+      },
+      "properties": {
+        "name": "China Bay"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0204927,
+          7.1224062
+        ]
+      },
+      "properties": {
+        "name": "Bemmulla"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0104022,
+          7.1070543
+        ]
+      },
+      "properties": {
+        "name": "Daraluwa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8460372,
+          6.9314483
+        ]
+      },
+      "properties": {
+        "name": "Secretariat"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8916572,
+          6.7429318
+        ]
+      },
+      "properties": {
+        "name": "Egoda Uyana"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8817806,
+          6.7743504
+        ]
+      },
+      "properties": {
+        "name": "Moratuwa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8496524,
+          6.9230404
+        ]
+      },
+      "properties": {
+        "name": "Slave Island Railway Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.8143421,
+          6.8773347
+        ]
+      },
+      "properties": {
+        "name": "Ambewela"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0549325,
+          6.2353754
+        ]
+      },
+      "properties": {
+        "name": "Ambalangoda Railway Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8718829,
+          7.1674441
+        ]
+      },
+      "properties": {
+        "name": "Katunayake"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3431512,
+          7.3217113
+        ]
+      },
+      "properties": {
+        "name": "Tismalpola"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5901975,
+          7.2573002
+        ]
+      },
+      "properties": {
+        "name": "Peradeniya Junction"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0627711,
+          6.9029362
+        ]
+      },
+      "properties": {
+        "name": "Demodara"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0446989,
+          6.9303742
+        ]
+      },
+      "properties": {
+        "name": "Uduwara"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8790153,
+          6.937547
+        ]
+      },
+      "properties": {
+        "name": "Dematagoda"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8993572,
+          6.9755509
+        ]
+      },
+      "properties": {
+        "name": "Wanawasala"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9122199,
+          7.0381323
+        ]
+      },
+      "properties": {
+        "name": "Peralanda"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8475622,
+          7.2399357
+        ]
+      },
+      "properties": {
+        "name": "Kattuwa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8752569,
+          7.157917
+        ]
+      },
+      "properties": {
+        "name": "IPZ - Katunayake South"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8286013,
+          7.6272671
+        ]
+      },
+      "properties": {
+        "name": "Bangadeniya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8591858,
+          7.439463
+        ]
+      },
+      "properties": {
+        "name": "Walahapitiya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8530119,
+          7.4621812
+        ]
+      },
+      "properties": {
+        "name": "Kudawewa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.7909316,
+          7.5757856
+        ]
+      },
+      "properties": {
+        "name": "Chilaw"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8227037,
+          7.5328175
+        ]
+      },
+      "properties": {
+        "name": "Kakkapalliya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8274738,
+          7.6006132
+        ]
+      },
+      "properties": {
+        "name": "Manuwangama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8316925,
+          7.7272017
+        ]
+      },
+      "properties": {
+        "name": "Battulu Oya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8282517,
+          7.7571732
+        ]
+      },
+      "properties": {
+        "name": "Kiriyankalli"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8256822,
+          7.7975461
+        ]
+      },
+      "properties": {
+        "name": "Mundalama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8301236,
+          7.9615801
+        ]
+      },
+      "properties": {
+        "name": "Erukkalampiddy-Nagavillu Railway station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8666104,
+          8.2283858
+        ]
+      },
+      "properties": {
+        "name": "Periyanagavillu"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9372147,
+          7.0551005
+        ]
+      },
+      "properties": {
+        "name": "Batuwatta"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9454477,
+          7.0655794
+        ]
+      },
+      "properties": {
+        "name": "Bulugahagoda"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0363003,
+          7.133754
+        ]
+      },
+      "properties": {
+        "name": "Megalegoda"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0472008,
+          7.1410796
+        ]
+      },
+      "properties": {
+        "name": "Heendeniya-Pattigoda"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1265584,
+          7.2425912
+        ]
+      },
+      "properties": {
+        "name": "Mirigama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0899349,
+          7.1983011
+        ]
+      },
+      "properties": {
+        "name": "Pallewala"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1052505,
+          7.2129312
+        ]
+      },
+      "properties": {
+        "name": "Ganegoda"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1531824,
+          7.2565981
+        ]
+      },
+      "properties": {
+        "name": "Botale"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1354324,
+          7.2563223
+        ]
+      },
+      "properties": {
+        "name": "Wilwatta"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2106384,
+          7.2731777
+        ]
+      },
+      "properties": {
+        "name": "Bujjomuwa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1943101,
+          7.270437
+        ]
+      },
+      "properties": {
+        "name": "Yaththalgoda"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1693049,
+          7.2559962
+        ]
+      },
+      "properties": {
+        "name": "Ambepussa Railway Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2386365,
+          7.2934242
+        ]
+      },
+      "properties": {
+        "name": "Alawwa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3011647,
+          7.3307027
+        ]
+      },
+      "properties": {
+        "name": "Polgahawela Junction"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2690495,
+          7.3138576
+        ]
+      },
+      "properties": {
+        "name": "Walakumbura"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3016136,
+          7.3878803
+        ]
+      },
+      "properties": {
+        "name": "Thalawattegedara"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3025304,
+          7.3646496
+        ]
+      },
+      "properties": {
+        "name": "Girambe"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3587223,
+          7.449891
+        ]
+      },
+      "properties": {
+        "name": "Nailiya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3274809,
+          7.4198455
+        ]
+      },
+      "properties": {
+        "name": "Pothuhera"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3791226,
+          7.4956732
+        ]
+      },
+      "properties": {
+        "name": "Muttetugala"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3661793,
+          7.5596275
+        ]
+      },
+      "properties": {
+        "name": "Wellawa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3486525,
+          7.6550184
+        ]
+      },
+      "properties": {
+        "name": "Ganewatte"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.314565,
+          7.7538118
+        ]
+      },
+      "properties": {
+        "name": "Nagollagama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2750922,
+          7.8231561
+        ]
+      },
+      "properties": {
+        "name": "Maho Junction"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2976683,
+          7.7812961
+        ]
+      },
+      "properties": {
+        "name": "Timbiriyagedara"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2593352,
+          7.8485354
+        ]
+      },
+      "properties": {
+        "name": "Randenigama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8398157,
+          8.035971
+        ]
+      },
+      "properties": {
+        "name": "Noor Nagar"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8639129,
+          8.1353837
+        ]
+      },
+      "properties": {
+        "name": "Karadipuwal"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2461079,
+          7.9188843
+        ]
+      },
+      "properties": {
+        "name": "Ambanpola"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2715285,
+          8.0021635
+        ]
+      },
+      "properties": {
+        "name": "Galgamuwa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3038834,
+          8.1543184
+        ]
+      },
+      "properties": {
+        "name": "Thambuttegama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2777081,
+          8.0858801
+        ]
+      },
+      "properties": {
+        "name": "Senarathgama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.348274,
+          8.231752
+        ]
+      },
+      "properties": {
+        "name": "Talawa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3769783,
+          8.2987964
+        ]
+      },
+      "properties": {
+        "name": "Srawasthipura"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4315165,
+          8.4453692
+        ]
+      },
+      "properties": {
+        "name": "Parasangaswewa Railway Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4351423,
+          8.4750004
+        ]
+      },
+      "properties": {
+        "name": "Madegama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.446541,
+          8.5308063
+        ]
+      },
+      "properties": {
+        "name": "Viralmurippuwa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4581661,
+          8.5545098
+        ]
+      },
+      "properties": {
+        "name": "Medawachchiya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3568548,
+          8.6165845
+        ]
+      },
+      "properties": {
+        "name": "Neriyakulam"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1501633,
+          8.7738352
+        ]
+      },
+      "properties": {
+        "name": "Madhu Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3059036,
+          8.6689844
+        ]
+      },
+      "properties": {
+        "name": "Chettikulam Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9477753,
+          8.9154185
+        ]
+      },
+      "properties": {
+        "name": "Thiruketheeswaram"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8227946,
+          9.0823153
+        ]
+      },
+      "properties": {
+        "name": "Pesalai"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.7298828,
+          9.1033259
+        ]
+      },
+      "properties": {
+        "name": "Talaimannar"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1880442,
+          6.9337144
+        ]
+      },
+      "properties": {
+        "name": "Puwakpitiya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7436484,
+          6.9420663
+        ]
+      },
+      "properties": {
+        "name": "Nanu Oya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4811639,
+          8.7095586
+        ]
+      },
+      "properties": {
+        "name": "Iratperiya Kulam"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.462864,
+          8.6130857
+        ]
+      },
+      "properties": {
+        "name": "Punewa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4850221,
+          8.7782563
+        ]
+      },
+      "properties": {
+        "name": "Thandikulam"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4175742,
+          9.2063495
+        ]
+      },
+      "properties": {
+        "name": "Murikandi-Kokavil"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4445722,
+          9.12999
+        ]
+      },
+      "properties": {
+        "name": "Mankulam"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4076622,
+          9.3187473
+        ]
+      },
+      "properties": {
+        "name": "Ariviyal Nagar"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4058641,
+          9.5023899
+        ]
+      },
+      "properties": {
+        "name": "Elephant Pass"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4059976,
+          9.3857084
+        ]
+      },
+      "properties": {
+        "name": "Killinochchi"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.407105,
+          9.4401189
+        ]
+      },
+      "properties": {
+        "name": "Paranthan"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2656514,
+          9.661095
+        ]
+      },
+      "properties": {
+        "name": "Eluthumadduval"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3298414,
+          9.6078751
+        ]
+      },
+      "properties": {
+        "name": "Pallai"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2432739,
+          9.6741668
+        ]
+      },
+      "properties": {
+        "name": "Mirusuvil"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2808064,
+          9.6521856
+        ]
+      },
+      "properties": {
+        "name": "Eluthumadduval"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1889621,
+          9.6735961
+        ]
+      },
+      "properties": {
+        "name": "Meesalai"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2193279,
+          9.6813106
+        ]
+      },
+      "properties": {
+        "name": "Kodaikamam"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1723805,
+          9.664046
+        ]
+      },
+      "properties": {
+        "name": "Sangathanai Railway Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1584591,
+          9.6571317
+        ]
+      },
+      "properties": {
+        "name": "Chavakachcheri"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0382833,
+          9.6593033
+        ]
+      },
+      "properties": {
+        "name": "Punkankulam"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0814724,
+          9.6616561
+        ]
+      },
+      "properties": {
+        "name": "Navatkuli Railway Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1108181,
+          9.6571772
+        ]
+      },
+      "properties": {
+        "name": "Thachanthoppu"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.021157,
+          9.6881931
+        ]
+      },
+      "properties": {
+        "name": "station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0207059,
+          9.6654661
+        ]
+      },
+      "properties": {
+        "name": "Jaffna"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0246792,
+          9.7041298
+        ]
+      },
+      "properties": {
+        "name": "station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5016942,
+          8.3586214
+        ]
+      },
+      "properties": {
+        "name": "Mihintale"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5311746,
+          8.0237261
+        ]
+      },
+      "properties": {
+        "name": "Kalawewa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4835241,
+          7.9799089
+        ]
+      },
+      "properties": {
+        "name": "Negama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5814517,
+          8.0584532
+        ]
+      },
+      "properties": {
+        "name": "Kekirawa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7695893,
+          8.0573101
+        ]
+      },
+      "properties": {
+        "name": "Habarana"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7132576,
+          8.0590196
+        ]
+      },
+      "properties": {
+        "name": "Palugaswewa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.8658177,
+          8.1377809
+        ]
+      },
+      "properties": {
+        "name": "Galoya Junction Railway Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.8391243,
+          8.1451745
+        ]
+      },
+      "properties": {
+        "name": "Hatares Kotuwa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0953498,
+          8.498339
+        ]
+      },
+      "properties": {
+        "name": "Thampalakamam"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.9796646,
+          8.3267329
+        ]
+      },
+      "properties": {
+        "name": "Agbopura"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0062054,
+          8.3562353
+        ]
+      },
+      "properties": {
+        "name": "Kantale"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.036773,
+          8.4165855
+        ]
+      },
+      "properties": {
+        "name": "Ganthalawa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0618736,
+          8.4450308
+        ]
+      },
+      "properties": {
+        "name": "Mollipothana"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.2262012,
+          8.5844138
+        ]
+      },
+      "properties": {
+        "name": "Trincomalee"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6321344,
+          7.4416745
+        ]
+      },
+      "properties": {
+        "name": "Elwala"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0660584,
+          7.167838
+        ]
+      },
+      "properties": {
+        "name": "Wadurawa Railway Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0743794,
+          7.1854854
+        ]
+      },
+      "properties": {
+        "name": "Keenawala"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9739,
+          7.0747267
+        ]
+      },
+      "properties": {
+        "name": "Yagoda"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9004906,
+          6.9877406
+        ]
+      },
+      "properties": {
+        "name": "Hunupitiya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1184778,
+          7.2309324
+        ]
+      },
+      "properties": {
+        "name": "Wijayarajadahana"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8944725,
+          6.9610592
+        ]
+      },
+      "properties": {
+        "name": "Kelaniya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2070547,
+          6.954549
+        ]
+      },
+      "properties": {
+        "name": "Avissawella"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8481929,
+          6.9113228
+        ]
+      },
+      "properties": {
+        "name": "Kollupitiya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8590908,
+          7.3615637
+        ]
+      },
+      "properties": {
+        "name": "station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5893918,
+          7.2556021
+        ]
+      },
+      "properties": {
+        "name": "Peradeniya Junction"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.805341,
+          7.5614974
+        ]
+      },
+      "properties": {
+        "name": "Sawarana"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3903192,
+          7.3210536
+        ]
+      },
+      "properties": {
+        "name": "Rambukkana"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.469259,
+          7.2887
+        ]
+      },
+      "properties": {
+        "name": "Ihalakotte"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6670587,
+          7.3404456
+        ]
+      },
+      "properties": {
+        "name": "Meegammana"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6616741,
+          7.3840931
+        ]
+      },
+      "properties": {
+        "name": "Patanpaha"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8921517,
+          7.0777904
+        ]
+      },
+      "properties": {
+        "name": "Ja ela"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.896002,
+          7.0629149
+        ]
+      },
+      "properties": {
+        "name": "Kapuwatta"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0334492,
+          6.9539582
+        ]
+      },
+      "properties": {
+        "name": "Hali-Ela"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0598726,
+          6.8431734
+        ]
+      },
+      "properties": {
+        "name": "Watareka"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.716728,
+          6.9448004
+        ]
+      },
+      "properties": {
+        "name": "Radella"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4097062,
+          5.9636147
+        ]
+      },
+      "properties": {
+        "name": "Kumbalgama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1094043,
+          6.8529835
+        ]
+      },
+      "properties": {
+        "name": "Angampitya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0042414,
+          6.8456046
+        ]
+      },
+      "properties": {
+        "name": "Homagama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9271848,
+          6.8480166
+        ]
+      },
+      "properties": {
+        "name": "Maharagama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8204737,
+          7.9020671
+        ]
+      },
+      "properties": {
+        "name": "Madurankuli"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8727054,
+          6.7988303
+        ]
+      },
+      "properties": {
+        "name": "Angulana"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8755526,
+          6.786652
+        ]
+      },
+      "properties": {
+        "name": "Lunawa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1231952,
+          6.8771479
+        ]
+      },
+      "properties": {
+        "name": "Gammana"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8529747,
+          6.8939813
+        ]
+      },
+      "properties": {
+        "name": "Bambalapitiya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.921428,
+          7.0299493
+        ]
+      },
+      "properties": {
+        "name": "Ragama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.918322,
+          7.0165896
+        ]
+      },
+      "properties": {
+        "name": "Horape"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9068341,
+          7.0004396
+        ]
+      },
+      "properties": {
+        "name": "Enderamulla"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4221695,
+          7.905764
+        ]
+      },
+      "properties": {
+        "name": "Moragollagama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3491121,
+          7.8507932
+        ]
+      },
+      "properties": {
+        "name": "Konwewa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.992772,
+          7.0920985
+        ]
+      },
+      "properties": {
+        "name": "Gampaha"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8621137,
+          6.8509082
+        ]
+      },
+      "properties": {
+        "name": "Dehiwala"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1611425,
+          6.0739289
+        ]
+      },
+      "properties": {
+        "name": "Boossa Train Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8909487,
+          7.0929503
+        ]
+      },
+      "properties": {
+        "name": "Tudella"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4936629,
+          8.753866
+        ]
+      },
+      "properties": {
+        "name": "vavuniya Railway  station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5230039,
+          8.9609281
+        ]
+      },
+      "properties": {
+        "name": "Puliyankulam"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6785139,
+          8.0677899
+        ]
+      },
+      "properties": {
+        "name": "Horiwiala"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3397981,
+          7.6975804
+        ]
+      },
+      "properties": {
+        "name": "Hiriyala"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7536319,
+          6.9198221
+        ]
+      },
+      "properties": {
+        "name": "Perakumpura Sub Railway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0333406,
+          7.9301686
+        ]
+      },
+      "properties": {
+        "name": "Polonnaruwa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.2503557,
+          7.9471138
+        ]
+      },
+      "properties": {
+        "name": "Welikanda"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.5318574,
+          7.9102735
+        ]
+      },
+      "properties": {
+        "name": "Valaichchenai"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.6044408,
+          7.7855975
+        ]
+      },
+      "properties": {
+        "name": "Eravur"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5207503,
+          7.2577827
+        ]
+      },
+      "properties": {
+        "name": "Kadugannawa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.489353,
+          7.2667493
+        ]
+      },
+      "properties": {
+        "name": "Balana"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4333295,
+          7.3179288
+        ]
+      },
+      "properties": {
+        "name": "Kadigamuwa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3641048,
+          7.3186864
+        ]
+      },
+      "properties": {
+        "name": "Yatagama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6342993,
+          7.4202246
+        ]
+      },
+      "properties": {
+        "name": "Ukuwela"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6248632,
+          7.467966
+        ]
+      },
+      "properties": {
+        "name": "Matale"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6825578,
+          7.350651
+        ]
+      },
+      "properties": {
+        "name": "Wattegama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3253063,
+          7.3286016
+        ]
+      },
+      "properties": {
+        "name": "Pannaliya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6330084,
+          7.3304562
+        ]
+      },
+      "properties": {
+        "name": "Katugastota"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6415662,
+          7.3379695
+        ]
+      },
+      "properties": {
+        "name": "Palle Talawinna"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6513081,
+          7.3395582
+        ]
+      },
+      "properties": {
+        "name": "Uda Talawinna"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6352522,
+          7.2978431
+        ]
+      },
+      "properties": {
+        "name": "Asgiriya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5950443,
+          7.2335858
+        ]
+      },
+      "properties": {
+        "name": "Koshinna"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5986203,
+          7.2139104
+        ]
+      },
+      "properties": {
+        "name": "Gelioya Train Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5597211,
+          7.1082827
+        ]
+      },
+      "properties": {
+        "name": "Ulapane"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5300581,
+          6.9860278
+        ]
+      },
+      "properties": {
+        "name": "Galboda"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5457206,
+          7.018222
+        ]
+      },
+      "properties": {
+        "name": "Inguru Oya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.530848,
+          7.0330481
+        ]
+      },
+      "properties": {
+        "name": "Hightenford"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5394705,
+          6.9943143
+        ]
+      },
+      "properties": {
+        "name": "Penrose"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.542167,
+          6.9481148
+        ]
+      },
+      "properties": {
+        "name": "Ihala Watawala"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5587202,
+          6.9348701
+        ]
+      },
+      "properties": {
+        "name": "Rozelle"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6609908,
+          6.9400481
+        ]
+      },
+      "properties": {
+        "name": "Talawakele"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6528447,
+          6.9688843
+        ]
+      },
+      "properties": {
+        "name": "Watagoda"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6891016,
+          6.9572412
+        ]
+      },
+      "properties": {
+        "name": "Great Western"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.8430198,
+          6.8177121
+        ]
+      },
+      "properties": {
+        "name": "Ohiya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.8968826,
+          6.7793989
+        ]
+      },
+      "properties": {
+        "name": "Idalgashinna"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.8306009,
+          6.8558565
+        ]
+      },
+      "properties": {
+        "name": "Pattipola"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.9366065,
+          6.7712498
+        ]
+      },
+      "properties": {
+        "name": "Glenanore Railway Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8845224,
+          6.9133542
+        ]
+      },
+      "properties": {
+        "name": "Cotta Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8785882,
+          6.926363
+        ]
+      },
+      "properties": {
+        "name": "Baseline Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8828978,
+          6.8830467
+        ]
+      },
+      "properties": {
+        "name": "Kirulapona"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8780613,
+          6.8969122
+        ]
+      },
+      "properties": {
+        "name": "Narahenpita"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9022473,
+          6.864956
+        ]
+      },
+      "properties": {
+        "name": "Pangiriwatta"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9178611,
+          6.8528888
+        ]
+      },
+      "properties": {
+        "name": "Nawinna"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9087271,
+          6.8622118
+        ]
+      },
+      "properties": {
+        "name": "Udahamulla"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9488784,
+          6.8473816
+        ]
+      },
+      "properties": {
+        "name": "Pannipitiya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9750754,
+          6.8440838
+        ]
+      },
+      "properties": {
+        "name": "Malapalla"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.992439,
+          6.8457616
+        ]
+      },
+      "properties": {
+        "name": "Homagama Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0328649,
+          6.8479029
+        ]
+      },
+      "properties": {
+        "name": "Godagama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0190057,
+          6.846941
+        ]
+      },
+      "properties": {
+        "name": "Panagoda"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0911536,
+          6.8427474
+        ]
+      },
+      "properties": {
+        "name": "Padukka"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0797169,
+          6.8383604
+        ]
+      },
+      "properties": {
+        "name": "Liyanwala"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1173053,
+          6.8693009
+        ]
+      },
+      "properties": {
+        "name": "Pinnawala"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1276619,
+          6.9013533
+        ]
+      },
+      "properties": {
+        "name": "Waga"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.123948,
+          6.8832238
+        ]
+      },
+      "properties": {
+        "name": "Morakele"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1348044,
+          6.9180501
+        ]
+      },
+      "properties": {
+        "name": "Kadugoda"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1372925,
+          6.9406031
+        ]
+      },
+      "properties": {
+        "name": "Kosgama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5526682,
+          7.2669217
+        ]
+      },
+      "properties": {
+        "name": "Pilimatalawa Railway Staition"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8870266,
+          7.115952
+        ]
+      },
+      "properties": {
+        "name": "Alawathupitiya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.889804,
+          7.103881
+        ]
+      },
+      "properties": {
+        "name": "Kudahakapola"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9015367,
+          7.04929
+        ]
+      },
+      "properties": {
+        "name": "Kandana"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8529894,
+          6.893674
+        ]
+      },
+      "properties": {
+        "name": "Bambalapitiya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8859478,
+          6.7584506
+        ]
+      },
+      "properties": {
+        "name": "Koralawalla"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9045698,
+          6.7124698
+        ]
+      },
+      "properties": {
+        "name": "Panadura"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9159943,
+          6.6859877
+        ]
+      },
+      "properties": {
+        "name": "Pinwatta"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9286921,
+          6.6632626
+        ]
+      },
+      "properties": {
+        "name": "Wadduwa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9403371,
+          6.6325467
+        ]
+      },
+      "properties": {
+        "name": "Waskaduwa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9789255,
+          6.5218897
+        ]
+      },
+      "properties": {
+        "name": "Payagala"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9661171,
+          6.5601254
+        ]
+      },
+      "properties": {
+        "name": "Katukurunda"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9750435,
+          6.5315528
+        ]
+      },
+      "properties": {
+        "name": "Payagala North"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9813658,
+          6.5048876
+        ]
+      },
+      "properties": {
+        "name": "Maggona"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.983632,
+          6.4769437
+        ]
+      },
+      "properties": {
+        "name": "Beruwala"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.029375,
+          6.3385232
+        ]
+      },
+      "properties": {
+        "name": "Kosgoda"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9907622,
+          6.4576854
+        ]
+      },
+      "properties": {
+        "name": "Hettimulla"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0086384,
+          6.3873819
+        ]
+      },
+      "properties": {
+        "name": "Induruwa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0139361,
+          6.3643888
+        ]
+      },
+      "properties": {
+        "name": "Mahainduruwa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0335213,
+          6.3290357
+        ]
+      },
+      "properties": {
+        "name": "Piyagama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0375793,
+          6.3127714
+        ]
+      },
+      "properties": {
+        "name": "Ahungalla"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0433039,
+          6.2764251
+        ]
+      },
+      "properties": {
+        "name": "Balapititya"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0529169,
+          6.2501907
+        ]
+      },
+      "properties": {
+        "name": "Kandegoda"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0469401,
+          6.2661943
+        ]
+      },
+      "properties": {
+        "name": "Andadola"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.073997,
+          6.1831844
+        ]
+      },
+      "properties": {
+        "name": "Kahawe"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0612425,
+          6.2122769
+        ]
+      },
+      "properties": {
+        "name": "Madampagama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0647968,
+          6.1920745
+        ]
+      },
+      "properties": {
+        "name": "Akurala"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.094758,
+          6.1586793
+        ]
+      },
+      "properties": {
+        "name": "Seenigama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0888763,
+          6.169066
+        ]
+      },
+      "properties": {
+        "name": "Telwatte"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1328946,
+          6.0981764
+        ]
+      },
+      "properties": {
+        "name": "Dodanduwa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1401109,
+          6.09335
+        ]
+      },
+      "properties": {
+        "name": "Rathgama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1242971,
+          6.1124846
+        ]
+      },
+      "properties": {
+        "name": "Kumarakanda"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1143858,
+          6.1223145
+        ]
+      },
+      "properties": {
+        "name": "Thiranagama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1909694,
+          6.0536503
+        ]
+      },
+      "properties": {
+        "name": "Piyathigama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1793892,
+          6.0606665
+        ]
+      },
+      "properties": {
+        "name": "Ginthota"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2048071,
+          6.0539303
+        ]
+      },
+      "properties": {
+        "name": "Richmond Hill"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2492172,
+          6.0220651
+        ]
+      },
+      "properties": {
+        "name": "Unawatuna"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2401656,
+          6.0327454
+        ]
+      },
+      "properties": {
+        "name": "Katugoda"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3914881,
+          5.9651656
+        ]
+      },
+      "properties": {
+        "name": "Midigama"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4572358,
+          5.9645346
+        ]
+      },
+      "properties": {
+        "name": "Polwathumodara"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4734963,
+          5.9566902
+        ]
+      },
+      "properties": {
+        "name": "Mirissa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5779236,
+          5.9570646
+        ]
+      },
+      "properties": {
+        "name": "Weherahena"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5990478,
+          5.9606591
+        ]
+      },
+      "properties": {
+        "name": "Kekanadura"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6973864,
+          5.9794925
+        ]
+      },
+      "properties": {
+        "name": "Wewrukannala"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6607525,
+          5.9705981
+        ]
+      },
+      "properties": {
+        "name": "Bambaranda"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7372524,
+          6.0421661
+        ]
+      },
+      "properties": {
+        "name": "Beliatta"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8937444,
+          8.9713411
+        ]
+      },
+      "properties": {
+        "name": "Railway Station, Mannar"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.865796,
+          6.9292373
+        ]
+      },
+      "properties": {
+        "name": "Maradana"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0584119,
+          7.1530741
+        ]
+      },
+      "properties": {
+        "name": "Veyangoda"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6086713,
+          6.9283117
+        ]
+      },
+      "properties": {
+        "name": "kotagala railway station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0415561,
+          6.297115
+        ]
+      },
+      "properties": {
+        "name": "Pathegamgoda"
+      }
+    }
+  ]
+}

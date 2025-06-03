@@ -17,6 +17,7 @@ import RechargePage from "./pages/RechargePage";
 import TransactionPageHolderForStation from "./pages/TransactionPageHolderForStation";
 import PassengerTransactionPage from "./pages/PassengerTransactionPage";
 import RechargeHistory from "./pages/RechargeHistory";
+import LiveTracking from "./components/LiveTracking";
 
 function App() {
   return (
@@ -79,6 +80,8 @@ function App() {
           <Route element={<ProtectedRoute allowedRoles={["passenger"]} redirectPath="/" />}>
             <Route path="/passengerRecharge" element={<RechargeHistory />} />
           </Route>
+
+          <Route path="/tracking" element={<LiveTracking />} />
 
           <Route path="*" element={<h1>Not Found</h1>} />
           
