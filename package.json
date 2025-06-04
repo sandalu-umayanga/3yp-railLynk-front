@@ -11,6 +11,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.20.6",
     "axios": "^1.7.9",
     "leaflet": "^1.9.4",
     "react": "^19.0.0",

@@ -16,7 +16,9 @@ function PassengerTrainTracking() {
   useEffect(() => {
     const fetchStations = async () => {
       try {
+
         const response = await API.get('station/list/');
+
         console.log('Fetched stations:', response.data);
         const sorted = response.data.sort((a, b) =>
           a.station_name.localeCompare(b.station_name)
@@ -44,7 +46,9 @@ function PassengerTrainTracking() {
     setLoading(true);
 
     try {
+
       const response = await API.post('paths/route/', {
+
         from: startStation,
         to: endStation
       });
@@ -127,7 +131,9 @@ function PassengerTrainTracking() {
                 <div className="train-info">
                   <span className="departure">Departure: {train.departure_time_from_start}</span>
                   <span className="arrival">Arrival: {train.arrival_time_at_end}</span>
+
                   <span className="name">Name: {train.train_name} </span>
+
                 </div>
               </li>
             ))}
@@ -139,10 +145,12 @@ function PassengerTrainTracking() {
       {selectedTrain && (
         <div className="live-tracking-container">
           <h3 className="tracking-header">
+
             Live Tracking for: {selectedTrain.train_name}
           </h3>
           <div className="map-container">
             <LiveTracking trainId={selectedTrain.train_name} />
+
           </div>
         </div>
       )}
