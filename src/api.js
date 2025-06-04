@@ -1,17 +1,22 @@
-import axios from "axios";
-import { ACCESS_TOKEN } from "./constants";
+// In your axios setup file
+import axios from 'axios';
 
-const API = axios.create({
-  baseURL: "http://192.168.8.119:8000/api/", // Adjust to your API's base URL
+const api = axios.create({
+  baseURL: 'http://localhost:8000/api',
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+  },
 });
 
-// Attach Authorization header to every request
-API.interceptors.request.use((config) => {
-  const accessToken = localStorage.getItem(ACCESS_TOKEN);
-  if (accessToken) {
-    config.headers["Authorization"] = `Bearer ${accessToken}`;
+// Add interceptor for JWT
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('access_token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
   }
   return config;
 });
 
-export default API;
+export default api;

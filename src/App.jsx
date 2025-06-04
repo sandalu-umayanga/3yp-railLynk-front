@@ -18,6 +18,7 @@ import TransactionPageHolderForStation from "./pages/TransactionPageHolderForSta
 import PassengerTransactionPage from "./pages/PassengerTransactionPage";
 import RechargeHistory from "./pages/RechargeHistory";
 import LiveTracking from "./components/LiveTracking";
+import PassengerTrainTracking from "./components/PassengerTrainTracking";
 
 function App() {
   return (
@@ -67,6 +68,9 @@ function App() {
             <Route path="/recharging" element={<RechargePage />} />
           </Route>
 
+          <Route element={<ProtectedRoute allowedRoles={["passenger"]} redirectPath="/" />}>
+            <Route path="/passengerTracking" element={<PassengerTrainTracking />} />
+          </Route>
           
 
           <Route element={<ProtectedRoute allowedRoles={["station"]} redirectPath="/" />}>
