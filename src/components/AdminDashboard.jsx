@@ -177,6 +177,11 @@ const AdminDashboard = () => {
             </Link>
           </li>
           <li>
+            <Link to="/adminTracking" className="menu-item">
+              <FiUsers size={20} /> {isSidebarOpen && "Live Location"}
+            </Link>
+          </li>
+          <li>
             <Link to="http://192.168.8.119:8000/admin" className="menu-item">
               <FiMonitor size={20} /> {isSidebarOpen && "Base Admin"}
             </Link>

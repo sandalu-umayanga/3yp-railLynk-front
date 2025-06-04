@@ -1,0 +1,170 @@
+/* liveTracking.css */
+
+.live-tracking-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 70vh; /* Increased from 100vh to give map more vertical space */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+}
+
+.tracking-header {
+  background-color: #1e3a8a;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem; /* Reduced padding */
+  font-size: 1.25rem; /* Slightly smaller font */
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tracking-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1.5rem; /* Reduced padding */
+  background-color: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 0.9rem; /* Slightly smaller font */
+}
+
+.tracking-info span {
+  font-weight: 500;
+  color: #111827;
+}
+
+.map-container {
+  flex: 1;
+  min-height: 500px; /* Set a minimum height for the map */
+  height: 60vh; /* Use viewport height for responsive sizing */
+  position: relative; /* Important for Leaflet */
+}
+
+.leaflet-container {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 500px; /* Ensure minimum height */
+  z-index: 1; /* Ensure proper stacking context */
+}
+
+/* Live tracking map component styles */
+.live-tracking-map {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 500px; /* Explicit height */
+  margin-bottom: 24px;
+}
+
+/* Train info panel - make it more compact */
+.train-info-panel {
+  background-color: rgba(255, 255, 255, 0.92);
+  border-radius: 8px;
+  padding: 10px 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  z-index: 1000;
+  min-width: 180px; /* Smaller width */
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(229, 231, 235, 0.8);
+}
+
+.popup-content {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.train-marker {
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+}
+
+/* Make info labels and values more compact */
+.info-label {
+  font-weight: 500;
+  color: #64748b;
+  margin-right: 6px;
+  font-size: 0.85rem;
+}
+
+.info-value {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 0.9rem;
+}
+
+/* Loading and error states */
+.loading-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  background-color: #f9fafb;
+  color: #6b7280;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  background-color: #fef2f2;
+  color: #ef4444;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #fee2e2;
+}
+
+/* Optional: animate the train icon slightly to give motion feel */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.train-icon-animated {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .map-container {
+    min-height: 600px; /* Larger maps on bigger screens */
+  }
+  
+  .live-tracking-map {
+    height: 600px;
+  }
+  
+  .leaflet-container {
+    min-height: 600px;
+  }
+}
+
+/* For very large screens */
+@media (min-width: 1200px) {
+  .map-container {
+    min-height: 700px;
+  }
+  
+  .live-tracking-map {
+    height: 700px;
+  }
+  
+  .leaflet-container {
+    min-height: 700px;
+  }
+}
