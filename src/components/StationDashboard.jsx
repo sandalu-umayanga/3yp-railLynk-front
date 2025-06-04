@@ -370,6 +370,7 @@ const StationDashboard = () => {
               <FiDatabase size={20} /> {isSidebarOpen && "Transactions"}
             </Link>
           </li>
+          
           <li>
             <Link to="/station/settings" className="menu-item">
               <FiSettings size={20} /> {isSidebarOpen && "Settings"}

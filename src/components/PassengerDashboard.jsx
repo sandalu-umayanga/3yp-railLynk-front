@@ -56,6 +56,11 @@ const PassengerDashboard = () => {
             </Link>
           </li>
           <li>
+            <Link to="/passengerTrainTracking" className="menu-item">
+              <FiDatabase size={20} /> {isSidebarOpen && "Live Tracking"}
+            </Link>
+          </li>
+          <li>
             <Link to="/passenger/settings" className="menu-item">
               <FiSettings size={20} /> {isSidebarOpen && "Settings"}
             </Link>

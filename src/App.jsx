@@ -17,8 +17,9 @@ import RechargePage from "./pages/RechargePage";
 import TransactionPageHolderForStation from "./pages/TransactionPageHolderForStation";
 import PassengerTransactionPage from "./pages/PassengerTransactionPage";
 import RechargeHistory from "./pages/RechargeHistory";
-import LiveTracking from "./components/LiveTracking";
 import PassengerTrainTracking from "./components/PassengerTrainTracking";
+import AdminTracking from "./components/AdminTracking";
+
 
 function App() {
   return (
@@ -69,9 +70,10 @@ function App() {
           </Route>
 
           <Route element={<ProtectedRoute allowedRoles={["passenger"]} redirectPath="/" />}>
-            <Route path="/passengerTracking" element={<PassengerTrainTracking />} />
+
+            <Route path="/passengerTrainTracking" element={<PassengerTrainTracking />} />
           </Route>
-          
+
 
           <Route element={<ProtectedRoute allowedRoles={["station"]} redirectPath="/" />}>
             <Route path="/stationTransaction" element={<TransactionPageHolderForStation />} />
@@ -85,7 +87,11 @@ function App() {
             <Route path="/passengerRecharge" element={<RechargeHistory />} />
           </Route>
 
-          <Route path="/tracking" element={<LiveTracking />} />
+
+          <Route element={<ProtectedRoute allowedRoles={["admin"]} redirectPath="/" />}>
+            <Route path="/adminTracking" element={<AdminTracking />} />
+          </Route>
+
 
           <Route path="*" element={<h1>Not Found</h1>} />
           
