@@ -1,10 +1,8 @@
-// In your axios setup file
+// In your axios setup file (e.g., api.js)
 import axios from 'axios';
 
-
-const API = axios.create({
+const api = axios.create({
   baseURL: "http://192.168.43.192:8000/api/", // Adjust to your API's base URL
-
 });
 
 // Add interceptor for JWT
