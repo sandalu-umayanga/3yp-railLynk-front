@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -19,10 +20,12 @@ const trainIcon = new L.Icon({
   iconSize: [36, 36],
   iconAnchor: [18, 18],
   popupAnchor: [0, -18]
+
 });
 
 const stationIcon = new L.Icon({
   iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+
   iconSize: [20, 20],
   iconAnchor: [10, 10],
   popupAnchor: [0, -10],
@@ -282,9 +285,12 @@ function LiveTracking({ trainId }) {
           
           <FitBounds bounds={bounds} />
         </MapContainer>
+
       </div>
     </div>
   );
 }
 
+
 export default LiveTracking;
+
