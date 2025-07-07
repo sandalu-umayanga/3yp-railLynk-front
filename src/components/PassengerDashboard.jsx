@@ -1,18 +1,122 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FiSettings, FiMenu, FiUser, FiList, FiLogOut, FiDatabase, FiPause } from "react-icons/fi";
+import { FiSettings, FiMenu, FiUser, FiList, FiLogOut, FiDatabase, FiPause, FiCreditCard, FiTrendingUp, FiActivity, FiCalendar, FiMapPin } from "react-icons/fi";
 import { FaTicketAlt } from "react-icons/fa"; // Alternative icon from FontAwesome
 import "../styles/passengerDashboard.css";
 import { useNavigate } from "react-router-dom";
+import { USER_DATA, PASSENGER_ID } from "../constants";
+import API from "../api";
 
 const PassengerDashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [passengerData, setPassengerData] = useState({});
+  const [balance, setBalance] = useState(0);
+  const [recentTransactions, setRecentTransactions] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchDashboardData = async () => {
+      try {
+        const storedUserData = JSON.parse(localStorage.getItem(USER_DATA) || "{}");
+        const passengerID = localStorage.getItem(PASSENGER_ID);
+        
+        if (storedUserData.profile) {
+          setPassengerData(storedUserData.profile);
+        }
+
+        if (passengerID) {
+          // Fetch updated passenger data including balance
+          const response = await API.get(`passengers/${passengerID}/`);
+          if (response.status === 200) {
+            const passengerInfo = response.data.passenger;
+            const cardData = response.data.cards && response.data.cards.length > 0 ? response.data.cards[0] : null;
+            
+            setPassengerData(passengerInfo);
+            if (cardData) {
+              setBalance(cardData.balance || 0);
+            }
+          }
+
+          // Fetch recent transactions
+          try {
+            const transactionsResponse = await API.get(`passengers/${passengerID}/transactions/`);
+            if (transactionsResponse.status === 200) {
+              // Get the most recent 4 transactions
+              const transactions = transactionsResponse.data.slice(0, 4);
+              setRecentTransactions(transactions);
+            }
+          } catch (transactionError) {
+            console.warn("Could not fetch transactions:", transactionError);
+            // Set some fallback data if needed
+            setRecentTransactions([]);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching dashboard data:", error);
+        // Fallback to stored data
+        const storedUserData = JSON.parse(localStorage.getItem(USER_DATA) || "{}");
+        if (storedUserData.profile) {
+          setPassengerData(storedUserData.profile);
+          setBalance(storedUserData.profile.balance || 0);
+        }
+        setRecentTransactions([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDashboardData();
+  }, []);
 
   const handleLogout = () => {
     localStorage.clear();
     navigate("/");
+  };
+
+  // Helper function to format transaction data
+  const formatTransactionTime = (timestamp) => {
+    const now = new Date();
+    const transactionTime = new Date(timestamp);
+    const diffInMs = now - transactionTime;
+    const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
+    const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+
+    if (diffInHours < 1) {
+      return "Just now";
+    } else if (diffInHours < 24) {
+      return `${diffInHours} hour${diffInHours > 1 ? 's' : ''} ago`;
+    } else if (diffInDays === 1) {
+      return "1 day ago";
+    } else if (diffInDays < 7) {
+      return `${diffInDays} days ago`;
+    } else {
+      return transactionTime.toLocaleDateString();
+    }
+  };
+
+  const getTransactionIcon = (type) => {
+    switch (type?.toLowerCase()) {
+      case 'recharge':
+      case 'credit':
+        return <FiCreditCard size={20} />;
+      case 'ticket':
+      case 'debit':
+      case 'payment':
+        return <FaTicketAlt size={20} />;
+      default:
+        return <FiActivity size={20} />;
+    }
+  };
+
+  const getTransactionDescription = (transaction) => {
+    if (transaction.type?.toLowerCase() === 'recharge' || transaction.type?.toLowerCase() === 'credit') {
+      return `Added Rs. ${Math.abs(transaction.amount).toFixed(2)} to your card`;
+    } else if (transaction.type?.toLowerCase() === 'ticket' || transaction.type?.toLowerCase() === 'debit') {
+      return transaction.description || `Train ticket purchase - Rs. ${Math.abs(transaction.amount).toFixed(2)}`;
+    }
+    return transaction.description || 'Transaction';
   };
 
   return (
@@ -56,6 +160,11 @@ const PassengerDashboard = () => {
             </Link>
           </li>
           <li>
+            <Link to="/passengerGooglePayRecharge" className="menu-item">
+              <FiCreditCard size={20} /> {isSidebarOpen && "Google Pay Recharge"}
+            </Link>
+          </li>
+          <li>
             <Link to="/passengerTrainTracking" className="menu-item">
               <FiDatabase size={20} /> {isSidebarOpen && "Live Tracking"}
             </Link>
@@ -75,17 +184,214 @@ const PassengerDashboard = () => {
 
       {/* Main Content */}
       <div className="main-content">
-        <h1 className="dashboard-title">Passenger Dashboard</h1>
+        {/* Welcome Header */}
+        <div className="welcome-header">
+          <div className="welcome-text">
+            <h1 className="dashboard-title">
+              Welcome back, {passengerData.first_name || 'Passenger'}!
+            </h1>
+            <p className="dashboard-subtitle">
+              {new Date().toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+              })}
+            </p>
+          </div>
+          <div className="balance-display-main">
+            <div className="balance-card">
+              <div className="balance-icon">
+                <FiCreditCard size={24} />
+              </div>
+              <div className="balance-info">
+                <span className="balance-label">Current Balance</span>
+                <span className="balance-amount">Rs. {balance.toFixed(2)}</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        {/* Stats Overview */}
         <div className="stats-container">
           <div className="stats-card">
-            <h3>Upcoming Trips</h3>
-            <p>2</p>
+            <div className="stats-icon">
+              <FiTrendingUp size={32} />
+            </div>
+            <div className="stats-content">
+              <h3>Account Balance</h3>
+              <p className="stats-value">Rs. {balance.toFixed(2)}</p>
+              <span className="stats-change positive">+2.5% from last month</span>
+            </div>
           </div>
 
           <div className="stats-card">
-            <h3>Tickets Purchased</h3>
-            <p>15</p>
+            <div className="stats-icon">
+              <FaTicketAlt size={32} />
+            </div>
+            <div className="stats-content">
+              <h3>Tickets This Month</h3>
+              <p className="stats-value">12</p>
+              <span className="stats-change positive">+8 from last month</span>
+            </div>
+          </div>
+
+          <div className="stats-card">
+            <div className="stats-icon">
+              <FiActivity size={32} />
+            </div>
+            <div className="stats-content">
+              <h3>Trips Completed</h3>
+              <p className="stats-value">45</p>
+              <span className="stats-change neutral">Same as last month</span>
+            </div>
+          </div>
+
+          <div className="stats-card">
+            <div className="stats-icon">
+              <FiMapPin size={32} />
+            </div>
+            <div className="stats-content">
+              <h3>Favorite Route</h3>
+              <p className="stats-value">Colombo - Kandy</p>
+              <span className="stats-change">Most traveled</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Quick Actions */}
+        <div className="quick-actions">
+          <h2 className="section-title">Quick Actions</h2>
+          <div className="actions-grid">
+            <Link to="/passengerGooglePayRecharge" className="action-card">
+              <div className="action-icon">
+                <FiCreditCard size={28} />
+              </div>
+              <div className="action-content">
+                <h3>Recharge Card</h3>
+                <p>Add money to your travel card</p>
+              </div>
+            </Link>
+
+            <Link to="/passenger/tickets" className="action-card">
+              <div className="action-icon">
+                <FaTicketAlt size={28} />
+              </div>
+              <div className="action-content">
+                <h3>View Tickets</h3>
+                <p>Check your ticket history</p>
+              </div>
+            </Link>
+
+            <Link to="/passengerTrainTracking" className="action-card">
+              <div className="action-icon">
+                <FiDatabase size={28} />
+              </div>
+              <div className="action-content">
+                <h3>Track Trains</h3>
+                <p>Live train location tracking</p>
+              </div>
+            </Link>
+
+            <Link to="/passengerProfile" className="action-card">
+              <div className="action-icon">
+                <FiUser size={28} />
+              </div>
+              <div className="action-content">
+                <h3>Update Profile</h3>
+                <p>Manage your account settings</p>
+              </div>
+            </Link>
+          </div>
+        </div>
+
+        {/* Recent Activity */}
+        <div className="recent-activity">
+          <h2 className="section-title">Recent Activity</h2>
+          <div className="activity-list">
+            {loading ? (
+              <div className="loading-message">
+                <p>Loading recent activities...</p>
+              </div>
+            ) : recentTransactions.length > 0 ? (
+              recentTransactions.map((transaction, index) => (
+                <div key={transaction.id || index} className="activity-item">
+                  <div className="activity-icon">
+                    {getTransactionIcon(transaction.type)}
+                  </div>
+                  <div className="activity-content">
+                    <h4>
+                      {transaction.type?.toLowerCase() === 'recharge' || transaction.type?.toLowerCase() === 'credit' 
+                        ? 'Card Recharged' 
+                        : transaction.type?.toLowerCase() === 'ticket' || transaction.type?.toLowerCase() === 'debit'
+                        ? 'Train Ticket'
+                        : transaction.type || 'Transaction'
+                      }
+                    </h4>
+                    <p>{getTransactionDescription(transaction)}</p>
+                    <span className="activity-time">
+                      {formatTransactionTime(transaction.timestamp || transaction.created_at || transaction.date)}
+                    </span>
+                  </div>
+                  <div className={`activity-amount ${transaction.amount >= 0 ? 'positive' : 'negative'}`}>
+                    {transaction.amount >= 0 ? '+' : ''}Rs. {Math.abs(transaction.amount || 0).toFixed(2)}
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="no-activity-message">
+                <div className="activity-item">
+                  <div className="activity-icon">
+                    <FiActivity size={20} />
+                  </div>
+                  <div className="activity-content">
+                    <h4>No Recent Activity</h4>
+                    <p>You haven't made any transactions yet</p>
+                    <span className="activity-time">Start by recharging your card</span>
+                  </div>
+                  <div className="activity-amount neutral">Rs. 0.00</div>
+                </div>
+              </div>
+            )}
+          </div>
+          <Link to="/passengerTransaction" className="view-all-link">
+            View All Transactions →
+          </Link>
+        </div>
+
+        {/* Travel Tips */}
+        <div className="travel-tips">
+          <h2 className="section-title">Travel Tips</h2>
+          <div className="tips-grid">
+            <div className="tip-card">
+              <div className="tip-icon">
+                <FiCalendar size={24} />
+              </div>
+              <div className="tip-content">
+                <h4>Book in Advance</h4>
+                <p>Book your tickets early to ensure seat availability during peak hours.</p>
+              </div>
+            </div>
+
+            <div className="tip-card">
+              <div className="tip-icon">
+                <FiCreditCard size={24} />
+              </div>
+              <div className="tip-content">
+                <h4>Keep Your Card Charged</h4>
+                <p>Maintain sufficient balance in your card for hassle-free travel.</p>
+              </div>
+            </div>
+
+            <div className="tip-card">
+              <div className="tip-icon">
+                <FiActivity size={24} />
+              </div>
+              <div className="tip-content">
+                <h4>Track Your Trains</h4>
+                <p>Use live tracking to know exact train locations and arrival times.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

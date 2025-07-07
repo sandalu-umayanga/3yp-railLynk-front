@@ -19,6 +19,8 @@ import PassengerTransactionPage from "./pages/PassengerTransactionPage";
 import RechargeHistory from "./pages/RechargeHistory";
 import PassengerTrainTracking from "./components/PassengerTrainTracking";
 import AdminTracking from "./components/AdminTracking";
+import GooglePayRecharge from './components/GooglePayRecharge';
+
 
 
 function App() {
@@ -92,8 +94,10 @@ function App() {
             <Route path="/adminTracking" element={<AdminTracking />} />
           </Route>
 
-
+          <Route path="/passengerGooglePayRecharge" element={<GooglePayRecharge />} />
+          
           <Route path="*" element={<h1>Not Found</h1>} />
+
           
         </Routes>
       </div>
