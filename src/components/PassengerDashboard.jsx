@@ -183,7 +183,7 @@ const PassengerDashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="main-content">
+      <div className={`main-content ${!isSidebarOpen ? 'sidebar-closed' : ''}`}>
         {/* Welcome Header */}
         <div className="welcome-header">
           <div className="welcome-text">
