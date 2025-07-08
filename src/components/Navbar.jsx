@@ -8,8 +8,33 @@ const Navbar = () => {
   const [userType, setUserType] = useState(null);
 
   useEffect(() => {
-    const storedUserType = localStorage.getItem(USER_TYPE);
-    setUserType(storedUserType);
+    const updateUserType = () => {
+      const storedUserType = localStorage.getItem(USER_TYPE);
+      setUserType(storedUserType);
+    };
+
+    // Initial load
+    updateUserType();
+
+    // Listen for localStorage changes
+    const handleStorageChange = (e) => {
+      if (e.key === USER_TYPE || e.key === null) {
+        updateUserType();
+      }
+    };
+
+    // Listen for custom events (for same-tab changes)
+    const handleUserTypeChange = () => {
+      updateUserType();
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('userTypeChanged', handleUserTypeChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('userTypeChanged', handleUserTypeChange);
+    };
   }, []);
 
   const toggleMenu = () => {

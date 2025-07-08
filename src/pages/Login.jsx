@@ -35,6 +35,9 @@ const Login = () => {
       localStorage.setItem(USER_TYPE, response.data.user_type);
       localStorage.setItem("user_data", JSON.stringify(response.data));
 
+      // Dispatch custom event to update navbar
+      window.dispatchEvent(new Event('userTypeChanged'));
+
 
       if (response.data.user_type === "station") {
         localStorage.setItem(STATION_ID, response.data.profile.station_ID);

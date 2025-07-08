@@ -45,6 +45,9 @@ const AdminLogin = () => {
         localStorage.setItem(REFRESH_TOKEN, refresh_token);
         localStorage.setItem(USER_TYPE, response.data.user_type);
 
+        // Dispatch custom event to update navbar
+        window.dispatchEvent(new Event('userTypeChanged'));
+
         console.log("user type:", response.data.user_type);
 
         setMessage("Login successful!");

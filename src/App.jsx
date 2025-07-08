@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import About from "./pages/About";
 import PassengerRegister from "./pages/PassengerRegister";
 import StationRegister from "./pages/StationRegister";
 import AdminLogin from "./pages/AdminLogin";
@@ -30,6 +31,7 @@ function App() {
       <div className="main">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
 
           {/* Admin-only routes */}
@@ -95,7 +97,7 @@ function App() {
           </Route>
 
           <Route path="/passengerGooglePayRecharge" element={<GooglePayRecharge />} />
-          
+
           <Route path="*" element={<h1>Not Found</h1>} />
 
           

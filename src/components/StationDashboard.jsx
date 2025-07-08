@@ -239,6 +239,8 @@ const StationDashboard = () => {
 
   const handleLogout = () => {
     localStorage.clear();
+    // Dispatch custom event to update navbar
+    window.dispatchEvent(new Event('userTypeChanged'));
     navigate("/");
   };
 
