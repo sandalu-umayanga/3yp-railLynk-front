@@ -21,6 +21,7 @@ import RechargeHistory from "./pages/RechargeHistory";
 import PassengerTrainTracking from "./components/PassengerTrainTracking";
 import AdminTracking from "./components/AdminTracking";
 import GooglePayRecharge from './components/GooglePayRecharge';
+import AdminTrackingTestPage from './pages/AdminTrackingTestPage';
 
 
 
@@ -97,6 +98,9 @@ function App() {
           </Route>
 
           <Route path="/passengerGooglePayRecharge" element={<GooglePayRecharge />} />
+
+          {/* Test route for AdminTracking - Remove this in production */}
+          <Route path="/test-admin-tracking" element={<AdminTrackingTestPage />} />
 
           <Route path="*" element={<h1>Not Found</h1>} />
 

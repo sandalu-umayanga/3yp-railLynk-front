@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useMemo, useCallback } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -51,9 +51,46 @@ function AdminTracking() {
   const [error, setError] = useState(null);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(null);
+  const [isPolling, setIsPolling] = useState(false);
 
   const pollingRef = useRef(null);
   const POLLING_INTERVAL = 10000; // Poll every 10 seconds
+
+  // Efficient function to compare train data
+  const trainsEqual = useCallback((prev, next) => {
+    if (prev.length !== next.length) return false;
+    
+    // Create maps for efficient comparison by train name
+    const prevMap = new Map(prev.map(train => [train.name, train]));
+    const nextMap = new Map(next.map(train => [train.name, train]));
+    
+    // Check if all trains exist and have same positions
+    for (const [name, train] of prevMap) {
+      const nextTrain = nextMap.get(name);
+      if (!nextTrain || 
+          train.position[0] !== nextTrain.position[0] || 
+          train.position[1] !== nextTrain.position[1]) {
+        return false;
+      }
+    }
+    
+    return true;
+  }, []);
+
+  // Memoize train selection handler to prevent unnecessary re-renders
+  const handleTrainSelect = useCallback((trainName) => {
+    setSelectedTrain(trainName);
+  }, []);
+
+  // Memoize reset view handler
+  const handleResetView = useCallback(() => {
+    if (trains.length > 0) {
+      const allPositions = trains.map(train => train.position);
+      setBounds(allPositions);
+      setIsInitialLoad(true);
+      setTimeout(() => setIsInitialLoad(false), 100);
+    }
+  }, [trains]);
 
   // Fetch all stations using the correct API endpoint
   useEffect(() => {
@@ -87,23 +124,51 @@ function AdminTracking() {
 
   // Load all train positions and set up polling
   useEffect(() => {
-    const fetchAllTrains = async () => {
+    const fetchAllTrains = async (isPollingRequest = false) => {
       try {
-        setLoading(true);
+        // Only show loading on initial fetch, not during polling
+        if (!isPollingRequest) {
+          setLoading(true);
+        } else {
+          setIsPolling(true);
+        }
         
         const response = await API.get('trains/locations/');
         console.log("All trains data:", response.data);
         
-        const trainsData = response.data.map(train => ({
-          name: train.train_name,
-          position: train.location.split(',').map(coord => parseFloat(coord.trim()))
-        }));
+        const trainsData = response.data.map(train => {
+          // Validate and parse coordinates
+          if (!train.location || typeof train.location !== 'string') {
+            console.warn(`Invalid location data for train ${train.train_name}:`, train.location);
+            return null;
+          }
+          
+          const coords = train.location.split(',').map(coord => parseFloat(coord.trim()));
+          
+          // Validate coordinates are valid numbers
+          if (coords.length !== 2 || coords.some(isNaN)) {
+            console.warn(`Invalid coordinates for train ${train.train_name}:`, train.location);
+            return null;
+          }
+          
+          return {
+            name: train.train_name,
+            position: coords
+          };
+        }).filter(Boolean); // Remove null entries
         
-        setTrains(trainsData);
+        // Only update trains if data has actually changed
+        setTrains(prevTrains => {
+          const hasChanged = !trainsEqual(prevTrains, trainsData);
+          return hasChanged ? trainsData : prevTrains;
+        });
         
         // Calculate bounds to include all trains only on initial load
-        if (isInitialLoad) {
-          const allPositions = trainsData.map(train => train.position);
+        if (isInitialLoad && trainsData.length > 0) {
+          const allPositions = trainsData
+            .filter(train => train.position && train.position.length === 2)
+            .map(train => train.position);
+          
           if (allPositions.length > 0) {
             setBounds(allPositions);
           }
@@ -114,24 +179,32 @@ function AdminTracking() {
         setLastUpdated(new Date());
       } catch (err) {
         console.error('Error loading trains:', err);
-        setError('Failed to load train data. Please try again later.');
+        // Only set error if this is not a polling request or if we have no existing data
+        if (!isPollingRequest || trains.length === 0) {
+          setError('Failed to load train data. Please try again later.');
+        }
       } finally {
-        setLoading(false);
+        // Only hide loading on initial fetch
+        if (!isPollingRequest) {
+          setLoading(false);
+        } else {
+          setIsPolling(false);
+        }
       }
     };
     
     // Initial fetch
-    fetchAllTrains();
+    fetchAllTrains(false);
     
-    // Set up polling
-    pollingRef.current = setInterval(fetchAllTrains, POLLING_INTERVAL);
+    // Set up polling with polling flag
+    pollingRef.current = setInterval(() => fetchAllTrains(true), POLLING_INTERVAL);
     
     return () => {
       if (pollingRef.current) {
         clearInterval(pollingRef.current);
       }
     };
-  }, []);
+  }, []); // Keep empty dependency array
 
   // Fetch details for a selected train
   useEffect(() => {
@@ -176,18 +249,12 @@ function AdminTracking() {
           {lastUpdated && (
             <div className="last-updated">
               Last Updated: {lastUpdated.toLocaleTimeString()}
+              {isPolling && <span className="polling-indicator"> • Updating...</span>}
             </div>
           )}
           <button 
             className="reset-view-btn"
-            onClick={() => {
-              if (trains.length > 0) {
-                const allPositions = trains.map(train => train.position);
-                setBounds(allPositions);
-                setIsInitialLoad(true); // Trigger bounds fitting
-                setTimeout(() => setIsInitialLoad(false), 100); // Reset after fitting
-              }
-            }}
+            onClick={handleResetView}
           >
             Reset View
           </button>
@@ -200,9 +267,9 @@ function AdminTracking() {
           <ul className="train-list">
             {trains.map((train, index) => (
               <li 
-                key={`train-${index}`}
+                key={`${train.name}-${index}`}
                 className={`train-item ${selectedTrain === train.name ? 'selected' : ''}`}
-                onClick={() => setSelectedTrain(train.name)}
+                onClick={() => handleTrainSelect(train.name)}
               >
                 <div className="train-name">{train.name}</div>
                 <div className="train-status">
@@ -265,15 +332,15 @@ function AdminTracking() {
             ))}
             
             {/* Train Markers */}
-            {trains.map((train, index) => (
+            {trains
+              .filter(train => train.position && train.position.length === 2 && !train.position.some(isNaN))
+              .map((train, index) => (
               <Marker 
-                key={`train-marker-${index}`}
+                key={`train-marker-${train.name}-${index}`}
                 position={train.position}
                 icon={trainIcon}
                 eventHandlers={{
-                  click: () => {
-                    setSelectedTrain(train.name);
-                  },
+                  click: () => handleTrainSelect(train.name),
                 }}
                 className={selectedTrain === train.name ? 'train-icon-highlighted' : 'train-icon-normal'}
               >
