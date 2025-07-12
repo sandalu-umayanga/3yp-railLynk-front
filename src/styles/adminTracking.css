@@ -24,6 +24,32 @@
   font-weight: 600;
 }
 
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.reset-view-btn {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.reset-view-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.reset-view-btn:active {
+  transform: translateY(1px);
+}
+
 .train-count {
   background-color: rgba(255, 255, 255, 0.2);
   padding: 0.4rem 1rem;
@@ -34,6 +60,14 @@
 .train-count span {
   font-weight: 600;
   font-size: 1.1rem;
+}
+
+.last-updated {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-style: italic;
 }
 
 .admin-layout {

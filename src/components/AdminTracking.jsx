@@ -28,15 +28,15 @@ const stationIcon = new L.Icon({
   popupAnchor: [0, -10],
 });
 
-// Component to auto-update map bounds
-function FitBounds({ bounds }) {
+// Component to auto-update map bounds only on initial load
+function FitBounds({ bounds, shouldFit }) {
   const map = useMap();
   
   useEffect(() => {
-    if (bounds && bounds.length > 0) {
+    if (bounds && bounds.length > 0 && shouldFit) {
       map.fitBounds(bounds);
     }
-  }, [bounds, map]);
+  }, [bounds, map, shouldFit]);
   
   return null;
 }
@@ -49,6 +49,8 @@ function AdminTracking() {
   const [bounds, setBounds] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  const [lastUpdated, setLastUpdated] = useState(null);
 
   const pollingRef = useRef(null);
   const POLLING_INTERVAL = 10000; // Poll every 10 seconds
@@ -99,13 +101,17 @@ function AdminTracking() {
         
         setTrains(trainsData);
         
-        // Calculate bounds to include all trains
-        const allPositions = trainsData.map(train => train.position);
-        if (allPositions.length > 0) {
-          setBounds(allPositions);
+        // Calculate bounds to include all trains only on initial load
+        if (isInitialLoad) {
+          const allPositions = trainsData.map(train => train.position);
+          if (allPositions.length > 0) {
+            setBounds(allPositions);
+          }
+          setIsInitialLoad(false);
         }
         
         setError(null);
+        setLastUpdated(new Date());
       } catch (err) {
         console.error('Error loading trains:', err);
         setError('Failed to load train data. Please try again later.');
@@ -163,8 +169,28 @@ function AdminTracking() {
     <div className="admin-tracking-container">
       <div className="admin-header">
         <h2>Railway Network - Live Train Tracking</h2>
-        <div className="train-count">
-          Active Trains: <span>{trains.length}</span>
+        <div className="header-controls">
+          <div className="train-count">
+            Active Trains: <span>{trains.length}</span>
+          </div>
+          {lastUpdated && (
+            <div className="last-updated">
+              Last Updated: {lastUpdated.toLocaleTimeString()}
+            </div>
+          )}
+          <button 
+            className="reset-view-btn"
+            onClick={() => {
+              if (trains.length > 0) {
+                const allPositions = trains.map(train => train.position);
+                setBounds(allPositions);
+                setIsInitialLoad(true); // Trigger bounds fitting
+                setTimeout(() => setIsInitialLoad(false), 100); // Reset after fitting
+              }
+            }}
+          >
+            Reset View
+          </button>
         </div>
       </div>
       
@@ -272,7 +298,7 @@ function AdminTracking() {
               />
             )}
             
-            <FitBounds bounds={bounds} />
+            <FitBounds bounds={bounds} shouldFit={isInitialLoad} />
           </MapContainer>
         </div>
       </div>

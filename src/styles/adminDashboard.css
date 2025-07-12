@@ -243,6 +243,43 @@
   color: #dc3545;
 }
 
+/* Timestamp styling */
+.data-table td:last-child {
+  font-size: 0.85em;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Live tracking timestamp indicator */
+.timestamp-fresh {
+  color: #28a745;
+  font-weight: 500;
+}
+
+.timestamp-stale {
+  color: #ffc107;
+  font-weight: 500;
+}
+
+.timestamp-old {
+  color: #dc3545;
+  font-weight: 500;
+}
+
+/* Timestamp legend */
+.timestamp-legend {
+  margin-bottom: 15px;
+  padding: 8px 12px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  border-left: 4px solid #007bff;
+}
+
+.timestamp-legend span {
+  margin-right: 15px;
+  font-weight: 500;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 992px) {
   .charts-row {
