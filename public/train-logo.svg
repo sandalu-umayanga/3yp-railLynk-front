@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="32" height="32">
+  <defs>
+    <linearGradient id="trainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Train body -->
+  <rect x="15" y="35" width="70" height="25" rx="5" fill="url(#trainGradient)" stroke="#1e40af" stroke-width="1"/>
+  
+  <!-- Train front -->
+  <rect x="10" y="38" width="10" height="19" rx="3" fill="url(#trainGradient)" stroke="#1e40af" stroke-width="1"/>
+  
+  <!-- Windows -->
+  <rect x="22" y="42" width="8" height="6" rx="1" fill="#e5f3ff" stroke="#1e40af" stroke-width="0.5"/>
+  <rect x="35" y="42" width="8" height="6" rx="1" fill="#e5f3ff" stroke="#1e40af" stroke-width="0.5"/>
+  <rect x="48" y="42" width="8" height="6" rx="1" fill="#e5f3ff" stroke="#1e40af" stroke-width="0.5"/>
+  <rect x="61" y="42" width="8" height="6" rx="1" fill="#e5f3ff" stroke="#1e40af" stroke-width="0.5"/>
+  
+  <!-- Wheels -->
+  <circle cx="25" cy="65" r="6" fill="#374151" stroke="#1f2937" stroke-width="1"/>
+  <circle cx="40" cy="65" r="6" fill="#374151" stroke="#1f2937" stroke-width="1"/>
+  <circle cx="60" cy="65" r="6" fill="#374151" stroke="#1f2937" stroke-width="1"/>
+  <circle cx="75" cy="65" r="6" fill="#374151" stroke="#1f2937" stroke-width="1"/>
+  
+  <!-- Wheel centers -->
+  <circle cx="25" cy="65" r="2" fill="#6b7280"/>
+  <circle cx="40" cy="65" r="2" fill="#6b7280"/>
+  <circle cx="60" cy="65" r="2" fill="#6b7280"/>
+  <circle cx="75" cy="65" r="2" fill="#6b7280"/>
+  
+  <!-- Rail tracks -->
+  <rect x="5" y="72" width="90" height="2" fill="#6b7280"/>
+  <rect x="5" y="76" width="90" height="2" fill="#6b7280"/>
+  
+  <!-- Rail ties -->
+  <rect x="8" y="70" width="3" height="10" fill="#8b5cf6"/>
+  <rect x="18" y="70" width="3" height="10" fill="#8b5cf6"/>
+  <rect x="28" y="70" width="3" height="10" fill="#8b5cf6"/>
+  <rect x="38" y="70" width="3" height="10" fill="#8b5cf6"/>
+  <rect x="48" y="70" width="3" height="10" fill="#8b5cf6"/>
+  <rect x="58" y="70" width="3" height="10" fill="#8b5cf6"/>
+  <rect x="68" y="70" width="3" height="10" fill="#8b5cf6"/>
+  <rect x="78" y="70" width="3" height="10" fill="#8b5cf6"/>
+  <rect x="88" y="70" width="3" height="10" fill="#8b5cf6"/>
+  
+  <!-- Front light -->
+  <circle cx="15" cy="47" r="2" fill="#fbbf24" stroke="#f59e0b" stroke-width="0.5"/>
+  
+  <!-- Door -->
+  <rect x="72" y="40" width="8" height="18" rx="1" fill="#1e40af" stroke="#1d4ed8" stroke-width="0.5"/>
+  <circle cx="78" cy="49" r="0.8" fill="#e5f3ff"/>
+</svg>
