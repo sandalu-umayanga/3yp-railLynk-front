@@ -1,8 +1,10 @@
 // In your axios setup file (e.g., api.js)
 import axios from 'axios';
 
+
 const api = axios.create({
   baseURL: "https://raillynk.site/api/", // Adjust to your API's base URL
+
 });
 
 // Add interceptor for JWT

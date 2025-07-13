@@ -54,6 +54,7 @@ const Home = () => {
 
   return (
     <div className="home">
+
       <div className="railway-background">
         <div className="track"></div>
         <div className="track-lights"></div>
@@ -73,6 +74,7 @@ const Home = () => {
       >
         <h1>Welcome to RailLynk</h1>
         <p>Your modern solution for train ticketing, tracking, and travel planning</p>
+
       </div>
       
       <div className="home-anouncements">

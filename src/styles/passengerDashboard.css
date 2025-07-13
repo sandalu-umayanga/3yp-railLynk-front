@@ -1,3 +1,4 @@
+
 /* CSS Variables */
 :root {
   --bar-color: #1e3a8a;
@@ -570,3 +571,42 @@
     text-align: center;
   }
 }
+=======
+
+h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.dashboard-container {
+  position: relative;
+  background-image: url('../assets/background.png'); /* Path to your background image */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  z-index: 1;
+}
+
+/* Overlay to lighten the background */
+.dashboard-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+  opacity: 0.8; /* Adjust for visibility */
+  z-index: -1;
+}
+
+
+
+
+
+
