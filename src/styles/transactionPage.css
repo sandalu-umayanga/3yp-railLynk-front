@@ -5,10 +5,6 @@
     min-height: 100vh;
     height: 100%;
 
-
-  }
-  body{
-    background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
   }
   
   .transaction-container > h1 {
@@ -20,10 +16,6 @@
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    background: rgba(255, 255, 255, 0.46);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
   }
   
   .transaction-table th, .transaction-table td {
