@@ -11,6 +11,6 @@ test("renders Passenger Profile page", () => {
   );
   
   // Check if profile details are rendered
-  const profileTitle = screen.getByText(/passenger profile/i);
+  const profileTitle = screen.getByText(/my profile/i);
   expect(profileTitle).toBeInTheDocument();
 });

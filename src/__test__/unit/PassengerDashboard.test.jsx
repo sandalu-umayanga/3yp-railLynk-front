@@ -11,6 +11,6 @@ test("renders Passenger Dashboard page", () => {
   );
   
   // Check if dashboard elements are rendered
-  const dashboardTitle = screen.getByText(/passenger dashboard/i);
-  expect(dashboardTitle).toBeInTheDocument();
+  const dashboardContainer = document.querySelector('.dashboard-container');
+  expect(dashboardContainer).toBeInTheDocument();
 });

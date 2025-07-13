@@ -309,8 +309,8 @@ const StationDashboard = () => {
 
   // Function to filter trains by search term
   const filteredTrains = trainSchedule.filter(train => 
-    train.id?.toLowerCase().includes(searchTerm.toLowerCase()) || 
-    train.name?.toLowerCase().includes(searchTerm.toLowerCase())
+    String(train.id || '').toLowerCase().includes(searchTerm.toLowerCase()) || 
+    String(train.name || '').toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // Format date for display
