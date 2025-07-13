@@ -109,12 +109,14 @@ const PassengerProfile = () => {
 
   return (
     <div className="profile-container">
+
       <div className="profile-header">
         <div className="profile-header-content">
           <h1 className="profile-title">My Profile</h1>
           <p className="profile-subtitle">Manage your personal information and account settings</p>
         </div>
         <div className="profile-actions">
+
           {isEditing ? (
             <>
               <button className="cancel-button" onClick={() => {
