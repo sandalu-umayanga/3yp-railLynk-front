@@ -1,0 +1,254 @@
+/* Base Layout */
+.tracking-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+/* Station Selection Area */
+.station-selection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper::after {
+  content: '▼';
+  font-size: 0.8rem;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  pointer-events: none;
+}
+
+.station-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #1e293b;
+  font-size: 1rem;
+  appearance: none;
+  transition: all 0.2s ease;
+}
+
+.station-select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Search Button */
+.search-button {
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+}
+
+.search-button:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+.search-button:active {
+  transform: translateY(0);
+}
+
+.search-button:disabled {
+  background-color: #64748b;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Loading State */
+.loading-indicator {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+  margin-left: 0.5rem;
+}
+
+@keyframes spin {
+  to {transform: rotate(360deg);}
+}
+
+/* Error Message */
+.error-message {
+  color: #ef4444;
+  padding: 0.75rem;
+  margin: 1rem 0;
+  background-color: rgba(239, 68, 68, 0.1);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.error-message::before {
+  content: '⚠️';
+  margin-right: 0.5rem;
+}
+
+/* Train List Section */
+.trains-container {
+  margin-top: 2rem;
+}
+
+.trains-heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1e293b;
+}
+
+.train-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+}
+
+.train-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #f8fafc;
+}
+
+.train-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-color: #3b82f6;
+}
+
+.train-card.selected {
+  border-color: #3b82f6;
+  background-color: rgba(59, 130, 246, 0.05);
+}
+
+.train-name {
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.train-info {
+  color: #64748b;
+  font-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.train-info span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.train-info span::before {
+  margin-right: 0.25rem;
+}
+
+.departure::before {
+  content: '🚉';
+}
+
+.arrival::before {
+  content: '🏁';
+}
+
+/* Live Tracking Section */
+.live-tracking-container {
+  margin-top: 2rem;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 1.5rem;
+}
+
+.tracking-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  color: #ffffff;
+
+}
+
+.tracking-header::before {
+  content: '🔴';
+  margin-right: 0.5rem;
+}
+
+/* Map container - height needed for the Leaflet map */
+.map-container {
+
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .station-selection {
+    grid-template-columns: 1fr;
+  }
+  
+  .train-info {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  
+  .map-container {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .search-button {
+    width: 100%;
+  }
+}

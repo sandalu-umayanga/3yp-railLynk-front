@@ -8,6 +8,7 @@
   color: var(--secondary-text-color);
   font-family: var(--font-family);
   position: relative;
+  z-index: 2000;
 }
 
 /* Logo */

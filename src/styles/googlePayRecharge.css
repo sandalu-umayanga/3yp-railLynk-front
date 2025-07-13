@@ -1,0 +1,709 @@
+/* Google Pay Recharge Styles - Ultra Modern Design */
+.google-pay-recharge-container {
+  max-width: 680px;
+  margin: 2rem auto;
+  padding: 3rem;
+  background: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%),
+    radial-gradient(circle at 20% 80%, rgba(66, 133, 244, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(52, 168, 83, 0.05) 0%, transparent 50%);
+  border-radius: 28px;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.12),
+    0 10px 15px -3px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  position: relative;
+  overflow: hidden;
+  animation: containerFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes containerFadeIn {
+  0% { 
+    opacity: 0; 
+    transform: translateY(20px) scale(0.98); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}
+
+.google-pay-recharge-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, 
+    #4285f4 0%, 
+    #34a853 25%, 
+    #fbbc04 50%, 
+    #ea4335 75%, 
+    #4285f4 100%);
+  border-radius: 28px 28px 0 0;
+  animation: gradientShift 6s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.google-pay-recharge-container::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(66, 133, 244, 0.03) 0%, transparent 70%);
+  animation: float 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(10px, -10px) rotate(1deg); }
+  66% { transform: translate(-5px, 5px) rotate(-1deg); }
+}
+
+.recharge-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  position: relative;
+  z-index: 2;
+}
+
+.recharge-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #4285f4, #34a853);
+  border-radius: 2px;
+  animation: expandLine 1s ease-out 0.5s both;
+}
+
+@keyframes expandLine {
+  0% { width: 0; opacity: 0; }
+  100% { width: 80px; opacity: 1; }
+}
+
+.recharge-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #1e293b;
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #4285f4 0%, #34a853 50%, #4285f4 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textShimmer 3s ease-in-out infinite;
+  letter-spacing: -0.025em;
+}
+
+@keyframes textShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.header-icon {
+  color: #4285f4;
+  filter: drop-shadow(0 4px 8px rgba(66, 133, 244, 0.3));
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.current-balance {
+  font-size: 1.15rem;
+  color: #64748b;
+  padding: 1rem 1.5rem;
+  background: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(241, 245, 249, 0.8) 100%),
+    linear-gradient(45deg, rgba(5, 150, 105, 0.05) 0%, transparent 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  box-shadow: 
+    0 8px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.current-balance::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #059669, #10b981);
+  border-radius: 20px 20px 0 0;
+}
+
+.current-balance:hover {
+  transform: translateY(-1px);
+  box-shadow: 
+    0 12px 24px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.current-balance strong {
+  color: #059669;
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-shadow: 0 1px 2px rgba(5, 150, 105, 0.1);
+}
+
+.amount-section {
+  margin-bottom: 2.5rem;
+}
+
+.amount-section h3 {
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+  font-size: 1.25rem;
+  font-weight: 600;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.amount-section h3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(135deg, #4285f4, #34a853);
+  border-radius: 2px;
+}
+
+.quick-amounts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.quick-amount-btn {
+  padding: 1.25rem 1.5rem;
+  border: 2px solid rgba(148, 163, 184, 0.15);
+  border-radius: 20px;
+  background: 
+    linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.8) 100%),
+    radial-gradient(circle at center, rgba(66, 133, 244, 0.02) 0%, transparent 70%);
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-weight: 700;
+  font-size: 1rem;
+  color: #475569;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 6px 12px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+.quick-amount-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(66, 133, 244, 0.1), 
+    rgba(52, 168, 83, 0.1),
+    transparent);
+  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.quick-amount-btn:hover::before {
+  left: 100%;
+}
+
+.quick-amount-btn:hover {
+  border-color: rgba(66, 133, 244, 0.4);
+  background: 
+    linear-gradient(145deg, rgba(248, 250, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%),
+    radial-gradient(circle at center, rgba(66, 133, 244, 0.05) 0%, transparent 70%);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 15px 30px rgba(66, 133, 244, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.quick-amount-btn.selected {
+  border-color: #4285f4;
+  background: linear-gradient(135deg, #4285f4 0%, #5a95f5 50%, #4285f4 100%);
+  background-size: 200% 100%;
+  color: white;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 15px 30px rgba(66, 133, 244, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  animation: selectedPulse 2s ease-in-out infinite;
+}
+
+@keyframes selectedPulse {
+  0%, 100% { 
+    background-position: 0% 50%;
+    box-shadow: 
+      0 15px 30px rgba(66, 133, 244, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  50% { 
+    background-position: 100% 50%;
+    box-shadow: 
+      0 18px 35px rgba(66, 133, 244, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+}
+
+.custom-amount {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.custom-amount label {
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 0.95rem;
+}
+
+.custom-amount input {
+  padding: 1rem 1.25rem;
+  border: 2px solid rgba(148, 163, 184, 0.2);
+  border-radius: 16px;
+  font-size: 1.1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(145deg, #ffffff, #f8fafc);
+  color: #1e293b;
+  font-weight: 500;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.custom-amount input:focus {
+  outline: none;
+  border-color: #4285f4;
+  background: #ffffff;
+  box-shadow: 
+    0 0 0 4px rgba(66, 133, 244, 0.1),
+    inset 0 2px 4px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+.custom-amount input::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.payment-section {
+  margin-bottom: 2.5rem;
+}
+
+.google-pay-button {
+  width: 100%;
+  padding: 1.5rem 2.5rem;
+  background: linear-gradient(135deg, #4285f4 0%, #5a95f5 50%, #4285f4 100%);
+  background-size: 200% 100%;
+  color: white;
+  border: none;
+  border-radius: 24px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 80px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 15px 25px rgba(66, 133, 244, 0.25),
+    0 8px 16px rgba(66, 133, 244, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.google-pay-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.25), 
+    rgba(255, 255, 255, 0.15),
+    transparent);
+  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.google-pay-button:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.google-pay-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #3367d6 0%, #4285f4 50%, #3367d6 100%);
+  background-size: 200% 100%;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 
+    0 25px 40px rgba(66, 133, 244, 0.35),
+    0 15px 20px rgba(66, 133, 244, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  animation: buttonGlow 2s ease-in-out infinite;
+}
+
+@keyframes buttonGlow {
+  0%, 100% { 
+    background-position: 0% 50%;
+    box-shadow: 
+      0 25px 40px rgba(66, 133, 244, 0.35),
+      0 15px 20px rgba(66, 133, 244, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  50% { 
+    background-position: 100% 50%;
+    box-shadow: 
+      0 30px 50px rgba(66, 133, 244, 0.4),
+      0 20px 25px rgba(66, 133, 244, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+}
+
+.google-pay-button:active {
+  transform: translateY(-2px) scale(0.98);
+  transition: all 0.15s ease;
+}
+
+.google-pay-button:disabled {
+  background: linear-gradient(135deg, #cbd5e1, #94a3b8);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  opacity: 0.6;
+  animation: none;
+}
+
+.google-pay-logo {
+  height: 32px;
+  width: auto;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+  transition: all 0.3s ease;
+}
+
+.google-pay-button:hover:not(:disabled) .google-pay-logo {
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+  transform: scale(1.05);
+}
+
+.processing {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite, spinGlow 2s ease-in-out infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spinGlow {
+  0%, 100% { 
+    border-top-color: white;
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+  }
+  50% { 
+    border-top-color: rgba(255, 255, 255, 0.8);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+  }
+}
+
+.google-pay-unavailable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, #fef2f2, #fee2e2);
+  color: #dc2626;
+  border-radius: 16px;
+  font-weight: 600;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.1);
+}
+
+.error-icon {
+  font-size: 1.3rem;
+  filter: drop-shadow(0 2px 4px rgba(220, 38, 38, 0.2));
+}
+
+.payment-result {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  border-radius: 16px;
+  margin-bottom: 2.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.payment-result::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.payment-result.success {
+  background: linear-gradient(135deg, rgba(236, 253, 245, 0.8), rgba(209, 250, 229, 0.8));
+  color: #065f46;
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.1);
+}
+
+.payment-result.error {
+  background: linear-gradient(135deg, rgba(254, 242, 242, 0.8), rgba(254, 226, 226, 0.8));
+  color: #991b1b;
+  border-color: rgba(239, 68, 68, 0.3);
+  box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.1);
+}
+
+.payment-result.error::before {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.result-icon {
+  font-size: 1.75rem;
+  margin-top: 0.25rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.result-content {
+  flex: 1;
+}
+
+.result-content p {
+  margin: 0 0 0.75rem 0;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.result-content small {
+  color: #64748b;
+  font-size: 0.875rem;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-family: 'Monaco', 'Menlo', monospace;
+}
+
+.security-info {
+  background: 
+    linear-gradient(135deg, rgba(248, 249, 250, 0.9) 0%, rgba(241, 245, 249, 0.8) 100%),
+    radial-gradient(circle at top right, rgba(66, 133, 244, 0.03) 0%, transparent 70%);
+  padding: 2rem;
+  border-radius: 20px;
+  border-left: 5px solid #4285f4;
+  backdrop-filter: blur(8px);
+  box-shadow: 
+    0 8px 16px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+.security-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(135deg, #4285f4, #5a95f5);
+  border-radius: 0 20px 20px 0;
+}
+
+.security-info h4 {
+  margin: 0 0 1.5rem 0;
+  color: #1e293b;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.security-info h4::before {
+  content: '🔒';
+  font-size: 1.2rem;
+}
+
+.security-info ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  list-style: none;
+}
+
+.security-info li {
+  margin-bottom: 0.75rem;
+  color: #475569;
+  position: relative;
+  padding-left: 1.5rem;
+  line-height: 1.6;
+}
+
+.security-info li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #059669;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Responsive design with enhanced mobile experience */
+@media (max-width: 768px) {
+  .google-pay-recharge-container {
+    margin: 1rem;
+    padding: 2rem;
+    border-radius: 24px;
+  }
+
+  .recharge-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .recharge-header h2 {
+    font-size: 1.75rem;
+  }
+
+  .current-balance {
+    width: 100%;
+    text-align: center;
+  }
+
+  .quick-amounts {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .quick-amount-btn {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .google-pay-button {
+    padding: 1.25rem 2rem;
+    font-size: 1.1rem;
+    min-height: 70px;
+  }
+
+  .google-pay-logo {
+    height: 28px;
+  }
+
+  .security-info {
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .google-pay-recharge-container {
+    margin: 0.5rem;
+    padding: 1.5rem;
+  }
+
+  .quick-amounts {
+    grid-template-columns: 1fr;
+  }
+
+  .recharge-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .google-pay-button {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    min-height: 60px;
+  }
+}
+
+/* Enhanced focus states for accessibility */
+.quick-amount-btn:focus,
+.google-pay-button:focus,
+.custom-amount input:focus {
+  outline: 3px solid rgba(66, 133, 244, 0.5);
+  outline-offset: 2px;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .google-pay-recharge-container,
+  .quick-amount-btn,
+  .google-pay-button,
+  .current-balance,
+  .spinner {
+    animation: none;
+  }
+  
+  .google-pay-recharge-container::before,
+  .google-pay-recharge-container::after {
+    animation: none;
+  }
+  
+  .quick-amount-btn::before,
+  .google-pay-button::before {
+    transition: none;
+  }
+}

@@ -4,9 +4,10 @@ import react from '@vitejs/plugin-react';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  // Remove the proxy configuration since your API module handles the baseURL
   test: {
     globals: true,
-    environment: "jsdom",  // Simulate browser environment
+    environment: "jsdom",
     setupFiles: "./src/setupTests.js",
   },
 });

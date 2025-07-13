@@ -1,0 +1,253 @@
+/* Admin Tracking Styles */
+
+.admin-tracking-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 85vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.admin-header {
+  padding: 1rem 1.5rem;
+  background-color: #1e40af;
+  color: white;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-header h2 {
+  color:white;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.reset-view-btn {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.reset-view-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.reset-view-btn:active {
+  transform: translateY(1px);
+}
+
+.train-count {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.train-count span {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.last-updated {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.polling-indicator {
+  color: #10b981;
+  font-weight: 500;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.admin-layout {
+  display: flex;
+  flex: 1;
+  min-height: 600px;
+}
+
+.train-list-container {
+  width: 300px;
+  background-color: #f9fafb;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+}
+
+.train-list-container h3 {
+  margin: 0;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.train-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.train-item {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.train-item:hover {
+  background-color: #f3f4f6;
+}
+
+.train-item.selected {
+  background-color: #dbeafe;
+  border-left: 3px solid #3b82f6;
+}
+
+.train-name {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.train-status {
+  font-size: 0.8rem;
+  color: #4b5563;
+  display: flex;
+  align-items: center;
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.status-indicator.active {
+  background-color: #10b981;
+}
+
+.status-indicator.stopped {
+  background-color: #f59e0b;
+}
+
+.train-details {
+  padding: 1rem;
+  background-color: #f3f4f6;
+  border-top: 1px solid #e5e7eb;
+}
+
+.train-details h4 {
+  margin: 0 0 0.8rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.detail-item {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.detail-item strong {
+  color: #374151;
+}
+
+.map-container {
+  flex: 1;
+  position: relative;
+}
+
+.loading-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  background-color: #f9fafb;
+  color: #6b7280;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  background-color: #fef2f2;
+  color: #ef4444;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #fee2e2;
+}
+
+/* Popup styling */
+.popup-content {
+  padding: 5px;
+}
+
+.popup-content strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Animation for selected train */
+@keyframes pulse-highlight {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.train-icon-highlighted {
+  animation: pulse-highlight 1.5s infinite ease-in-out;
+  z-index: 1000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .admin-layout {
+    flex-direction: column;
+  }
+  
+  .train-list-container {
+    width: 100%;
+    height: 300px;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .map-container {
+    min-height: 400px;
+  }
+}

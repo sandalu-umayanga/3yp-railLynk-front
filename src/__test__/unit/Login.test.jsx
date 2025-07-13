@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import Login from "../pages/Login";
+import Login from "../../pages/Login";
 
 describe("Login Component", () => {
   test("renders login form with default passenger option", () => {

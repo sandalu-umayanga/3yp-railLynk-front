@@ -1,15 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
 :root {
   --bar-color: rgb(16, 43, 107);
   --primary-text-color: rgb(35, 66, 116);
   --secondary-text-color: rgb(255, 255, 255);
   --font-family: "Poppins", sans-serif;
+  --primary-color: #0056b3;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+  --sidebar-bg: #1e2a3a;
+  --sidebar-text: #ffffff;
+  --sidebar-width: 220px;
+  --sidebar-collapsed-width: 60px;
+  --header-height: 60px;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --transition-speed: 0.3s;
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+  background-color: #f5f7fb;
+  color: #333;
+  line-height: 1.6;
 }
 
 body {
