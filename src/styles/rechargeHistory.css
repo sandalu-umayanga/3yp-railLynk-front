@@ -2,7 +2,7 @@
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+    background: #ffffff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -43,10 +43,6 @@
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    background: rgba(255, 255, 255, 0.485);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
   }
   
   .recharge-table th, 
