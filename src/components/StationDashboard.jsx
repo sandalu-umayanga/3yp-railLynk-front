@@ -343,7 +343,7 @@ const StationDashboard = () => {
             </Link>
           </li>
           <li>
-            <Link to="/station/manage-trains" className="menu-item">
+            <Link to="/managepassenger" className="menu-item">
               <FiUsers size={20} /> {isSidebarOpen && "Manage Passengers"}
             </Link>
           </li>

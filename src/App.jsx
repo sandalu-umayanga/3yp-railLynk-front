@@ -21,6 +21,8 @@ import RechargeHistory from "./pages/RechargeHistory";
 import PassengerTrainTracking from "./components/PassengerTrainTracking";
 import AdminTracking from "./components/AdminTracking";
 import GooglePayRecharge from './components/GooglePayRecharge';
+import PassengerManage from "./pages/ManagePassenger";
+import ForgotPassword from "./components/ForgotPassword";
 
 
 
@@ -99,7 +101,10 @@ function App() {
 
           <Route path="/passengerGooglePayRecharge" element={<GooglePayRecharge />} />
 
-
+          <Route element={<ProtectedRoute allowedRoles={["station"]} redirectPath="/" />}>
+          <Route path="/managepassenger" element={<PassengerManage />} />
+          </Route>
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="*" element={<h1>Not Found</h1>} />
 
           
