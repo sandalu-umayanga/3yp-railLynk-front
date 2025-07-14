@@ -71,3 +71,23 @@
     }
   }
   
+  .forgot-password-container {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.forgot-password-container a {
+  color: #0324b9;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.forgot-password-container a:hover {
+  color: #0324b9;
+  text-decoration: underline;
+}
+
+.forgot-password-container i {
+  margin-right: 6px;
+}

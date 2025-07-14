@@ -93,7 +93,11 @@ const Login = () => {
 
       <label htmlFor="password">Password:</label>
       <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter password" />
-
+        <div className="forgot-password-container">
+          <a href="/forgot-password">
+            <i className="fas fa-unlock-alt"></i> Forgot your password?
+          </a>
+        </div>
       <button className="login-button" onClick={handleLogin} disabled={loading}>
         {loading ? "Logging in..." : "Login"}
       </button>

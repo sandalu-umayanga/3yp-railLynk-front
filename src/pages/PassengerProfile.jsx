@@ -36,13 +36,18 @@ const PassengerProfile = () => {
 
   const handleSaveClick = async () => {
     try {
+      const token = storedUserData.access; 
       // Make API request to update the backend
       console.log("Edited passenger:", editedPassenger);
       
-      // Use the correct endpoint that matches your backend
       const response = await API.put(
-        `passengers/${passenger.nic_number}/`, 
-        editedPassenger
+        "passenger/update/", editedPassenger,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Attach token for authentication
+            "Content-Type": "application/json",
+          },
+        }
       );
 
       console.log("Update profile response:", response);
