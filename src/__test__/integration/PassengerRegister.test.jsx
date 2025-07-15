@@ -35,16 +35,16 @@ describe("PassengerRegister Integration Test (Vitest)", () => {
     vi.clearAllMocks();
   });
 const fillAndSubmitForm = async () => {
-  fireEvent.change(screen.getByPlaceholderText(/Enter email/i), {
+  fireEvent.change(screen.getByPlaceholderText(/Email/i), {
     target: { value: "test@example.com" },
   });
-  fireEvent.change(screen.getByPlaceholderText(/Enter password/i), {
+  fireEvent.change(screen.getByPlaceholderText(/^Password$/i), {
     target: { value: "password123" },
   });
-  fireEvent.change(screen.getByPlaceholderText(/Confirm password/i), {
+  fireEvent.change(screen.getByPlaceholderText(/Confirm Password/i), {
     target: { value: "password123" },
   });
-  fireEvent.change(screen.getByPlaceholderText(/Enter NIC/i), {
+  fireEvent.change(screen.getByPlaceholderText(/NIC Number/i), {
     target: { value: "123456789V" },
   });
   fireEvent.change(screen.getByPlaceholderText(/First Name/i), {
@@ -59,10 +59,10 @@ const fillAndSubmitForm = async () => {
     target: { value: "1990-01-01" },
   });
 
-  fireEvent.change(screen.getByPlaceholderText(/Enter Address/i), {
+  fireEvent.change(screen.getByPlaceholderText(/Address/i), {
     target: { value: "123 Main St" },
   });
-  fireEvent.change(screen.getByPlaceholderText(/Enter Phone/i), {
+  fireEvent.change(screen.getByPlaceholderText(/^Phone$/i), {
     target: { value: "0771234567" },
   });
 

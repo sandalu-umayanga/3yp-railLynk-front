@@ -1,73 +1,279 @@
-.main-register-container {
-    display: flex;
-    justify-content:center;
-    align-items:center;
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
- }
+/* Modern Register Page with Train Background */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
- /* register Container */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.main-register-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../assets/train_back_forms.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  padding: 20px;
+}
+
+/* Subtle overlay to make background barely visible but ensure card visibility */
+.main-register-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(245, 250, 255, 0.7);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+/* Register Card - both new and legacy styles */
+.register-card,
+.register-container {
+  background: linear-gradient(135deg, #667eea 0%, #4b5ba2 100%);
+  border-radius: 24px;
+  padding: 24px 32px;
+  width: 100%;
+  max-width: 600px;
+  color: white;
+  position: relative;
+  z-index: 10;
+  box-shadow: 
+    0 25px 50px rgba(102, 126, 234, 0.5),
+    0 15px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+  
+/* Title */
+.register-card h2,
+.register-container h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  color: white;
+}
+
+/* Input Groups */
+.input-group {
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.input-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.input-group label svg {
+  width: 16px;
+  height: 16px;
+  opacity: 0.8;
+}
+
+/* Legacy label styles */
+label {
+  display: block;
+  margin: 8px 0 6px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+  
+/* Input Styles */
+.input-group input,
+.input-group select,
+select, input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  margin-bottom: 4px;
+}
+
+.input-group input::placeholder,
+input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.input-group input:focus,
+.input-group select:focus,
+input:focus, select:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.input-group select option,
+option {
+  background: #667eea;
+  color: white;
+}
+  
+/* Error Text */
+.error-text {
+  color: #ff6b6b;
+  font-size: 12px;
+  margin-bottom: 8px;
+  text-align: left;
+  background: rgba(255, 107, 107, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* Register Button */
+.register-button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: white;
+  color: #667eea;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 16px 0;
+}
+
+.register-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.register-button:active {
+  transform: translateY(0);
+}
+
+.register-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Register Message */
+.register-message {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Register Icon */
+.register-icon {
+  width: 56px;
+  height: 56px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  color: #667eea;
+}
+
+.register-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
   .register-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    border-radius: 8px;
-    width: 350px;
-    text-align: center;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    padding: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .register-container {
+    max-width: 600px;
+    padding: 50px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .register-container {
+    max-width: 700px;
+    padding: 60px;
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 400px) {
+  .register-container {
+    width: 90%;
+    max-width: none;
+    padding: 15px;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-register-container {
+    padding: 16px;
   }
   
-  .main-register-container > h2 {
-    margin-bottom: 15px;
-    width: 100%;
-    border-radius: 5px;
-    padding: 5px;
-    background-color: var(--bar-color);
-    color: var(--secondary-text-color);
+  .register-card,
+  .register-container {
+    padding: 20px 16px;
+    max-width: 100%;
+    margin: 10px;
   }
   
-  label {
-    display: block;
-    margin: 10px 0 5px;
-    font-size: 1rem;
+  .register-card h2,
+  .register-container h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
   }
   
-  select, input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 5px;
+  .register-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
   }
   
-  input {
-    border: 1px solid #ccc;
+  .register-icon svg {
+    width: 20px;
+    height: 20px;
   }
-  
-  /* register Button */
-  .register-button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    background-color: var(--bar-color);
-    color: var(--secondary-text-color);
+}
+
+@media (max-width: 360px) {
+  .register-card,
+  .register-container {
+    padding: 16px 12px;
   }
-  
-  .register-button:hover {
-    scale: 0.9;
-  }
-  
-  /* Mobile Responsiveness */
-  @media (max-width: 400px) {
-    .register-container {
-      width: 90%;
-      padding: 15px;
-    }
-  }
-  
+}

@@ -1,3 +1,6 @@
+/* Import shared sidebar styles */
+@import './sidebar.css';
+
 /* CSS Variables */
 :root {
   --bar-color: #1e3a8a;
@@ -23,100 +26,12 @@
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-/* Sidebar Styles */
-.sidebar {
-  background-color: var(--bar-color);
-  color: var(--sidebar-text);
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  transition: width var(--transition-speed);
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  overflow-y: auto;
-  justify-content: center;
-  align-items: center;
-}
-
-.sidebar.open {
-  width: var(--sidebar-width);
-}
-
-.sidebar.closed {
-  width: var(--sidebar-collapsed-width);
-}
-
-.menu-button {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-  z-index: 1100;
-  padding: 5px;
-}
-
-.menu-list {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
-}
-
-.menu-item {
-  display: flex;
-  align-items: center;
-  padding: 15px 20px;
-  color: white;
-  text-decoration: none;
-  transition: background-color 0.2s;
-  white-space: nowrap;
-  overflow: hidden;
-  border: none;
-  width: 100%;
-  text-align: left;
-  background: none;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.menu-item:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-}
-
-.menu-item svg {
-  margin-right: 15px;
-  min-width: 20px;
-  color: white;
-}
-
-.logout-button {
-  color: #ff6b6b;
-  margin-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 20px;
-}
-
-.logout-button svg {
-  color: #ff6b6b;
-}
-
-.logout-button:hover {
-  background-color: rgba(255, 0, 0, 0.1);
-  color: #ff6b6b;
-}
-
 /* Main Content */
 .main-content {
   flex: 1;
   padding: 2rem;
   overflow-y: auto;
   max-height: 100vh;
-  margin-left: var(--sidebar-width);
   transition: margin-left var(--transition-speed);
 }
 
@@ -144,7 +59,6 @@
   margin: 0;
   background: linear-gradient(45deg, #ffffff, #e5f3ff);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
@@ -498,34 +412,6 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .dashboard-container {
-    flex-direction: column;
-  }
-  
-  .sidebar.open {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    z-index: 1000;
-  }
-  
-  .sidebar.closed {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-  
-  .main-content {
-    padding: 1rem;
-    margin-left: 0;
-  }
-  
-  .main-content.sidebar-closed {
-    margin-left: 0;
-  }
-  
   .dashboard-title {
     font-size: 2rem;
   }
@@ -545,6 +431,16 @@
   
   .tips-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .main-content {
+    padding: 1rem 0.5rem;
   }
 }
 

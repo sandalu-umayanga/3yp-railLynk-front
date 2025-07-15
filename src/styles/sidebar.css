@@ -1,0 +1,155 @@
+/* Shared Sidebar Styles for All Dashboards */
+
+/* Sidebar Container */
+.sidebar {
+  background-color: var(--bar-color);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 60px;
+  transition: width 0.3s ease;
+  z-index: 100;
+  overflow-x: hidden;
+    padding-top: 10px;
+}
+
+.sidebar.open {
+    z-index: 1000;
+  width: 220px;
+}
+
+.sidebar.closed {
+  width: 60px;
+}
+
+/* Menu Button */
+.menu-button {
+  margin-top: 70px;
+  margin-left: 6px;
+  display: block;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.menu-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Menu List */
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Menu Items */
+.menu-item {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.menu-item svg {
+  color: white;
+  margin-right: 15px;
+}
+
+/* Logout Button Styling */
+.logout-button {
+  color: #ff6b6b;
+}
+
+.logout-button svg {
+  color: #ff6b6b;
+}
+
+.logout-button:hover {
+  background-color: rgba(255, 0, 0, 0.1);
+  color: #ff6b6b;
+}
+
+/* Main Content Adjustment for Sidebar */
+.main-content {
+  margin-left: 60px;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar.open + .main-content {
+  margin-left: 220px;
+}
+
+/* Responsive Design for Sidebar */
+@media (max-width: 992px) {
+  .charts-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  
+  
+  .main-content {
+    margin-left: 60px;
+  }
+  
+
+}
+
+@media (max-width: 576px) {
+  /* Ensure sidebar is always visible on mobile */
+  .sidebar {
+    width: 50px; /* Slightly smaller on mobile but always visible */
+    position: absolute;
+    z-index: 1000;
+  }
+  
+  .sidebar.open {
+    position: absolute;
+    z-index: 1000;
+    width: 180px; /* Smaller width when open to leave room for content */
+  }
+  
+  .main-content {
+    margin-left: 50px; /* Adjust content to account for visible sidebar */
+  }
+  
+  .sidebar.open + .main-content {
+    margin-left: 180px;
+  }
+  
+  /* Adjust menu items for mobile */
+  .menu-item {
+    padding: 12px 8px;
+    font-size: 0.9rem;
+  }
+  
+  .menu-item svg {
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+  
+  /* Make menu button slightly smaller on mobile */
+  .menu-button {
+    padding: 12px;
+  }
+}

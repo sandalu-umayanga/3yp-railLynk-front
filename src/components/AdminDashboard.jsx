@@ -18,23 +18,8 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell
 } from 'recharts';
 
-/**
- * AdminDashboard Component
- * 
- * Features:
- * - Real-time dashboard statistics
- * - Live GPS tracking with timestamps
- * - Color-coded timestamp freshness indicators:
- *   - Green: Data updated within last 2 minutes
- *   - Yellow: Data updated 2-5 minutes ago
- *   - Red: Data older than 5 minutes
- * - Automatic refresh intervals:
- *   - Dashboard stats: every 5 minutes
- *   - GPS tracking: every 10 seconds
- */
-
 const AdminDashboard = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
   const navigate = useNavigate();
   const [dashboardStats, setDashboardStats] = useState({
     totalCardsIssuedToday: 0,
@@ -92,9 +77,9 @@ const AdminDashboard = () => {
             { id: 3, trainName: "Northern Express", destination: "Jaffna", departure: "12:45 PM", platform: 5 }
           ],
           trainsTracking: [
-            { id: 101, name: "Express 101", status: "On time", location: "Approaching Gampaha", lastUpdated: new Date(Date.now() - 60000).toLocaleString() }, // 1 minute ago (fresh)
-            { id: 102, name: "Coastal Line", status: "Delayed (15m)", location: "Departed Panadura", lastUpdated: new Date(Date.now() - 240000).toLocaleString() }, // 4 minutes ago (stale)
-            { id: 103, name: "Northern Express", status: "On time", location: "At Kurunegala", lastUpdated: new Date(Date.now() - 420000).toLocaleString() } // 7 minutes ago (old)
+            { id: 101, name: "Express 101", status: "On time", location: "Approaching Gampaha" },
+            { id: 102, name: "Coastal Line", status: "Delayed (15m)", location: "Departed Panadura" },
+            { id: 103, name: "Northern Express", status: "On time", location: "At Kurunegala" }
           ],
           revenueData: revenueChartData
         });
@@ -119,9 +104,9 @@ const AdminDashboard = () => {
             { id: 3, trainName: "Northern Express", destination: "Jaffna", departure: "12:45 PM", platform: 5 }
           ],
           trainsTracking: [
-            { id: 101, name: "Express 101", status: "On time", location: "Approaching Gampaha", lastUpdated: new Date(Date.now() - 60000).toLocaleString() }, // 1 minute ago (fresh)
-            { id: 102, name: "Coastal Line", status: "Delayed (15m)", location: "Departed Panadura", lastUpdated: new Date(Date.now() - 240000).toLocaleString() }, // 4 minutes ago (stale)
-            { id: 103, name: "Northern Express", status: "On time", location: "At Kurunegala", lastUpdated: new Date(Date.now() - 420000).toLocaleString() } // 7 minutes ago (old)
+            { id: 101, name: "Express 101", status: "On time", location: "Approaching Gampaha" },
+            { id: 102, name: "Coastal Line", status: "Delayed (15m)", location: "Departed Panadura" },
+            { id: 103, name: "Northern Express", status: "On time", location: "At Kurunegala" }
           ],
           revenueData: [
             { name: 'Dec', amount: 0 },
@@ -139,39 +124,11 @@ const AdminDashboard = () => {
 
     fetchDashboardData();
 
-    // Set up interval for real-time updates (every 30 seconds for dashboard stats)
-    const dashboardIntervalId = setInterval(fetchDashboardData, 300000);
+    // Set up interval for real-time updates (every 30 seconds)
+    const intervalId = setInterval(fetchDashboardData, 300000);
 
-    // Set up more frequent interval for live GPS tracking (every 10 seconds)
-    const trackingIntervalId = setInterval(fetchLiveTrackingData, 10000);
-
-    return () => {
-      clearInterval(dashboardIntervalId);
-      clearInterval(trackingIntervalId);
-    };
+    return () => clearInterval(intervalId);
   }, []);
-
-  // Function to fetch live GPS tracking data
-  const fetchLiveTrackingData = async () => {
-    try {
-      const response = await API.get('admin/live-tracking');
-      
-      // Transform the response to include formatted timestamps
-      const trackingData = response.data.map(train => ({
-        ...train,
-        lastUpdated: new Date(train.timestamp || train.last_updated || Date.now()).toLocaleString()
-      }));
-      
-      // Update only the tracking data to avoid overwriting other dashboard stats
-      setDashboardStats(prevStats => ({
-        ...prevStats,
-        trainsTracking: trackingData
-      }));
-    } catch (error) {
-      console.error("Error fetching live tracking data:", error);
-      // Keep existing mock data if API fails
-    }
-  };
 
   const handleLogout = () => {
     localStorage.clear();
@@ -181,17 +138,6 @@ const AdminDashboard = () => {
   };
 
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
-
-  // Function to get timestamp freshness class
-  const getTimestampFreshness = (lastUpdated) => {
-    const now = new Date();
-    const updateTime = new Date(lastUpdated);
-    const diffMinutes = (now - updateTime) / (1000 * 60);
-    
-    if (diffMinutes < 2) return 'timestamp-fresh';
-    if (diffMinutes < 5) return 'timestamp-stale';
-    return 'timestamp-old';
-  };
 
   return (
     <div className="dashboard-container">
@@ -374,16 +320,6 @@ const AdminDashboard = () => {
             {/* Live Train Tracking Status */}
             <div className="data-container">
               <h3><FiMap /> Live Train Tracking</h3>
-              
-              {/* Timestamp Legend */}
-              <div className="timestamp-legend">
-                <small>
-                  <span className="timestamp-fresh">● Fresh (≤2 min)</span>
-                  <span className="timestamp-stale">● Stale (2-5 min)</span>
-                  <span className="timestamp-old">● Old (&gt;5 min)</span>
-                </small>
-              </div>
-              
               <div className="table-wrapper">
                 <table className="data-table">
                   <thead>
@@ -392,7 +328,6 @@ const AdminDashboard = () => {
                       <th>Name</th>
                       <th>Status</th>
                       <th>Current Location</th>
-                      <th>Last Updated</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -404,7 +339,6 @@ const AdminDashboard = () => {
                           {train.status}
                         </td>
                         <td>{train.location}</td>
-                        <td className={getTimestampFreshness(train.lastUpdated)}>{train.lastUpdated}</td>
                       </tr>
                     ))}
                   </tbody>

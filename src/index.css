@@ -40,3 +40,7 @@ body {
 body {
   font-family: var(--font-family);
 }
+
+h2 {
+  color: white;
+}

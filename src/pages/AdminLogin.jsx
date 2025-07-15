@@ -74,26 +74,50 @@ const AdminLogin = () => {
 
 return (
     <div className="main-login-container">
-        <div className="login-container">
-            <h2>Admin Login</h2>
+        <div className="login-card">
+            <div className="login-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L22 7L12 12L2 7L12 2Z" fill="currentColor"/>
+                    <path d="M2 17L12 22L22 17M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+            </div>
+            
+            <h2>ADMIN LOGIN</h2>
 
-            <label htmlFor="username">UserName:</label>
-            <input
-                type="text"
-                id="username"
-                value={username}
-                onChange={(e) => setusername(e.target.value)}
-                placeholder="Enter username"
-            />
+            <div className="input-group">
+                <label htmlFor="username">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 21V19C20 16.7909 18.2091 15 16 15H8C5.79086 15 4 16.7909 4 19V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <circle cx="12" cy="7" r="4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    Username
+                </label>
+                <input
+                    type="text"
+                    id="username"
+                    value={username}
+                    onChange={(e) => setusername(e.target.value)}
+                    placeholder="Username"
+                />
+            </div>
 
-            <label htmlFor="password">Password:</label>
-            <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter password"
-            />
+            <div className="input-group">
+                <label htmlFor="password">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" strokeWidth="2"/>
+                        <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                        <path d="M7 11V7C7 4.23858 9.23858 2 12 2S17 4.23858 17 7V11" stroke="currentColor" strokeWidth="2"/>
+                    </svg>
+                    Password
+                </label>
+                <input
+                    type="password"
+                    id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Password"
+                />
+            </div>
 
             <button
                 className="login-button"
@@ -103,7 +127,6 @@ return (
                     }
                 }}
                 disabled={loading}
-
             >
                 {loading ? "Logging in..." : "Login"} 
             </button>

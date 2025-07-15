@@ -9,8 +9,8 @@ test("displays password mismatch error", async () => {
     </MemoryRouter>
   );
 
-  const emailInput = screen.getByPlaceholderText(/enter email/i);
-  const passwordInput = screen.getByPlaceholderText(/enter password/i);
+  const emailInput = screen.getByPlaceholderText(/email/i);
+  const passwordInput = screen.getByPlaceholderText(/^password$/i);
   const confirmPasswordInput = screen.getByPlaceholderText(/confirm password/i);
 
   fireEvent.change(emailInput, { target: { value: "test@example.com" } });

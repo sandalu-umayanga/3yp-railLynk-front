@@ -1,3 +1,6 @@
+/* Import shared sidebar styles */
+@import './sidebar.css';
+
 /* Dashboard Container */
 .dashboard-container {
   display: flex;
@@ -6,74 +9,12 @@
   font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
 }
 
-/* Make sidebar background darker to contrast with white text */
-.sidebar {
-  background-color: var(--bar-color);
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  top: 0;
-  height: 100%;
-  transition: width 0.3s;
-  z-index: 1000;
-  justify-content: center;
-  align-items: center;
-  padding-top: 65px !important;
-}
-
-/* Make menu button white */
-.menu-button {
-  color: white;
-}
-
-
-/* Make menu items white */
-.menu-item {
-  padding: 15px;
-  display: flex;
-  align-items: center;
-  color: white; /* Change text color to white */
-  text-decoration: none;
-  transition: background-color 0.2s;
-  white-space: nowrap;
-  border: none;
-  background: none;
-  width: 100%;
-  text-align: left;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-/* Make icons white */
-.menu-item svg {
-  color: white;
-  margin-right: 15px;
-}
-
-/* Adjust hover state for better visibility */
-.menu-item:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-}
-
-/* Keep logout button red text but with white icon */
-.logout-button {
-  color: #ff6b6b;
-}
-
-.logout-button svg {
-  color: #ff6b6b;
-}
-
-.logout-button:hover {
-  background-color: rgba(255, 0, 0, 0.1);
-  color: #ff6b6b;
-}
 /* Main Content Styles */
 .main-content {
   flex: 1;
   padding: 20px;
-  margin-left: 60px;
-  transition: margin-left 0.3s;
+  transition: margin-left 0.3s ease;
+  min-height: 100vh;
 }
 
 .sidebar.open + .main-content {
@@ -243,50 +184,7 @@
   color: #dc3545;
 }
 
-/* Timestamp styling */
-.data-table td:last-child {
-  font-size: 0.85em;
-  color: #6c757d;
-  font-style: italic;
-}
-
-/* Live tracking timestamp indicator */
-.timestamp-fresh {
-  color: #28a745;
-  font-weight: 500;
-}
-
-.timestamp-stale {
-  color: #ffc107;
-  font-weight: 500;
-}
-
-.timestamp-old {
-  color: #dc3545;
-  font-weight: 500;
-}
-
-/* Timestamp legend */
-.timestamp-legend {
-  margin-bottom: 15px;
-  padding: 8px 12px;
-  background-color: #f8f9fa;
-  border-radius: 4px;
-  border-left: 4px solid #007bff;
-}
-
-.timestamp-legend span {
-  margin-right: 15px;
-  font-weight: 500;
-}
-
 /* Responsive Adjustments */
-@media (max-width: 992px) {
-  .charts-row {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media (max-width: 768px) {
   .stats-row {
     grid-template-columns: 1fr 1fr;
@@ -296,13 +194,5 @@
 @media (max-width: 576px) {
   .stats-row {
     grid-template-columns: 1fr;
-  }
-  
-  .sidebar.open + .main-content {
-    margin-left: 0;
-  }
-  
-  .sidebar.open {
-    width: 100%;
   }
 }

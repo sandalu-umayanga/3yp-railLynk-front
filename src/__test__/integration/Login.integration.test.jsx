@@ -45,7 +45,7 @@ describe("Login Integration Test", () => {
     renderWithRouter(<Login />);
 
     // Fill the form
-    fireEvent.change(screen.getByLabelText(/email/i), {
+    fireEvent.change(screen.getByLabelText(/username/i), {
       target: { value: "passenger@test.com" },
     });
     fireEvent.change(screen.getByLabelText(/password/i), {
@@ -86,7 +86,7 @@ describe("Login Integration Test", () => {
       target: { value: "Colombo" },
     });
 
-    fireEvent.change(screen.getByLabelText(/email/i), {
+    fireEvent.change(screen.getByLabelText(/username/i), {
       target: { value: "station@test.com" },
     });
     fireEvent.change(screen.getByLabelText(/password/i), {
