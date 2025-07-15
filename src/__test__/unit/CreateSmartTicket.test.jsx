@@ -11,5 +11,5 @@ test("renders Create Smart Ticket page", () => {
   );
   
   expect(screen.getByText(/Create Smart Ticket/i)).toBeInTheDocument();
-  expect(screen.getByText(/NIC Number:/i)).toBeInTheDocument();
+  expect(screen.getByText(/NIC Number/i)).toBeInTheDocument();
 });
