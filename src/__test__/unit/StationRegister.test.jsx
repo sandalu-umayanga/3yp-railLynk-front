@@ -12,5 +12,5 @@ test("renders Station Register page", () => {
   
   // Check if registration form is rendered
   expect(screen.getByText(/Station Signup/i)).toBeInTheDocument();
-  expect(screen.getByText(/Station ID:/i)).toBeInTheDocument();
+  expect(screen.getByPlaceholderText(/Station ID/i)).toBeInTheDocument();
 });

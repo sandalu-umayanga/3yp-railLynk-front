@@ -28,19 +28,19 @@ describe("StationRegister Integration Test", () => {
       </MemoryRouter>
     );
 
-    fireEvent.change(screen.getByPlaceholderText("Enter Station ID"), {
+    fireEvent.change(screen.getByPlaceholderText("Station ID"), {
       target: { value: "ST001" },
     });
-    fireEvent.change(screen.getByPlaceholderText("Enter Station Name"), {
+    fireEvent.change(screen.getByPlaceholderText("Station Name"), {
       target: { value: "Colombo Fort" },
     });
-    fireEvent.change(screen.getByPlaceholderText("Enter Email"), {
+    fireEvent.change(screen.getByPlaceholderText("Email"), {
       target: { value: "station@example.com" },
     });
-    fireEvent.change(screen.getByPlaceholderText("Enter Phone Number"), {
+    fireEvent.change(screen.getByPlaceholderText("Phone Number"), {
       target: { value: "0771234567" },
     });
-    fireEvent.change(screen.getByPlaceholderText("Enter Password"), {
+    fireEvent.change(screen.getByPlaceholderText("Password"), {
       target: { value: "password123" },
     });
     fireEvent.change(screen.getByPlaceholderText("Confirm Password"), {

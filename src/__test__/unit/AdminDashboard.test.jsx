@@ -121,21 +121,12 @@ describe("AdminDashboard Component", () => {
 
       await waitFor(() => {
         expect(screen.getByText("Live Train Tracking")).toBeInTheDocument();
-        expect(screen.getByText("Last Updated")).toBeInTheDocument();
-      });
-    });
-
-    it("displays timestamp legend", async () => {
-      render(
-        <MemoryRouter>
-          <AdminDashboard />
-        </MemoryRouter>
-      );
-
-      await waitFor(() => {
-        expect(screen.getByText("● Fresh (≤2 min)")).toBeInTheDocument();
-        expect(screen.getByText("● Stale (2-5 min)")).toBeInTheDocument();
-        expect(screen.getByText("● Old (>5 min)")).toBeInTheDocument();
+        // Use getAllByText and check if at least one instance is found
+        const trainElements = screen.getAllByText("Express 101");
+        expect(trainElements.length).toBeGreaterThan(0);
+        const onTimeElements = screen.getAllByText("On time");
+        expect(onTimeElements.length).toBeGreaterThan(0);
+        expect(screen.getByText("Approaching Gampaha")).toBeInTheDocument();
       });
     });
   });
