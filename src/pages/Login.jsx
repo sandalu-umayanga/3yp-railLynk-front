@@ -138,7 +138,7 @@ const Login = () => {
           {loading ? "Logging in..." : "Login"}
         </button>
 
-        <a href="#" className="forgot-password">Forgot Password?</a>
+        <a href="/forgot-password" className="forgot-password">Forgot Password?</a>
 
         {message && <p className="login-message">{message}</p>}
       </div>

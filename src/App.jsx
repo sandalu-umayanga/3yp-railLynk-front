@@ -21,8 +21,7 @@ import RechargeHistory from "./pages/RechargeHistory";
 import PassengerTrainTracking from "./components/PassengerTrainTracking";
 import AdminTracking from "./components/AdminTracking";
 import GooglePayRecharge from './components/GooglePayRecharge';
-
-
+import ForgotPassword from "./pages/ForgotPassword";
 
 
 function App() {
@@ -34,6 +33,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
 
           {/* Admin-only routes */}
           <Route element={<ProtectedRoute allowedRoles={["admin", "station"]} redirectPath="/" />}>
