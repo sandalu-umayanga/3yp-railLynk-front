@@ -1,4 +1,6 @@
 
+/* Import shared sidebar styles */
+@import './sidebar.css';
 
 /* Dashboard Container */
 .dashboard-container {
@@ -8,103 +10,16 @@
   background-color: #f5f7fb;
 }
 
-/* Sidebar */
-.sidebar {
-  background-color: var(--bar-color);
-  color: var(--sidebar-text);
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  transition: width var(--transition-speed);
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  overflow-y: auto;
-  justify-content: center;
-  align-items: center;
-}
-
-.sidebar.open {
-  width: var(--sidebar-width);
-}
-
-.sidebar.closed {
-  width: var(--sidebar-collapsed-width);
-}
-
-.menu-button {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-  z-index: 1100;
-  padding: 5px;
-}
-
-.menu-list {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
-}
-
-.menu-item {
-  display: flex;
-  align-items: center;
-  padding: 15px 20px;
-  color: white;
-  text-decoration: none;
-  transition: background-color 0.2s;
-  white-space: nowrap;
-  overflow: hidden;
-  border: none;
-  width: 100%;
-  text-align: left;
-  background: none;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.menu-item:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-}
-
-.menu-item svg {
-  margin-right: 15px;
-  min-width: 20px;
-  color: white;
-}
-
-.logout-button {
-  color: #ff6b6b;
-  margin-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 20px;
-}
-
-.logout-button svg {
-  color: #ff6b6b;
-}
-
-.logout-button:hover {
-  background-color: rgba(255, 0, 0, 0.1);
-  color: #ff6b6b;
-}
-
 /* Main Content */
 .main-content {
   flex: 1;
   padding: 20px;
-  margin-left: var(--sidebar-collapsed-width);
-  transition: margin-left var(--transition-speed);
+  transition: margin-left 0.3s ease;
+  min-height: 100vh;
 }
 
 .sidebar.open + .main-content {
-  margin-left: var(--sidebar-width);
+  margin-left: 220px;
 }
 
 /* Loading Overlay */
@@ -1577,21 +1492,13 @@ td.delayed {
   }
 }
 
+@media (max-width: 992px) {
+  .charts-row {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%);
-  }
-  
-  .sidebar.open {
-    transform: translateX(0);
-    width: 100%;
-    max-width: 300px;
-  }
-  
-  .main-content {
-    margin-left: 0 !important;
-  }
-  
   .tab-navigation {
     overflow-x: auto;
     white-space: nowrap;
@@ -1683,13 +1590,5 @@ td.delayed {
 
   .stats-row {
     grid-template-columns: 1fr;
-  }
-  
-  .sidebar.open + .main-content {
-    margin-left: 0;
-  }
-  
-  .sidebar.open {
-    width: 100%;
   }
 }

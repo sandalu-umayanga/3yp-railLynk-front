@@ -12,6 +12,7 @@
 .announcement-card > h2 {
     margin-bottom: 15px;
     text-align: center;
+    color: #000;
 }
 
 .announcement-card > p {

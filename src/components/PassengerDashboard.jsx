@@ -8,7 +8,7 @@ import { USER_DATA, PASSENGER_ID } from "../constants";
 import API from "../api";
 
 const PassengerDashboard = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
   const [passengerData, setPassengerData] = useState({});
   const [balance, setBalance] = useState(0);
   const [recentTransactions, setRecentTransactions] = useState([]);
