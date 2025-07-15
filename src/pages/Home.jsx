@@ -74,7 +74,18 @@ const Home = () => {
       >
         <h1>Welcome to RailLynk</h1>
         <p>Your modern solution for train ticketing, tracking, and travel planning</p>
+      </div>
 
+      {/* Enhanced Train Animation Container */}
+      <div className="train-animation-container">
+        <div className="train-track"></div>
+        <div className="train-cab"></div>
+        <div className="train-headlight"></div>
+        <div className="train-wheels"></div>
+        <div className="train-smoke"></div>
+        <div className="train-smoke"></div>
+        <div className="train-smoke"></div>
+        <div className="train-smoke"></div>
       </div>
       
       <div className="home-anouncements">
