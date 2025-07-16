@@ -10,7 +10,7 @@ import {
 import "../styles/stationDashboard.css";
 import { useNavigate } from "react-router-dom";
 import API from "../api"; // Import API service
-
+import { STATION_ID } from "../constants";
 // You'll need to install these packages:
 // npm install react-calendar recharts leaflet react-leaflet
 
@@ -55,6 +55,36 @@ const StationDashboard = () => {
   const [announcements, setAnnouncements] = useState([]);
   const [incidents, setIncidents] = useState([]);
   const [platformOccupancyData, setPlatformOccupancyData] = useState([]);
+  const [stationStats, setStationStats] = useState(null); // New state for station statistics
+const sampleStationData = {
+  station_id: "STN001",
+  station_name: "Colombo Fort",
+  issued_today: 42,
+
+  incoming_passengers: 120,
+  top_incoming_sources: [
+    { S_station: "Kandy", count: 30 },
+    { S_station: "Galle", count: 25 },
+    { S_station: "Matara", count: 20 },
+    { S_station: "Kurunegala", count: 18 },
+    { S_station: "Jaffna", count: 15 }
+  ],
+
+  outgoing_passengers: 95,
+  top_outgoing_destinations: [
+    { E_station: "Kandy", count: 22 },
+    { E_station: "Anuradhapura", count: 20 },
+    { E_station: "Badulla", count: 19 },
+    { E_station: "Matale", count: 17 },
+    { E_station: "Vavuniya", count: 17 }
+  ],
+
+  trains_through_station: [
+    { train_name: "Ruhunu Kumari", location: "Kalutara", last_station: "Galle", route: "R01" },
+    { train_name: "Udarata Menike", location: "Colombo Fort", last_station: "Kandy", route: "R02" },
+    { train_name: "Yal Devi", location: "Colombo Fort", last_station: "Vavuniya", route: "R03" }
+  ]
+};
 
   // Add window resize listener
   useEffect(() => {
@@ -76,6 +106,43 @@ const StationDashboard = () => {
 
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+  const fetchStationStatistics = async () => {
+    const stationId = localStorage.getItem(STATION_ID); // ✅ Get inside function
+
+    if (!stationId) {
+      setError("Station ID not found. Please log in again.");
+      setLoading(false);
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await API.get(`station/statistics/${stationId}/`);
+      setStationStats(response.data);
+      {/*
+        if (response.data.issued_today === 0) {
+        // Inject test sample if all counts are zero
+        setStationStats(sampleStationData);
+      } else {
+        setStationStats(response.data);
+      }
+*/}
+    } catch (err) {
+      console.error("Failed to fetch station statistics:", err);
+      setError("Failed to load statistics.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchStationStatistics();
+  const interval = setInterval(fetchStationStatistics, 300000);
+  return () => clearInterval(interval);
+}, []);
 
   // Fetch all dashboard data
   useEffect(() => {
@@ -329,6 +396,7 @@ const StationDashboard = () => {
   });
 
   return (
+    
     <div className="dashboard-container">
       {/* Sidebar */}
       <div className={`sidebar ${isSidebarOpen ? "open" : "closed"} items`}>
@@ -408,9 +476,10 @@ const StationDashboard = () => {
         )}
 
         {/* Station Header with Controls */}
+        {stationStats && (
         <div className="station-header">
           <div className="station-info">
-            <h1>{stationData.stationName} <span className="station-id">#{stationData.stationId}</span></h1>
+            <h1>{stationStats.station_name} <span className="station-id">#{stationStats.station_id}</span></h1>
             <p className="datetime">{formattedDate} • {formattedTime}</p>
           </div>
           <div className="weather-widget">
@@ -419,6 +488,7 @@ const StationDashboard = () => {
             <span className="weather-cond">{weatherData.condition}</span>
           </div>
         </div>
+        )};
 
         {/* Tab Navigation */}
         <div className="tab-navigation">
@@ -427,18 +497,6 @@ const StationDashboard = () => {
             onClick={() => setCurrentTab('overview')}
           >
             <FiClipboard /> Dashboard Overview
-          </button>
-          <button 
-            className={currentTab === 'schedule' ? 'active' : ''} 
-            onClick={() => setCurrentTab('schedule')}
-          >
-            <FiClock /> Train Schedule
-          </button>
-          <button 
-            className={currentTab === 'platforms' ? 'active' : ''} 
-            onClick={() => setCurrentTab('platforms')}
-          >
-            <FiMapPin /> Platform Management
           </button>
           <button 
             className={currentTab === 'tracking' ? 'active' : ''} 
@@ -452,39 +510,17 @@ const StationDashboard = () => {
           >
             <FiSearch /> Train Lookup
           </button>
-          <button 
-            className={currentTab === 'announcements' ? 'active' : ''} 
-            onClick={() => setCurrentTab('announcements')}
-          >
-            <FiMic /> Announcements
-          </button>
-          <button 
-            className={currentTab === 'staff' ? 'active' : ''} 
-            onClick={() => setCurrentTab('staff')}
-          >
-            <FiUserCheck /> Staff Coordination
-          </button>
-          <button 
-            className={currentTab === 'incidents' ? 'active' : ''} 
-            onClick={() => setCurrentTab('incidents')}
-          >
-            <FiAlertOctagon /> Incident Reports
-          </button>
+
           <button 
             className={currentTab === 'reports' ? 'active' : ''} 
             onClick={() => setCurrentTab('reports')}
           >
             <FiBarChart2 /> Reports
           </button>
-          <button 
-            className={currentTab === 'tools' ? 'active' : ''} 
-            onClick={() => setCurrentTab('tools')}
-          >
-            <FiTool /> Tools & Settings
-          </button>
         </div>
 
         {/* Tab Content based on selection */}
+        {stationStats && (
         <div className="tab-content">
           {/* 1. Dashboard Overview */}
           {currentTab === 'overview' && (
@@ -492,272 +528,121 @@ const StationDashboard = () => {
               <div className="stats-grid">
                 <div className="stat-card arriving">
                   <h3>Trains Arriving Today</h3>
-                  <div className="stat-value">{stationData.arrivingTrainsToday}</div>
+                  <div className="stat-value">{stationStats.trains_through_station.length}</div>
                 </div>
                 <div className="stat-card departing">
                   <h3>Trains Departing Today</h3>
-                  <div className="stat-value">{stationData.departingTrainsToday}</div>
+                  <div className="stat-value">{stationStats.trains_through_station.length}</div>
                 </div>
                 <div className="stat-card occupancy">
                   <h3>Platform Occupancy</h3>
                   <div className="stat-value">{stationData.platformOccupancy}%</div>
                 </div>
                 <div className="stat-card delayed">
-                  <h3>Delayed Trains</h3>
-                  <div className="stat-value">{stationData.delayedTrains}</div>
+                  <h3>Cards Issued Today</h3>
+                  <div className="stat-value">{stationStats.issued_today}</div>
+                </div>
+                  <div className="stat-card delayed">
+                  <h3>Incoming Passengers</h3>
+                  <div className="stat-value">{stationStats.incoming_passengers}</div>
+                </div>
+                  <div className="stat-card delayed">
+                  <h3>Outgoing Passengers</h3>
+                  <div className="stat-value">{stationStats.outgoing_passengers}</div>
                 </div>
               </div>
-
-              <div className="emergency-alerts">
-                <h3><FiAlertOctagon /> Emergency Alerts</h3>
-                {stationData.emergencyAlerts > 0 ? (
-                  <div className="alert alert-danger">
-                    <strong>Medical emergency at Platform 3</strong>
-                    <p>Passenger requiring medical assistance. Medical team dispatched.</p>
-                    <div className="alert-actions">
-                      <button>View Details</button>
-                      <button className="danger">Escalate</button>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="no-alerts">No current emergency alerts</div>
-                )}
-              </div>
-
+         
               <div className="overview-panels">
-                <div className="next-arrivals panel">
-                  <h3>Next Arrivals</h3>
-                  <table className="mini-table">
-                    <thead>
-                      <tr>
-                        <th>Train</th>
-                        <th>Time</th>
-                        <th>Platform</th>
-                        <th>Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {trainSchedule.slice(0, 3).map(train => (
-                        <tr key={train.id}>
-                          <td>{train.id} - {train.name}</td>
-                          <td>{train.arrival}</td>
-                          <td>{train.platform}</td>
-                          <td className={train.status === "On Time" ? "on-time" : "delayed"}>
-                            {train.status}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-
-                <div className="next-departures panel">
-                  <h3>Next Departures</h3>
-                  <table className="mini-table">
-                    <thead>
-                      <tr>
-                        <th>Train</th>
-                        <th>Time</th>
-                        <th>Platform</th>
-                        <th>Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {trainSchedule.slice(0, 3).map(train => (
-                        <tr key={train.id}>
-                          <td>{train.id} - {train.name}</td>
-                          <td>{train.departure}</td>
-                          <td>{train.platform}</td>
-                          <td className={train.status === "On Time" ? "on-time" : "delayed"}>
-                            {train.status}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <div className="platform-usage panel">
-                <h3>Platform Occupancy Timeline</h3>
-                <ResponsiveContainer width="100%" height={250}>
-                  <BarChart data={platformOccupancyData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="occupancy" name="Occupancy %" fill="#4a90e2" />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
-          )}
-
-          {/* 2. Train Schedule */}
-          {currentTab === 'schedule' && (
-            <div className="schedule-container">
-              <div className="schedule-controls">
-                <div className="search-box">
-                  <FiSearch />
-                  <input 
-                    type="text" 
-                    placeholder="Search train by ID or name..." 
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                  />
-                </div>
-                <div className="filter-controls">
-                  <select defaultValue="all">
-                    <option value="all">All Trains</option>
-                    <option value="arriving">Arriving</option>
-                    <option value="departing">Departing</option>
-                    <option value="delayed">Delayed</option>
-                  </select>
-                  <select defaultValue="24hours">
-                    <option value="12hours">Next 12 Hours</option>
-                    <option value="24hours">Next 24 Hours</option>
-                    <option value="today">Today</option>
-                  </select>
-                </div>
-              </div>
-
-              <table className="schedule-table">
+            <div className="next-arrivals panel">
+              <h3>Top Incoming Sources</h3>
+              <table className="mini-table">
                 <thead>
                   <tr>
-                    <th>Train ID</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Arrival</th>
-                    <th>Departure</th>
-                    <th>Platform</th>
-                    <th>Status</th>
-                    <th>Delay</th>
-                    <th>Actions</th>
+                    <th>Source Station</th>
+                    <th>Passenger Count</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredTrains.map(train => (
-                    <tr key={train.id} className={train.status !== "On Time" ? "delayed-row" : ""}>
-                      <td>{train.id}</td>
-                      <td>{train.name}</td>
-                      <td>{train.type}</td>
-                      <td>{train.arrival}</td>
-                      <td>{train.departure}</td>
-                      <td>{train.platform}</td>
-                      <td className={train.status === "On Time" ? "on-time" : "delayed"}>
-                        {train.status}
-                      </td>
-                      <td>{train.delay > 0 ? `${train.delay} min` : '-'}</td>
-                      <td className="actions">
-                        <button className="action-btn" title="Announce">
-                          <FiBell />
-                        </button>
-                        <button className="action-btn" title="View Details">
-                          <FiSearch />
-                        </button>
-                        <button className="action-btn" title="Update Status">
-                          <FiClock />
-                        </button>
-                      </td>
+                  {stationStats.top_incoming_sources.map((source, index) => (
+                    <tr key={index}>
+                      <td>{source.S_station}</td>
+                      <td>{source.count}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-          )}
+          </div>
+            <div className="overview-panels">
+              <div className="next-arrivals panel">
+                <h3>Top Outgoing Destinations</h3>
+                <table className="mini-table">
+                  <thead>
+                    <tr>
+                      <th>Destination Station</th>
+                      <th>Passenger Count</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {stationStats.top_outgoing_destinations.map((destination, index) => (
+                      <tr key={index}>
+                        <td>{destination.E_station}</td>
+                        <td>{destination.count}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
 
-          {/* 3. Platform Management */}
-          {currentTab === 'platforms' && (
-            <div className="platforms-container">
-              <div className="platform-status">
-                <h3>Current Platform Status</h3>
-                <div className="platform-grid">
-                  {platformData.map(platform => (
-                    <div 
-                      key={platform.platform} 
-                      className={`platform-card ${platform.status.toLowerCase()}`}
-                    >
-                      <h4>Platform {platform.platform}</h4>
-                      <div className="platform-details">
-                        {platform.train ? (
-                          <>
-                            <p className="train-id">{platform.train}</p>
-                            <p>Arrival: {platform.arrivalTime}</p>
-                            <p>Departure: {platform.departureTime}</p>
-                          </>
-                        ) : (
-                          <p className="no-train">
-                            {platform.status === "Maintenance" ? "Under Maintenance" : "No Train Assigned"}
-                          </p>
-                        )}
-                      </div>
-                      <div className="platform-actions">
-                        <button className="btn" onClick={() => handlePlatformChange(platform.platform, {status: 'Reassigned'})}>
-                          Reassign
-                        </button>
-                        <button className="btn">Details</button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+            <div className="overview-panels">
+              <div className="next-arrivals panel">
+                <h3>Trains Through Station</h3>
+                <table className="mini-table">
+                  <thead>
+                    <tr>
+                      <th>Train Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {stationStats.trains_through_station.map((train, index) => (
+                      <tr key={index}>
+                        <td>{train.train_name}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+             <div className="platform-usage panel">
+                <h3>Top Incoming Sources</h3>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <BarChart data={stationStats.top_incoming_sources}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="S_station" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Bar dataKey="count" fill="#4CAF50" />
+                    </BarChart>
+                  </ResponsiveContainer>
               </div>
 
-              <div className="platform-timeline">
-                <h3>Platform Timeline (Next 6 Hours)</h3>
-                <div className="timeline-chart">
-                  {/* Simplified Gantt chart representation */}
-                  <div className="timeline-header">
-                    <div className="timeline-platform-label">Platform</div>
-                    <div className="timeline-hours">
-                      <span>Now</span>
-                      <span>+1h</span>
-                      <span>+2h</span>
-                      <span>+3h</span>
-                      <span>+4h</span>
-                      <span>+5h</span>
-                      <span>+6h</span>
-                    </div>
-                  </div>
-                  {platformData.map(platform => (
-                    <div key={platform.platform} className="timeline-row">
-                      <div className="timeline-platform-number">P-{platform.platform}</div>
-                      <div className="timeline-slots">
-                        {/* This would be dynamically generated based on schedule */}
-                        {platform.train && (
-                          <div 
-                            className={`timeline-train ${platform.status.toLowerCase()}`}
-                            style={{ 
-                              width: '120px', 
-                              left: '50px'
-                            }}
-                          >
-                            {platform.train}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <div className="platform-usage panel">
+                <h3>Top Outgoing Sources</h3>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <BarChart data={stationStats.top_incoming_sources}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="S_station" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Bar dataKey="count" fill="#4CAF50" />
+                    </BarChart>
+                  </ResponsiveContainer>
               </div>
 
-              <div className="platform-management">
-                <h3>Platform Management Tools</h3>
-                <div className="management-actions">
-                  <div className="action-group">
-                    <h4>Quick Actions</h4>
-                    <button className="btn">Reassign Platform</button>
-                    <button className="btn">Mark Platform Unavailable</button>
-                    <button className="btn">Send Platform Alert</button>
-                  </div>
-                  <div className="action-group">
-                    <h4>Platform Settings</h4>
-                    <button className="btn">Configure Defaults</button>
-                    <button className="btn">Platform Capacity</button>
-                    <button className="btn">Maintenance Schedule</button>
-                  </div>
-                </div>
-              </div>
             </div>
           )}
 
@@ -934,282 +819,6 @@ const StationDashboard = () => {
               </div>
             </div>
           )}
-
-          {/* 6. Announcement Panel */}
-          {currentTab === 'announcements' && (
-            <div className="announcements-container">
-              <div className="create-announcement">
-                <h3>Create New Announcement</h3>
-                <div className="announcement-form">
-                  <div className="form-group">
-                    <label>Type</label>
-                    <select>
-                      <option value="general">General</option>
-                      <option value="trainSpecific">Train Specific</option>
-                      <option value="delay">Delay</option>
-                      <option value="platform">Platform Change</option>
-                      <option value="emergency">Emergency</option>
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label>Select Train (optional)</label>
-                    <select>
-                      <option value="">All Trains</option>
-                      {trainSchedule.map(train => (
-                        <option key={train.id} value={train.id}>
-                          {train.id} - {train.name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label>Announcement Message</label>
-                    <textarea rows="4" placeholder="Type announcement message..."></textarea>
-                  </div>
-                  <div className="form-group">
-                    <label>Announcement Language</label>
-                    <div className="language-options">
-                      <label>
-                        <input type="checkbox" checked readOnly />
-                        English
-                      </label>
-                      <label>
-                        <input type="checkbox" />
-                        Sinhala
-                      </label>
-                      <label>
-                        <input type="checkbox" />
-                        Tamil
-                      </label>
-                    </div>
-                  </div>
-                  <div className="form-actions">
-                    <button className="btn preview-btn">Preview</button>
-                    <button className="btn announce-btn" onClick={() => addAnnouncement({
-                      message: "New test announcement",
-                      type: "General"
-                    })}>Make Announcement</button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="auto-announcements">
-                <h3>Auto Announcements</h3>
-                <div className="auto-settings">
-                  <label>
-                    <input type="checkbox" checked />
-                    Train arrivals (5 min before)
-                  </label>
-                  <label>
-                    <input type="checkbox" checked />
-                    Train departures (10 min before)
-                  </label>
-                  <label>
-                    <input type="checkbox" checked />
-                    Platform changes
-                  </label>
-                  <label>
-                    <input type="checkbox" />
-                    Delay updates
-                  </label>
-                </div>
-              </div>
-
-              <div className="announcement-history">
-                <h3>Recent Announcements</h3>
-                <table className="announcement-table">
-                  <thead>
-                    <tr>
-                      <th>Time</th>
-                      <th>Type</th>
-                      <th>Message</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {announcements.map(announcement => (
-                      <tr key={announcement.id}>
-                        <td>{announcement.time}</td>
-                        <td>{announcement.type}</td>
-                        <td>{announcement.message}</td>
-                        <td className="actions">
-                          <button className="action-btn" title="Repeat Announcement">
-                            <FiMic />
-                          </button>
-                          <button className="action-btn" title="Edit">
-                            <FiEdit />
-                          </button>
-                          <button className="action-btn" title="Delete">
-                            <FiTrash />
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          )}
-
-          {/* 7. Staff Coordination Panel */}
-          {currentTab === 'staff' && (
-            <div className="staff-container">
-              <h3>Staff Roster</h3>
-              <table className="staff-table">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Role</th>
-                    <th>Shift</th>
-                    <th>Contact</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {staffData.map(staff => (
-                    <tr key={staff.id}>
-                      <td>{staff.name}</td>
-                      <td>{staff.role}</td>
-                      <td>{staff.shift}</td>
-                      <td>{staff.contact}</td>
-                      <td>On Duty</td>
-                      <td className="actions">
-                        <button className="action-btn" title="Call">
-                          <FiPhone />
-                        </button>
-                        <button className="action-btn" title="Message">
-                          <FiMail />
-                        </button>
-                        <button className="action-btn" title="Edit">
-                          <FiEdit />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-
-              <div className="staff-management">
-                <h3>Shift Management</h3>
-                <div className="calendar-container">
-                  <Calendar />
-                </div>
-                <div className="shift-actions">
-                  <button className="btn">Assign Shift</button>
-                  <button className="btn">Request Staff</button>
-                  <button className="btn">View All Staff</button>
-                </div>
-              </div>
-            </div>
-          )}
-          
-          {/* 8. Incident Reporting */}
-          {currentTab === 'incidents' && (
-            <div className="incidents-container">
-              <div className="report-incident">
-                <h3>Report New Incident</h3>
-                <div className="incident-form">
-                  <div className="form-group">
-                    <label>Incident Type</label>
-                    <select>
-                      <option>Medical Emergency</option>
-                      <option>Security Issue</option>
-                      <option>Technical Problem</option>
-                      <option>Signal Fault</option>
-                      <option>Passenger Issue</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label>Title</label>
-                    <input type="text" placeholder="Brief description of incident" />
-                  </div>
-                  <div className="form-group">
-                    <label>Details</label>
-                    <textarea rows="4" placeholder="Describe the incident in detail..."></textarea>
-                  </div>
-                  <div className="form-group">
-                    <label>Location</label>
-                    <select>
-                      <option>Platform 1</option>
-                      <option>Platform 2</option>
-                      <option>Platform 3</option>
-                      <option>Platform 4</option>
-                      <option>Platform 5</option>
-                      <option>Platform 6</option>
-                      <option>Platform 7</option>
-                      <option>Platform 8</option>
-                      <option>Ticket Counter</option>
-                      <option>Waiting Area</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label>Severity</label>
-                    <select>
-                      <option value="Low">Low - No immediate action needed</option>
-                      <option value="Medium">Medium - Requires attention soon</option>
-                      <option value="High">High - Urgent attention required</option>
-                      <option value="Critical">Critical - Emergency response needed</option>
-                    </select>
-                  </div>
-                  <div className="form-actions">
-                    <button className="btn" onClick={() => addIncident({
-                      title: "Test incident",
-                      description: "This is a test incident report",
-                      severity: "Medium"
-                    })}>Report Incident</button>
-                    <button className="btn danger">Emergency Alert</button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="incident-history">
-                <h3>Recent Incidents</h3>
-                <table className="incident-table">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Time</th>
-                      <th>Title</th>
-                      <th>Severity</th>
-                      <th>Status</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {incidents.map(incident => (
-                      <tr key={incident.id}>
-                        <td>{incident.id}</td>
-                        <td>{incident.time}</td>
-                        <td>{incident.title}</td>
-                        <td className={`severity-${incident.severity.toLowerCase()}`}>{incident.severity}</td>
-                        <td className={
-                          incident.status === "Resolved" ? "status-resolved" :
-                          incident.status === "In Progress" ? "status-inprogress" :
-                          "status-reported"
-                        }>
-                          {incident.status}
-                        </td>
-                        <td className="actions">
-                          <button className="action-btn" title="View Details">
-                            <FiSearch />
-                          </button>
-                          <button className="action-btn" title="Update Status">
-                            <FiEdit />
-                          </button>
-                          <button className="action-btn" title="Alert Staff">
-                            <FiBell />
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          )}
           
           {/* 9. Daily Reports */}
           {currentTab === 'reports' && (
@@ -1314,95 +923,13 @@ const StationDashboard = () => {
             </div>
           )}
           
-          {/* 10. Tools & Settings */}
-          {currentTab === 'tools' && (
-            <div className="tools-container">
-              <h3>Tools & Settings</h3>
-              <div className="settings-panel">
-                <div className="setting-section">
-                  <h4>Station Settings</h4>
-                  <div className="setting-group">
-                    <label>Default Platform for Express Trains</label>
-                    <select>
-                      <option>Platform 1</option>
-                      <option>Platform 2</option>
-                      <option selected>Platform 3</option>
-                      <option>Platform 4</option>
-                    </select>
-                  </div>
-                  <div className="setting-group">
-                    <label>Default Platform for Local Trains</label>
-                    <select>
-                      <option selected>Platform 5</option>
-                      <option>Platform 6</option>
-                      <option>Platform 7</option>
-                      <option>Platform 8</option>
-                    </select>
-                  </div>
-                  <div className="setting-group">
-                    <label>Minimum Platform Clearance Time</label>
-                    <select>
-                      <option>5 minutes</option>
-                      <option selected>10 minutes</option>
-                      <option>15 minutes</option>
-                      <option>20 minutes</option>
-                    </select>
-                  </div>
-                </div>
-                
-                <div className="setting-section">
-                  <h4>Notification Settings</h4>
-                  <div className="setting-group checkbox">
-                    <label>
-                      <input type="checkbox" checked readOnly />
-                      Receive alerts for train delays
-                    </label>
-                  </div>
-                  <div className="setting-group checkbox">
-                    <label>
-                      <input type="checkbox" checked readOnly />
-                      Receive alerts for platform changes
-                    </label>
-                  </div>
-                  <div className="setting-group checkbox">
-                    <label>
-                      <input type="checkbox" checked readOnly />
-                      Receive alerts for emergency incidents
-                    </label>
-                  </div>
-                </div>
-                
-                <div className="setting-section">
-                  <h4>Emergency Contacts</h4>
-                  <div className="contact-list">
-                    <div className="contact-item">
-                      <div className="contact-role">Railway Control</div>
-                      <div className="contact-number">011-2695722</div>
-                    </div>
-                    <div className="contact-item">
-                      <div className="contact-role">Emergency Services</div>
-                      <div className="contact-number">119</div>
-                    </div>
-                    <div className="contact-item">
-                      <div className="contact-role">Medical Services</div>
-                      <div className="contact-number">110</div>
-                    </div>
-                    <div className="contact-item">
-                      <div className="contact-role">IT Support</div>
-                      <div className="contact-number">011-2698755</div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="settings-actions">
-                  <button className="btn">Save Settings</button>
-                  <button className="btn">Reset to Default</button>
-                </div>
-              </div>
-            </div>
-          )}
+
+
         </div>
+             )};
       </div>
+
+      
     </div>
   );
 };
