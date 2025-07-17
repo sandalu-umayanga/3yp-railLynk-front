@@ -238,6 +238,26 @@ body, html {
   }
 }
 
+/* Loading indicator for station dropdown */
+.loading-indicator {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.loading-indicator small {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  font-style: italic;
+}
+
+/* Disabled select styling */
+select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 @media (max-width: 360px) {
   .login-card {
     padding: 24px 20px;

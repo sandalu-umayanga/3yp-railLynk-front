@@ -234,6 +234,45 @@
   z-index: 1000;
 }
 
+/* Custom Font Awesome train icon styling */
+.custom-train-icon {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.custom-train-icon i {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.custom-train-icon:hover i {
+  transform: scale(1.1);
+}
+
+.train-icon-animated {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.train-icon-animated i {
+  filter: drop-shadow(0 3px 8px rgba(59, 130, 246, 0.6)) brightness(1.1);
+  animation: trainGlow 2s infinite ease-in-out;
+}
+
+@keyframes trainGlow {
+  0%, 100% {
+    color: #3b82f6;
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    color: #2563eb;
+    text-shadow: 0 0 15px rgba(59, 130, 246, 0.8);
+  }
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .admin-layout {

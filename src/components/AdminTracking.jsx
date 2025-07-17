@@ -14,11 +14,12 @@ L.Icon.Default.mergeOptions({
 });
 
 // Custom icons
-const trainIcon = new L.Icon({
-  iconUrl: 'https://cdn-icons-png.flaticon.com/512/3066/3066259.png',
-  iconSize: [32, 32],
-  iconAnchor: [16, 16],
-  popupAnchor: [0, -16]
+const trainIcon = new L.DivIcon({
+  html: '<i class="fa fa-train" style="color: #3b82f6; font-size: 24px;"></i>',
+  iconSize: [30, 30],
+  iconAnchor: [15, 15],
+  popupAnchor: [0, -15],
+  className: 'custom-train-icon'
 });
 
 const stationIcon = new L.Icon({
@@ -92,29 +93,27 @@ function AdminTracking() {
     }
   }, [trains]);
 
-  // Fetch all stations using the correct API endpoint
+  // Fetch all stations from GeoJSON file in public folder
   useEffect(() => {
     const fetchStations = async () => {
       try {
-        // Using the proper station list endpoint
-        const response = await API.get('station/list/');
+        const response = await fetch('/railways_lka.geojson');
+        const geojsonData = await response.json();
+        console.log("GeoJSON stations data:", geojsonData);
         
-        console.log("Station data response:", response.data);
-        
-        // Map with safety checks and unique IDs
-        const stationsData = response.data.map((station, index) => ({
-          id: station.station_id || `station-index-${index}`,
-          name: station.station_name || `Station ${index + 1}`,
+        const stationsData = geojsonData.features.map((feature, index) => ({
+          id: `station-${index}`,
+          name: feature.properties.name,
           position: [
-            parseFloat(station.lat || 0), 
-            parseFloat(station.lon || 0)
+            feature.geometry.coordinates[1], // Latitude (note: GeoJSON uses [lng, lat])
+            feature.geometry.coordinates[0]  // Longitude
           ]
         }));
         
+        console.log("Processed stations:", stationsData.length, "stations");
         setStations(stationsData);
       } catch (err) {
-        console.error('Error loading stations:', err);
-        // Set empty array instead of leaving as undefined
+        console.error('Error loading stations from GeoJSON:', err);
         setStations([]);
       }
     };
@@ -294,6 +293,11 @@ function AdminTracking() {
               {selectedTrainDetails.last_station && (
                 <div className="detail-item">
                   <strong>To:</strong> {selectedTrainDetails.last_station.station_name}
+                </div>
+              )}
+              {selectedTrainDetails.speed && (
+                <div className="detail-item">
+                  <strong>Speed:</strong> {selectedTrainDetails.speed} km/h
                 </div>
               )}
               {selectedTrainDetails.stations && (

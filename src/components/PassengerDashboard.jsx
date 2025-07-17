@@ -13,6 +13,8 @@ const PassengerDashboard = () => {
   const [balance, setBalance] = useState(0);
   const [recentTransactions, setRecentTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [transactionCount, setTransactionCount] = useState(0);
+  const [favoriteRoute, setFavoriteRoute] = useState(null);
 
   const navigate = useNavigate();
 
@@ -32,10 +34,25 @@ const PassengerDashboard = () => {
           if (response.status === 200) {
             const passengerInfo = response.data.passenger;
             const cardData = response.data.cards && response.data.cards.length > 0 ? response.data.cards[0] : null;
-            
+            const transactionCount = response.data.transaction_count || 0;
+            const favoriteRoute = response.data.favorite_route || null;
+
+            console.log("response.data:", response.data);
+            console.log("Passenger Info:", passengerInfo);
+            console.log("Card Data:", cardData);
+            console.log("Transaction Count:", transactionCount);
+            console.log("Favorite Route:", favoriteRoute);
+
             setPassengerData(passengerInfo);
-            if (cardData) {
-              setBalance(cardData.balance || 0);
+            setTransactionCount(transactionCount);
+            setFavoriteRoute(favoriteRoute);
+            
+            if (cardData && cardData.balance !== undefined) {
+              setBalance(cardData.balance);
+            } else {
+              // Handle case where no card exists or balance is not available
+              setBalance(0);
+              console.warn("No card found or balance unavailable");
             }
           }
 
@@ -57,6 +74,7 @@ const PassengerDashboard = () => {
         console.error("Error fetching dashboard data:", error);
         // Fallback to stored data
         const storedUserData = JSON.parse(localStorage.getItem(USER_DATA) || "{}");
+        console.log("Using stored user data:", storedUserData);
         if (storedUserData.profile) {
           setPassengerData(storedUserData.profile);
           setBalance(storedUserData.profile.balance || 0);
@@ -198,6 +216,11 @@ const PassengerDashboard = () => {
                 day: 'numeric' 
               })}
             </p>
+            {balance === 0 && (
+              <div className="alert-message">
+                <p>📱 No travel card linked to your account. Visit a station to get your RailLynk card!</p>
+              </div>
+            )}
           </div>
         </div>
 
@@ -209,8 +232,12 @@ const PassengerDashboard = () => {
             </div>
             <div className="stats-content">
               <h3>Account Balance</h3>
-              <p className="stats-value">Rs. {balance.toFixed(2)}</p>
-              <span className="stats-change positive">+2.5% from last month</span>
+              <p className="stats-value">
+                {balance > 0 ? `Rs. ${balance.toFixed(2)}` : 'No card linked'}
+              </p>
+              <span className={`stats-change ${balance > 0 ? 'positive' : 'neutral'}`}>
+                {balance > 0 ? 'Ready for travel' : 'Link a card to start'}
+              </span>
             </div>
           </div>
 
@@ -219,9 +246,9 @@ const PassengerDashboard = () => {
               <FaTicketAlt size={32} />
             </div>
             <div className="stats-content">
-              <h3>Tickets This Month</h3>
-              <p className="stats-value">12</p>
-              <span className="stats-change positive">+8 from last month</span>
+              <h3>Total Transactions</h3>
+              <p className="stats-value">{transactionCount}</p>
+              <span className="stats-change neutral">All time transactions</span>
             </div>
           </div>
 
@@ -230,9 +257,11 @@ const PassengerDashboard = () => {
               <FiActivity size={32} />
             </div>
             <div className="stats-content">
-              <h3>Trips Completed</h3>
-              <p className="stats-value">45</p>
-              <span className="stats-change neutral">Same as last month</span>
+              <h3>Card Status</h3>
+              <p className="stats-value">{balance > 0 ? 'Active' : 'Inactive'}</p>
+              <span className="stats-change neutral">
+                {balance > 0 ? 'Ready to travel' : 'Needs recharge'}
+              </span>
             </div>
           </div>
 
@@ -242,8 +271,15 @@ const PassengerDashboard = () => {
             </div>
             <div className="stats-content">
               <h3>Favorite Route</h3>
-              <p className="stats-value">Colombo - Kandy</p>
-              <span className="stats-change">Most traveled</span>
+              <p className="stats-value">
+                {favoriteRoute 
+                  ? `${favoriteRoute.start_station} - ${favoriteRoute.end_station}`
+                  : 'No routes yet'
+                }
+              </p>
+              <span className="stats-change">
+                {favoriteRoute ? 'Most traveled' : 'Start traveling'}
+              </span>
             </div>
           </div>
         </div>
@@ -294,7 +330,7 @@ const PassengerDashboard = () => {
           </div>
         </div>
 
-        {/* Recent Activity */}
+        {/* Recent Activity
         <div className="recent-activity">
           <h2 className="section-title">Recent Activity</h2>
           <div className="activity-list">
@@ -346,21 +382,13 @@ const PassengerDashboard = () => {
           <Link to="/passengerTransaction" className="view-all-link">
             View All Transactions →
           </Link>
-        </div>
+        </div> */}
 
         {/* Travel Tips */}
         <div className="travel-tips">
           <h2 className="section-title">Travel Tips</h2>
           <div className="tips-grid">
-            <div className="tip-card">
-              <div className="tip-icon">
-                <FiCalendar size={24} />
-              </div>
-              <div className="tip-content">
-                <h4>Book in Advance</h4>
-                <p>Book your tickets early to ensure seat availability during peak hours.</p>
-              </div>
-            </div>
+            
 
             <div className="tip-card">
               <div className="tip-icon">

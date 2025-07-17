@@ -1,4 +1,3 @@
-
 /* liveTracking.css */
 
 .live-tracking-container {
@@ -76,6 +75,27 @@
 .popup-content {
   font-size: 0.9rem;
   line-height: 1.4;
+  padding: 4px 0;
+}
+
+.popup-content strong {
+  color: #1e3a8a;
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.route-indicator {
+  color: #3b82f6;
+  font-weight: 500;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.sequence-info {
+  color: #6b7280;
+  font-size: 0.75rem;
+  margin-top: 2px;
 }
 
 .train-marker {
@@ -138,6 +158,124 @@
 
 .train-icon-animated {
   animation: pulse 1.5s infinite ease-in-out;
+}
+
+.train-icon-animated i {
+  filter: drop-shadow(0 3px 8px rgba(59, 130, 246, 0.6)) brightness(1.1);
+  animation: trainGlow 2s infinite ease-in-out;
+}
+
+@keyframes trainGlow {
+  0%, 100% {
+    color: #3b82f6;
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    color: #2563eb;
+    text-shadow: 0 0 15px rgba(59, 130, 246, 0.8);
+  }
+}
+
+/* Station marker styling */
+.route-station-icon {
+  filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.5)) !important;
+  transform: scale(1.1) !important;
+}
+
+/* Enhanced train popup styling */
+.train-popup-content {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 8px 0;
+  min-width: 220px;
+}
+
+.train-popup-header {
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #3b82f6;
+  text-align: center;
+}
+
+.train-popup-header h4 {
+  margin: 0;
+  color: #1e3a8a;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.train-popup-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 4px 0;
+  min-height: 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-weight: 500;
+  color: #4b5563;
+  font-size: 0.85rem;
+  flex: 0 0 auto;
+  margin-right: 12px;
+  white-space: nowrap;
+}
+
+.detail-value {
+  font-weight: 600;
+  color: #111827;
+  font-size: 0.85rem;
+  text-align: right;
+  flex: 1;
+  word-break: break-word;
+}
+
+.status-active {
+  color: #059669 !important;
+  font-weight: 700;
+}
+
+/* Enhanced popup styling for all popups */
+.leaflet-popup-content-wrapper {
+  border-radius: 8px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.leaflet-popup-content {
+  margin: 12px 16px !important;
+}
+
+.leaflet-popup-tip {
+  background: white !important;
+}
+
+/* Custom Font Awesome train icon styling */
+.custom-train-icon {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.custom-train-icon i {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.custom-train-icon:hover i {
+  transform: scale(1.1);
 }
 
 /* Responsive adjustments */

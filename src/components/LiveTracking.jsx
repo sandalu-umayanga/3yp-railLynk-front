@@ -15,20 +15,28 @@ L.Icon.Default.mergeOptions({
 });
 
 // Custom icons
-const trainIcon = new L.Icon({
-  iconUrl: 'https://cdn-icons-png.flaticon.com/512/3066/3066259.png',
-  iconSize: [36, 36],
-  iconAnchor: [18, 18],
-  popupAnchor: [0, -18]
-
+const trainIcon = new L.DivIcon({
+  html: '<i class="fa fa-train" style="color: #3b82f6; font-size: 24px;"></i>',
+  iconSize: [30, 30],
+  iconAnchor: [15, 15],
+  popupAnchor: [0, -15],
+  className: 'custom-train-icon'
 });
 
 const stationIcon = new L.Icon({
   iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
-
   iconSize: [20, 20],
   iconAnchor: [10, 10],
   popupAnchor: [0, -10],
+});
+
+// Highlighted station icon for train route stations
+const routeStationIcon = new L.Icon({
+  iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+  iconSize: [24, 24],
+  iconAnchor: [12, 12],
+  popupAnchor: [0, -12],
+  className: 'route-station-icon'
 });
 
 // Component to auto-update map bounds
@@ -47,7 +55,8 @@ function FitBounds({ bounds }) {
 function LiveTracking({ trainId }) {
   const [railwayData, setRailwayData] = useState(null);
   const [trainPosition, setTrainPosition] = useState(null);
-  const [stations, setStations] = useState([]);
+  const [stations, setStations] = useState([]); // Train route stations
+  const [allStations, setAllStations] = useState([]); // All stations in the system
   const [trainPath, setTrainPath] = useState([]);
   const [eta, setEta] = useState(null);
   const [nextStation, setNextStation] = useState(null);
@@ -57,6 +66,34 @@ function LiveTracking({ trainId }) {
 
   const pollingRef = useRef(null);
   const POLLING_INTERVAL = 10000; // Poll every 10 seconds
+
+  // Fetch all stations from GeoJSON file in public folder
+  useEffect(() => {
+    const fetchAllStations = async () => {
+      try {
+        const response = await fetch('/railways_lka.geojson');
+        const geojsonData = await response.json();
+        console.log("GeoJSON stations data:", geojsonData);
+        
+        const allStationsData = geojsonData.features.map((feature, index) => ({
+          id: `station-${index}`,
+          name: feature.properties.name,
+          position: [
+            feature.geometry.coordinates[1], // Latitude (note: GeoJSON uses [lng, lat])
+            feature.geometry.coordinates[0]  // Longitude
+          ]
+        }));
+        
+        console.log("Processed stations:", allStationsData.length, "stations");
+        setAllStations(allStationsData);
+      } catch (err) {
+        console.error('Error loading stations from GeoJSON:', err);
+        setAllStations([]);
+      }
+    };
+    
+    fetchAllStations();
+  }, []);
 
   // Load initial railway data from API
   useEffect(() => {
@@ -78,8 +115,13 @@ function LiveTracking({ trainId }) {
         
         const data = response.data;
         console.log("Train data received:", data);
+        console.log("Train data keys:", Object.keys(data));
         
         if (data.stations && data.train_location) {
+          // Store the full railway data for popup display
+          setRailwayData(data);
+          console.log("Railway data set:", data);
+          
           // Parse train location from string
           const [lat, lng] = data.train_location.split(',').map(coord => parseFloat(coord.trim()));
           setTrainPosition([lat, lng]);
@@ -171,6 +213,9 @@ function LiveTracking({ trainId }) {
         const data = response.data;
         
         if (data.train_location) {
+          // Update railway data for popup display
+          setRailwayData(data);
+          
           const [lat, lng] = data.train_location.split(',').map(coord => parseFloat(coord.trim()));
           setTrainPosition([lat, lng]);
           
@@ -253,19 +298,35 @@ function LiveTracking({ trainId }) {
             />
           )}
           
-          {stations.map(station => (
-            <Marker 
-              key={station.id} 
-              position={station.position}
-              icon={stationIcon}
-            >
-              <Popup>
-                <div className="popup-content">
-                  <strong>{station.name}</strong>
-                </div>
-              </Popup>
-            </Marker>
-          ))}
+          {/* Show all stations in the system */}
+          {allStations.map(station => {
+            // Check if this station is part of the current train route
+            const routeStation = stations.find(routeStation => 
+              routeStation.name === station.name || routeStation.id === station.id
+            );
+            const isRouteStation = Boolean(routeStation);
+            
+            return (
+              <Marker 
+                key={`station-${station.id}`} 
+                position={station.position}
+                icon={isRouteStation ? routeStationIcon : stationIcon}
+                zIndexOffset={isRouteStation ? 1000 : 100}
+              >
+                <Popup>
+                  <div className="popup-content">
+                    <strong>{station.name}</strong>
+                    {isRouteStation && (
+                      <>
+                        <div className="route-indicator">🚆 On train route</div>
+                        <div className="sequence-info">Sequence: {routeStation.sequence}</div>
+                      </>
+                    )}
+                  </div>
+                </Popup>
+              </Marker>
+            );
+          })}
           
           {trainPosition && (
             <Marker 
@@ -273,11 +334,89 @@ function LiveTracking({ trainId }) {
               icon={trainIcon}
               className="train-icon-animated"
             >
-              <Popup>
-                <div className="popup-content">
-                  <strong>Train: {trainId}</strong>
-                  {nextStation && <div>Next: {nextStation}</div>}
-                  {eta && <div>ETA: {eta}</div>}
+              <Popup maxWidth={300} minWidth={250}>
+                <div className="train-popup-content">
+                  <div className="train-popup-header">
+                    <h4>🚆 {railwayData?.train_name || trainId}</h4>
+                  </div>
+                  
+                  <div className="train-popup-details">
+                    {/* Always show train ID as fallback */}
+                    <div className="detail-row">
+                      <span className="detail-label">🆔 Train ID:</span>
+                      <span className="detail-value">{trainId}</span>
+                    </div>
+                    
+                    {railwayData?.starting_station && (
+                      <div className="detail-row">
+                        <span className="detail-label">🚉 From:</span>
+                        <span className="detail-value">{railwayData.starting_station.station_name}</span>
+                      </div>
+                    )}
+                    
+                    {railwayData?.last_station && (
+                      <div className="detail-row">
+                        <span className="detail-label">🎯 To:</span>
+                        <span className="detail-value">{railwayData.last_station.station_name}</span>
+                      </div>
+                    )}
+                    
+                    {nextStation && (
+                      <div className="detail-row">
+                        <span className="detail-label">⏭️ Next:</span>
+                        <span className="detail-value">{nextStation}</span>
+                      </div>
+                    )}
+                    
+                    {eta && (
+                      <div className="detail-row">
+                        <span className="detail-label">⏰ ETA:</span>
+                        <span className="detail-value">{eta}</span>
+                      </div>
+                    )}
+                    
+                    {/* Show current position */}
+                    {trainPosition && (
+                      <div className="detail-row">
+                        <span className="detail-label">📍 Position:</span>
+                        <span className="detail-value">{trainPosition[0].toFixed(4)}, {trainPosition[1].toFixed(4)}</span>
+                      </div>
+                    )}
+                    
+                    {railwayData?.speed && (
+                      <div className="detail-row">
+                        <span className="detail-label">🚄 Speed:</span>
+                        <span className="detail-value">{railwayData.speed} km/h</span>
+                      </div>
+                    )}
+                    
+                    {stations.length > 0 && (
+                      <div className="detail-row">
+                        <span className="detail-label">🏁 Total Stops:</span>
+                        <span className="detail-value">{stations.length} stations</span>
+                      </div>
+                    )}
+                    
+                    <div className="detail-row">
+                      <span className="detail-label">� Status:</span>
+                      <span className="detail-value status-active">🟢 Live Tracking</span>
+                    </div>
+                    
+                    {/* Show last update time */}
+                    <div className="detail-row">
+                      <span className="detail-label">⏱️ Updated:</span>
+                      <span className="detail-value">{new Date().toLocaleTimeString()}</span>
+                    </div>
+                    
+                    {/* Debug information - can be removed later */}
+                    {process.env.NODE_ENV === 'development' && (
+                      <div className="debug-info" style={{marginTop: '10px', padding: '5px', backgroundColor: '#f0f0f0', fontSize: '0.8rem'}}>
+                        <div>Train ID: {trainId}</div>
+                        <div>Railway Data: {railwayData ? 'Loaded' : 'Not loaded'}</div>
+                        <div>Coordinates: {trainPosition ? `${trainPosition[0].toFixed(4)}, ${trainPosition[1].toFixed(4)}` : 'N/A'}</div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </Popup>
             </Marker>
