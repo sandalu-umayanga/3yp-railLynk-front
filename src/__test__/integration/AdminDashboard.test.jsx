@@ -17,21 +17,22 @@ beforeAll(() => {
 const originalAPIGet = API.get;
 
 const mockStats = {
-  total_cards_issued_today: 12,
+  total_cards: 12,
   total_passengers: 120,
+  total_stations: 50,
   daily_revenue: 4500,
-  monthly_revenue_last_6_months: {
+  monthly_revenue: 12000,
+  last_5_months_revenue: {
     May: 12000,
     Apr: 11000,
     Mar: 9000,
     Feb: 10000,
     Jan: 8000,
-    Dec: 7500,
   },
-  station_usage_percentages: [
-    { station: "Colombo Fort", percentage: 70 },
-    { station: "Kandy", percentage: 60 },
-    { station: "Galle", percentage: 50 },
+  most_busy_stations_today: [
+    { station_name: "Colombo Fort", usage_count: 70 },
+    { station_name: "Kandy", usage_count: 60 },
+    { station_name: "Galle", usage_count: 50 },
   ],
 };
 

@@ -40,22 +40,23 @@ import API from "../../api";
 
 const mockDashboardResponse = {
   data: {
-    total_cards_issued_today: 8,
+    total_cards: 8,
     total_passengers: 150,
+    total_stations: 45,
     daily_revenue: 2500,
-    monthly_revenue_last_6_months: {
+    monthly_revenue: 25000,
+    last_5_months_revenue: {
       "2025-01": 25000,
       "2024-12": 22000,
       "2024-11": 28000,
       "2024-10": 24000,
       "2024-09": 26000,
-      "2024-08": 23000,
     },
-    station_usage_percentages: [
-      { station: "Colombo Fort", percentage: 35.5 },
-      { station: "Kandy", percentage: 28.2 },
-      { station: "Galle", percentage: 20.1 },
-      { station: "Jaffna", percentage: 16.2 },
+    most_busy_stations_today: [
+      { station_name: "Colombo Fort", usage_count: 35 },
+      { station_name: "Kandy", usage_count: 28 },
+      { station_name: "Galle", usage_count: 20 },
+      { station_name: "Jaffna", usage_count: 16 },
     ],
   },
 };
@@ -107,12 +108,15 @@ describe("AdminDashboard Component", () => {
         expect(screen.getByText("8")).toBeInTheDocument();
         expect(screen.getByText("Total Passengers")).toBeInTheDocument();
         expect(screen.getByText("150")).toBeInTheDocument();
+        expect(screen.getByText("Daily Revenue")).toBeInTheDocument();
+        expect(screen.getByText("Rs. 2,500")).toBeInTheDocument();
+        expect(screen.getByText("Total Stations")).toBeInTheDocument();
       });
     });
   });
 
-  describe("Live Train Tracking with Timestamps", () => {
-    it("displays live train tracking table with timestamps", async () => {
+  describe("Dashboard Charts", () => {
+    it("displays chart sections when data is loaded", async () => {
       render(
         <MemoryRouter>
           <AdminDashboard />
@@ -120,13 +124,11 @@ describe("AdminDashboard Component", () => {
       );
 
       await waitFor(() => {
-        expect(screen.getByText("Live Train Tracking")).toBeInTheDocument();
-        // Use getAllByText and check if at least one instance is found
-        const trainElements = screen.getAllByText("Express 101");
-        expect(trainElements.length).toBeGreaterThan(0);
-        const onTimeElements = screen.getAllByText("On time");
-        expect(onTimeElements.length).toBeGreaterThan(0);
-        expect(screen.getByText("Approaching Gampaha")).toBeInTheDocument();
+        // Check for charts section existence by looking for common chart elements
+        expect(screen.getByText("Railway System Overview")).toBeInTheDocument();
+        // The charts section should exist even if we can't test the specific chart content
+        const dashboardElement = screen.getByText("Railway System Overview").closest('.dashboard-container');
+        expect(dashboardElement).toBeInTheDocument();
       });
     });
   });

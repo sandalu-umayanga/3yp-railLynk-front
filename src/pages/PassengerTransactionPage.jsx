@@ -63,8 +63,8 @@ const PassengerTransactionPage = (props) => {
                     <tbody>
                         {transactions.map((transaction, index) => (
                             <tr key={transaction.id}>
-                                <td>{transaction.S_station}</td>
-                                <td>{transaction.E_station}</td>
+                                <td>{transaction.S_station_name || transaction.S_station}</td>
+                                <td>{transaction.E_station_name || transaction.E_station}</td>
                                 <td>Rs. {transaction.amount}</td>
                                 <td>{new Date(transaction.date).toLocaleDateString()}</td>
                                 <td>{new Date(transaction.date).toLocaleTimeString()}</td>
