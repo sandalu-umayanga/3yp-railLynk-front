@@ -456,24 +456,7 @@ const sampleStationData = {
 
       {/* Main Content */}
       <div className="main-content">
-        {/* Loading State */}
-        {loading && (
-          <div className="loading-overlay">
-            <div className="loader"></div>
-            <p>Loading dashboard data...</p>
-          </div>
-        )}
         
-        {/* Error State */}
-        {error && (
-          <div className="error-message">
-            <FiAlertOctagon size={24} />
-            <p>{error}</p>
-            <button className="btn" onClick={() => window.location.reload()}>
-              Retry
-            </button>
-          </div>
-        )}
 
         {/* Station Header with Controls */}
         {stationStats && (
