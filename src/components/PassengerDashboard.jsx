@@ -143,14 +143,7 @@ const PassengerDashboard = () => {
               <FaTicketAlt size={20} /> {isSidebarOpen && "My Tickets"}
             </Link>
           </li>
-          <li>
-            <Link
-              to="https://eservices.railway.gov.lk/schedule/searchTrain.action?lang=en"
-              className="menu-item"
-            >
-              <FiList size={20} /> {isSidebarOpen && "Train Schedule"}
-            </Link>
-          </li>
+          
           <li>
             <Link to="/passengerTransaction" className="menu-item">
               <FiDatabase size={20} /> {isSidebarOpen && "Transactions"}
@@ -200,17 +193,6 @@ const PassengerDashboard = () => {
                 day: 'numeric' 
               })}
             </p>
-          </div>
-          <div className="balance-display-main">
-            <div className="balance-card">
-              <div className="balance-icon">
-                <FiCreditCard size={24} />
-              </div>
-              <div className="balance-info">
-                <span className="balance-label">Current Balance</span>
-                <span className="balance-amount">Rs. {balance.toFixed(2)}</span>
-              </div>
-            </div>
           </div>
         </div>
 
