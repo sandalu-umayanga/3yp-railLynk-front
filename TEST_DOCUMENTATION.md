@@ -1,5 +1,7 @@
 # RailLynk Frontend Test Suite Documentation
 
+> **Last updated:** July 17, 2025
+
 ## Table of Contents
 1. [Overview](#overview)
 2. [Test Setup and Configuration](#test-setup-and-configuration)
@@ -18,15 +20,22 @@
 
 The RailLynk frontend test suite is a comprehensive testing framework built with **Vitest** and **React Testing Library**. The test suite ensures the reliability and functionality of the railway management system's user interface.
 
-### Current Status
+### Current Status (July 2025)
 - ✅ **29 test files** (all passing)
-- ✅ **104 individual tests** (all passing)
+- ✅ **103 individual tests** (all passing)
 - ✅ **0 failing tests**
 - ✅ Clean and maintainable test suite
 
+#### Recent Test & UI Changes (2025)
+- **AdminDashboard**: Tests updated to match new API structure and UI (cards for total cards, passengers, stations, daily/monthly revenue; removed live train tracking and upcoming departures sections)
+- **Map Features**: Map-related tests removed or refactored due to UI overhaul and switch to GeoJSON for station data
+- **PassengerTransactionPage**: Tests updated to check for both legacy and new station field names; now robust to API changes
+- **All tests updated**: to match new UI, error handling, and data structure
+- **All tests pass**: after these updates, with no skipped or failing tests
+
 ### Test Distribution
-- **Integration Tests**: 6 files with 12 tests (11.5% of total tests)
-- **Unit Tests**: 23 files with 92 tests (88.5% of total tests)
+- **Integration Tests**: 6 files with 12 tests
+- **Unit Tests**: 23 files with 91 tests (88.5% of total tests)
 
 ## Test Setup and Configuration
 
@@ -216,12 +225,14 @@ Extensive admin login functionality testing covering form validation, submission
 
 ### Dashboard Components
 
-#### `AdminDashboard.test.jsx` (6 tests)
+#### `AdminDashboard.test.jsx` (5 tests)
 Tests admin dashboard functionality:
 - ✅ Loading state rendering
-- ✅ Dashboard statistics display
-- ✅ Live train tracking with timestamps
+- ✅ Dashboard statistics display (cards: Cards Issued Today, Total Passengers, Daily Revenue, Monthly Revenue, Total Stations)
 - ✅ API integration and data fetching
+- ✅ Chart section rendering (monthly revenue, station usage)
+- ✅ Error and offline handling
+- ❌ Removed: Live Train Tracking and Upcoming Departures tests (no longer in UI)
 
 #### `PassengerDashboard.test.jsx` (1 test)
 Basic passenger dashboard rendering test.
@@ -343,7 +354,7 @@ Passenger registration workflow:
 Comprehensive transaction page testing:
 - ✅ **Page Rendering**: Title and date picker display
 - ✅ **Loading States**: Shows loading indicator during data fetch
-- ✅ **Data Display**: Shows transactions after successful API call
+- ✅ **Data Display**: Shows transactions after successful API call (supports both legacy and new station field names)
 - ✅ **Empty State**: Displays appropriate message when no transactions exist
 - ✅ **Date Filtering**: Refetches data when date selection changes
 - ✅ **Error Handling**: Gracefully handles API errors
@@ -362,6 +373,7 @@ Station registration workflow:
 Admin dashboard integration:
 - ✅ **Loading State**: Initial dashboard loading behavior
 - ✅ **Data Loading**: Dashboard statistics display after API response
+- ❌ Removed: Tests for removed sections (Live Train Tracking, Upcoming Departures)
 
 ## Mocking Strategies
 
@@ -473,8 +485,8 @@ npm test -- --grep "authentication"
 
 ## Coverage and Metrics
 
-### Current Test Metrics
-- **Total Tests**: 104
+### Current Test Metrics (July 2025)
+- **Total Tests**: 103
 - **Pass Rate**: 100%
 - **Test Files**: 29
 - **Average Test Duration**: ~60ms per test suite
@@ -483,13 +495,15 @@ npm test -- --grep "authentication"
 ✅ **Well Covered**:
 - Authentication flows
 - Form submissions
-- Dashboard components
+- Dashboard components (updated for new API/UI)
 - Navigation components
+- Transaction and recharge flows
 
-⚠️ **Removed Due to Complexity**:
-- Map/Leaflet integrations
+⚠️ **Removed/Refactored**:
+- Map/Leaflet integrations (now handled by GeoJSON, not directly tested)
 - Google Pay integrations
 - Complex multi-tab interfaces
+- Old dashboard sections (Live Train Tracking, Upcoming Departures)
 
 ### Performance Metrics
 - **Total Test Suite Duration**: ~6 seconds
@@ -608,6 +622,6 @@ When adding new tests, follow this checklist:
 
 ## Conclusion
 
-The RailLynk frontend test suite provides comprehensive coverage of the application's core functionality while maintaining high performance and reliability. The test suite follows modern testing best practices and provides a solid foundation for continued development and maintenance of the railway management system.
+The RailLynk frontend test suite (as of July 2025) provides comprehensive coverage of the application's core functionality, with all tests passing and up-to-date with the latest UI and API changes. The suite is robust against future UI/API changes, and all removed/updated features are clearly documented here.
 
 For questions or issues with the test suite, refer to this documentation or check the troubleshooting section for common solutions.
