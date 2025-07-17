@@ -22,7 +22,7 @@ import PassengerTrainTracking from "./components/PassengerTrainTracking";
 import AdminTracking from "./components/AdminTracking";
 import GooglePayRecharge from './components/GooglePayRecharge';
 import ForgotPassword from "./pages/ForgotPassword";
-
+import RouteUpdater from "./pages/MarkStation";
 
 function App() {
   return (
@@ -92,6 +92,9 @@ function App() {
             <Route path="/passengerRecharge" element={<RechargeHistory />} />
           </Route>
 
+          <Route element={<ProtectedRoute allowedRoles={["passenger"]} redirectPath="/" />}>
+            <Route path="/passenger/MarkStation" element={<RouteUpdater />} />
+          </Route>
 
           <Route element={<ProtectedRoute allowedRoles={["admin"]} redirectPath="/" />}>
             <Route path="/adminTracking" element={<AdminTracking />} />

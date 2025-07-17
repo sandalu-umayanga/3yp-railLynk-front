@@ -170,6 +170,11 @@ const PassengerDashboard = () => {
             </Link>
           </li>
           <li>
+            <Link to="/passenger/MarkStation" className="menu-item">
+              <FiSettings size={20} /> {isSidebarOpen && "Station mark"}
+            </Link>
+          </li>
+          <li>
             <button onClick={handleLogout} className="menu-item logout-button">
               <FiLogOut size={20} /> {isSidebarOpen && "Logout"}
             </button>
