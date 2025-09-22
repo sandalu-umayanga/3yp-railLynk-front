@@ -1,0 +1,26 @@
+{
+  "name": "raillynk-poster",
+  "version": "1.0.0",
+  "description": "A poster design project for the RailLynk railway management system.",
+  "main": "src/poster.html",
+  "scripts": {
+    "start": "open src/poster.html",
+    "build": "echo 'Building the poster...' && exit 0",
+    "test": "echo 'No tests specified' && exit 0"
+  },
+  "keywords": [
+    "railway",
+    "poster",
+    "design",
+    "react"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0"
+  }
+}

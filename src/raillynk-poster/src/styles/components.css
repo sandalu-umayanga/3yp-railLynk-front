@@ -1,0 +1,47 @@
+/* 
+  This file contains styles specific to the components used in the RailLynk poster, 
+  ensuring consistent design across the header, sections, and footer.
+*/
+
+/* Header Styles */
+.header {
+    background-color: #004d00; /* Dark green for header */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 2em;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Section Styles */
+.section {
+    padding: 40px;
+    margin: 20px;
+    border: 2px solid #004d00; /* Border matching header */
+    border-radius: 10px;
+    background-color: #f9f9f9; /* Light background for sections */
+    font-family: 'Arial', sans-serif;
+}
+
+.section-title {
+    font-size: 1.5em;
+    color: #004d00; /* Dark green for section titles */
+    margin-bottom: 10px;
+}
+
+.section-content {
+    font-size: 1em;
+    color: #333; /* Dark gray for section content */
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #004d00; /* Dark green for footer */
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 0.8em;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

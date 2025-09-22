@@ -20,8 +20,32 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, Legend 
 } from 'recharts';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'react-calendar/dist/Calendar.css';
+
+// Fix for default markers in react-leaflet
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
+
+// Create custom icons for different train statuses
+const trainIcon = new L.Icon({
+  iconUrl: 'https://cdn-icons-png.flaticon.com/512/2741/2741469.png',
+  iconSize: [35, 35],
+  iconAnchor: [17, 35],
+  popupAnchor: [0, -35],
+});
+
+const stationIcon = new L.Icon({
+  iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+  popupAnchor: [0, -40],
+});
 
 const StationDashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
@@ -113,6 +137,7 @@ const sampleStationData = {
 
     if (!stationId) {
       setError("Station ID not found. Please log in again.");
+      setStationStats(sampleStationData); // Show dummy data even without station ID
       setLoading(false);
       return;
     }
@@ -122,18 +147,20 @@ const sampleStationData = {
 
     try {
       const response = await API.get(`station/statistics/${stationId}/`);
-      setStationStats(response.data);
-      {/*
-        if (response.data.issued_today === 0) {
-        // Inject test sample if all counts are zero
-        setStationStats(sampleStationData);
-      } else {
+      
+      // Check if response has valid data
+      if (response.data && Object.keys(response.data).length > 0) {
         setStationStats(response.data);
+      } else {
+        // No data returned, use dummy data
+        console.log("No station statistics data received, using dummy data");
+        setStationStats(sampleStationData);
       }
-*/}
     } catch (err) {
       console.error("Failed to fetch station statistics:", err);
-      setError("Failed to load statistics.");
+      setError("API connection failed. Displaying sample data.");
+      // Always show dummy data when API fails
+      setStationStats(sampleStationData);
     } finally {
       setLoading(false);
     }
@@ -154,21 +181,28 @@ const sampleStationData = {
         // Fetch all data using API service
         const response = await API.get('station/dashboard-data');
         
-        // Update all state with fetched data
-        setStationData(response.data.stationData);
-        setTrainSchedule(response.data.trainSchedule);
-        setPlatformData(response.data.platformData);
-        setTrackingData(response.data.trackingData);
-        setStaffData(response.data.staffData);
-        setAnnouncements(response.data.announcements);
-        setIncidents(response.data.incidents);
-        setPlatformOccupancyData(response.data.platformOccupancyData);
-        setWeatherData(response.data.weatherData);
+        // Check if response has valid data
+        if (response.data && Object.keys(response.data).length > 0) {
+          // Update all state with fetched data
+          setStationData(response.data.stationData || stationData);
+          setTrainSchedule(response.data.trainSchedule || []);
+          setPlatformData(response.data.platformData || []);
+          setTrackingData(response.data.trackingData || []);
+          setStaffData(response.data.staffData || []);
+          setAnnouncements(response.data.announcements || []);
+          setIncidents(response.data.incidents || []);
+          setPlatformOccupancyData(response.data.platformOccupancyData || []);
+          setWeatherData(response.data.weatherData || weatherData);
+        } else {
+          // No data returned, use dummy data
+          console.log("No dashboard data received, using dummy data");
+          setExampleData();
+        }
       } catch (error) {
         console.error("Failed to fetch station dashboard data:", error);
-        setError("Failed to load dashboard data. Please try again later.");
+        setError("API connection failed. Displaying sample data for demonstration.");
         
-        // Use example data if API fails
+        // Always use example data if API fails
         setExampleData();
       } finally {
         setLoading(false);
@@ -181,6 +215,33 @@ const sampleStationData = {
     const intervalId = setInterval(fetchDashboardData, 300000);
     
     return () => clearInterval(intervalId);
+  }, []);
+
+  // Separate useEffect for real-time tracking data
+  useEffect(() => {
+    const fetchTrackingData = async () => {
+      try {
+        const response = await API.get('station/live-tracking');
+        
+        if (response.data && response.data.length > 0) {
+          setTrackingData(response.data);
+        } else {
+          // Keep existing dummy data if no real tracking data
+          console.log("No live tracking data received, keeping existing data");
+        }
+      } catch (error) {
+        console.error("Failed to fetch live tracking data:", error);
+        // Keep existing dummy data on error
+      }
+    };
+    
+    // Initial fetch
+    fetchTrackingData();
+    
+    // Set up interval for real-time updates every 15 seconds
+    const trackingIntervalId = setInterval(fetchTrackingData, 15000);
+    
+    return () => clearInterval(trackingIntervalId);
   }, []);
 
   // Set example data if API fails
@@ -263,13 +324,13 @@ const sampleStationData = {
       { platform: 8, train: null, arrivalTime: null, departureTime: null, status: "Free" }
     ]);
 
-    // Tracking data
+    // Tracking data - All positions within Sri Lanka railway network
     setTrackingData([
-      { id: "EXP101", lat: 6.9271, lng: 79.8612, eta: "On Platform", speed: 0 },
-      { id: "INT202", lat: 6.9350, lng: 79.8500, eta: "5 min", speed: 45 },
-      { id: "LOC303", lat: 6.9271, lng: 79.8612, eta: "On Platform", speed: 0 },
-      { id: "EXP404", lat: 6.9100, lng: 79.8300, eta: "25 min", speed: 60 },
-      { id: "LOC505", lat: 6.8900, lng: 79.8100, eta: "40 min", speed: 50 }
+      { id: "EXP101", lat: 6.9271, lng: 79.8612, eta: "On Platform", speed: 0 }, // Colombo Fort
+      { id: "INT202", lat: 7.2906, lng: 80.6337, eta: "5 min", speed: 45 }, // Kandy
+      { id: "LOC303", lat: 6.0329, lng: 80.2168, eta: "On Platform", speed: 0 }, // Galle
+      { id: "EXP404", lat: 7.9403, lng: 81.0188, eta: "25 min", speed: 60 }, // Anuradhapura
+      { id: "LOC505", lat: 6.8211, lng: 79.9553, eta: "40 min", speed: 50 } // Ragama
     ]);
 
     // Staff data
@@ -473,6 +534,28 @@ const sampleStationData = {
         </div>
         )};
 
+        {/* Loading State */}
+        {loading && (
+          <div className="loading-container">
+            <div className="loading-spinner"></div>
+            <p>Loading dashboard data...</p>
+          </div>
+        )}
+
+        {/* Error State with Dummy Data Notice */}
+        {error && (
+          <div className="error-notice">
+            <div className="error-content">
+              <FiAlertOctagon className="error-icon" />
+              <div className="error-message">
+                <h4>Using Demo Data</h4>
+                <p>{error}</p>
+                <small>The data shown below is sample data for demonstration purposes.</small>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Tab Navigation */}
         <div className="tab-navigation">
           <button 
@@ -643,34 +726,47 @@ const sampleStationData = {
               </div>
 
               <div className="map-container">
-                {/* For demo purposes. In a real app, you'd use a proper map */}
-                <div className="map-placeholder">
-                  <p>Station location is at 6.9271, 79.8612</p>
-                  <p>Real implementation would use the MapContainer from react-leaflet here</p>
-                  <p>Or integrate with your GPS tracking system</p>
-                </div>
-                {/* Uncomment and use actual map component in real implementation */}
-                {/* 
                 <MapContainer 
-                  center={[6.9271, 79.8612]} 
-                  zoom={13} 
-                  style={{ height: '100%', width: '100%' }}
+                  center={[7.8731, 80.7718]} 
+                  zoom={8} 
+                  style={{ height: '400px', width: '100%' }}
                 >
                   <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                   />
+                  
+                  {/* Station marker */}
+                  <Marker 
+                    position={[6.9271, 79.8612]}
+                    icon={stationIcon}
+                  >
+                    <Popup>
+                      <div>
+                        <strong>{stationData.stationName}</strong><br/>
+                        <small>Station ID: {stationData.stationId}</small>
+                      </div>
+                    </Popup>
+                  </Marker>
+
+                  {/* Train markers */}
                   {trackingData.map(train => (
                     <Marker 
                       key={train.id}
                       position={[train.lat, train.lng]}
+                      icon={trainIcon}
                     >
                       <Popup>
-                        {train.id} - {train.eta}
+                        <div>
+                          <strong>{train.id}</strong><br/>
+                          ETA: {train.eta}<br/>
+                          Speed: {train.speed} km/h<br/>
+                          <small>Click to view details</small>
+                        </div>
                       </Popup>
                     </Marker>
                   ))}
                 </MapContainer>
-                */}
               </div>
 
               <div className="tracking-info">
